@@ -14,7 +14,7 @@ class MovieApi extends Api {
   }
 
   static listWatchedMovies(userId, params) {
-    return this.getClient().get(`/movie/list`, { params: {...baseParams, ...params, user_id: userId} });
+    return this.getClient().get(`/movie/watched`, { params: {...baseParams, ...params, user_id: userId} });
   }
 
   static searchMovies(query) {
