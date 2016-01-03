@@ -5,8 +5,8 @@ const baseParams = {
 }
 
 class MovieApi extends Api {
-  static listMovies(params) {
-    return this.getClient().get(`/movie/list`, { params: {...baseParams, ...params} });
+  static listMovies(userId, params) {
+    return this.getClient().get(`/movie/list`, { params: {...baseParams, ...params, user_id: userId} });
   }
 
   static listRecommendedMovies(userId, params) {
