@@ -3,10 +3,10 @@ import { browserHistory } from 'react-router';
 import * as types from '../actions/actionTypes';
 import MovieApi from '../api/MovieApi';
 
-export function listMovies(query) {
+export function listMovies(userId, query) {
   return function(dispatch) {
     dispatch(listMoviesRequest());
-    MovieApi.listMovies(query)
+    MovieApi.listMovies(userId,query)
       .then(function (response) {
         dispatch(listMoviesSuccess(response.data));
       })

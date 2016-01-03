@@ -7,7 +7,7 @@ import MoviesListSimple from '../../components/movies/MoviesListSimple';
 
 class HomePage extends Component {
   componentWillMount() {
-    this.props.actions.listMovies({ ...this.props.location.query });
+    this.props.actions.listMovies(this.props.currentUser.id, { ...this.props.location.query });
   }
 
   render() {
@@ -34,6 +34,7 @@ class HomePage extends Component {
 const mapStateToProps = (state) => {
   return {
     movies: state.movies.movies,
+    currentUser: state.auth.currentUser,
     isAuthenticated: state.auth.isAuthenticated,
   }
 }

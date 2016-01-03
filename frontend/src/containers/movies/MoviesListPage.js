@@ -11,7 +11,7 @@ import Pagination from '../../components/shared/Pagination';
 
 class MoviesListPage extends Component {
   componentWillMount() {
-    this.props.actions.listMovies({ ...this.props.location.query });
+    this.props.actions.listMovies(this.props.currentUser.id, { ...this.props.location.query });
   }
 
   handleSearch(search) {
