@@ -35,12 +35,13 @@ class MoviesListPage extends Component {
 
   render() {
     const { movies, message, total, isAuthenticated, isAdmin } = this.props;
-    const page = this.props.location.query.page;
+    const { free_search, page } = this.props.location.query;
+    console.log(free_search);
 
     return (
       <div>
         <div className="header">
-          <MoviesSearchBar onSubmit={ this.handleSearch.bind(this) } initialValues={{ search: this.props.location.query.search }} />
+          <MoviesSearchBar onSubmit={ this.handleSearch.bind(this) } initialValues={{ free_search }} />
           <Pagination page={page} total={total} onPageSelect={this.handlePageSelect.bind(this)} />
           <MoviesActionBar isAuthenticated={isAuthenticated} isAdmin={isAdmin} />
         </div>
