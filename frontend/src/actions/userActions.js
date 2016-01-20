@@ -1,6 +1,7 @@
 import { browserHistory } from 'react-router';
 
-import * as types from '../actions/actionTypes';
+import * as types from './actionTypes';
+import * as notificationActions from './notificationActions';
 import userApi from '../api/UserApi';
 
 export function listUsers() {
@@ -144,11 +145,14 @@ export function deleteUser(id) {
 }
 
 function deleteUserRequest() {
-  return { type: types.DELETE_USER_REQUEST }
+  return { type: types.DELETE_USER_REQUEST };
 }
 
 function deleteUserSuccess() {
-  return { type: types.DELETE_USER_SUCCESS }
+  return function(dispatch) {
+    dispatch(notificationActions.info('User successfully deleted'));
+    dispatch({ type: types.DELETE_USER_SUCCESS });
+  }
 }
 
 function deleteUserFailure(error) {

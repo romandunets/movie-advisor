@@ -5,6 +5,9 @@ export default {
     isAuthenticated: localStorage.getItem('user') !== null,
     message: ''
   },
+  notifications: {
+    notifications: []
+  },
   users: {
     users: [],
     user: {},

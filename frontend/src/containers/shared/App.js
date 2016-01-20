@@ -33,13 +33,13 @@ class App extends Component {
   }
 
   render() {
-    const { message, currentUser, isAuthenticated, isAdmin } = this.props;
+    const { currentUser, notifications, isAuthenticated, isAdmin } = this.props;
     const { query, pathname } = this.props.location;
 
     return (
       <div className="container">
         <AppNavigation username={currentUser.username} free_search={query.free_search} pathname={pathname} isAuthenticated={isAuthenticated} isAdmin={isAdmin} handleSearch={this.handleSearch.bind(this)} handleLogout={this.handleLogout.bind(this)} />
-        <MessageBox message={message} />
+        <MessageBox notifications={notifications} />
         <div className="content">{ this.props.children }</div>
         <AppFooter />
       </div>
@@ -51,6 +51,7 @@ const mapStateToProps = (state) => {
   return {
     message: state.users.message || state.movies.message || state.auth.message,
     currentUser: state.auth.currentUser,
+    notifications: state.notifications.notifications,
     isAuthenticated: state.auth.isAuthenticated,
     isAdmin: state.auth.isAdmin
   }
