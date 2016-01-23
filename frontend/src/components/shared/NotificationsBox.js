@@ -5,7 +5,7 @@ class NotificationsBox extends Component {
     const { notifications } = this.props;
 
     return (
-      <div className="message-box">
+      <div className="notifications-box">
         { notifications.map ((notification, index) => {
             switch(notification.type) {
               case "INFO":

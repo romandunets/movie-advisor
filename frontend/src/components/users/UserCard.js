@@ -69,7 +69,7 @@ class UserCard extends Component {
               </div>
               <div className="modal-footer">
                 <button type="button" className="btn btn-secondary float-xs-left" data-dismiss="modal">Cancel</button>
-                <button type="button" className="btn btn-danger float-xs-right" onClick={(e) => deleteUser(user.id)}>Delete</button>
+                <button type="button" className="btn btn-danger float-xs-right" data-dismiss="modal" onClick={(e) => deleteUser(user.id)}>Delete</button>
               </div>
             </div>
           </div>
