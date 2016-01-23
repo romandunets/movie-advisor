@@ -22,7 +22,6 @@ class UserEditPage extends Component {
       <div className="center-container">
         <div className="center-content">
           <h3 className="title text-center">Edit user</h3>
-          <MessageBox message={ message } />
           { !isLoading &&
             <UserForm onSubmit={ this.handleSubmit.bind(this) } initialValues={ initialValues } />
           }

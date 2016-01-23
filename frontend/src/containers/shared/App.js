@@ -40,7 +40,7 @@ class App extends Component {
       <div className="container">
         <AppNavigation username={currentUser.username} free_search={query.free_search} pathname={pathname} isAuthenticated={isAuthenticated} isAdmin={isAdmin} handleSearch={this.handleSearch.bind(this)} handleLogout={this.handleLogout.bind(this)} />
         <NotificationsBox notifications={notifications} />
-        <div className="content">{ this.props.children }</div>
+        <div id="content" className="content">{ this.props.children }</div>
         <AppFooter />
       </div>
     );
