@@ -30,8 +30,8 @@ function listUsersSuccess(users) {
 
 function listUsersFailure(error) {
   return function(dispatch) {
-    dispatch(notificationActions.error('Getting users failed'));
     dispatch({ type: types.LIST_USERS_FAILURE });
+    dispatch(notificationActions.error('Getting users failed'));
   }
 }
 
@@ -61,8 +61,8 @@ function getUserSuccess(user) {
 
 function getUserFailure(error) {
   return function(dispatch) {
-    dispatch(notificationActions.error('Getting user failed'));
     dispatch({ type: types.GET_USER_FAILURE });
+    dispatch(notificationActions.error('Getting user failed'));
   }
 }
 
@@ -86,18 +86,18 @@ function createUserRequest() {
 
 function createUserSuccess(user) {
   return function(dispatch) {
-    dispatch(notificationActions.info('User successfully created'));
     dispatch({
       type: types.CREATE_USER_SUCCESS,
       payload: { user }
     });
+    dispatch(notificationActions.info('User successfully created'));
   }
 }
 
 function createUserFailure(error) {
   return function(dispatch) {
-    dispatch(notificationActions.error('Creating user failed'));
     dispatch({ type: types.CREATE_USER_FAILURE });
+    dispatch(notificationActions.error('Creating user failed'));
   }
 }
 
@@ -121,18 +121,18 @@ function updateUserRequest() {
 
 function updateUserSuccess(user) {
   return function(dispatch) {
-    dispatch(notificationActions.info('User successfully updated'));
     dispatch({
       type: types.UPDATE_USER_SUCCESS,
       payload: { user }
     });
+    dispatch(notificationActions.info('User successfully updated'));
   }
 }
 
 function updateUserFailure(error) {
   return function(dispatch) {
-    dispatch(notificationActions.error('Updating user failed'));
     dispatch({ type: types.UPDATE_USER_FAILURE });
+    dispatch(notificationActions.error('Updating user failed'));
   }
 }
 
@@ -156,14 +156,14 @@ function deleteUserRequest() {
 
 function deleteUserSuccess() {
   return function(dispatch) {
-    dispatch(notificationActions.info('User successfully deleted'));
     dispatch({ type: types.DELETE_USER_SUCCESS });
+    dispatch(notificationActions.info('User successfully deleted'));
   }
 }
 
 function deleteUserFailure() {
   return function(dispatch) {
-    dispatch(notificationActions.error('Deleting user failed'));
     dispatch({ type: types.DELETE_USER_FAILURE });
+    dispatch(notificationActions.error('Deleting user failed'));
   }
 }
