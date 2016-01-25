@@ -28,9 +28,9 @@ function listMoviesSuccess(movies) {
 }
 
 function listMoviesFailure(error) {
-  return {
-    type: types.LIST_MOVIES_FAILURE,
-    payload: { error }
+  return function(dispatch) {
+    dispatch({ type: types.LIST_MOVIES_FAILURE });
+    dispatch(notificationActions.error('Getting movies failed'));
   }
 }
 
