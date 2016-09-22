@@ -72,3 +72,16 @@ CREATE TABLE IF NOT EXISTS `movies_to_genres` (
   CONSTRAINT `fk_movies_to_genres_to_movies` FOREIGN KEY (`movie_id`) REFERENCES `movies` (`id`),
   CONSTRAINT `fk_movies_to_genres_to_genres` FOREIGN KEY (`genre_id`) REFERENCES `genres` (`id`)
 );
+
+CREATE TABLE IF NOT EXISTS `movie_images` (
+  `id` BIGINT(20) NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(100) NOT NULL,
+  `link` VARCHAR(200) NOT NULL,
+  `type` VARCHAR(50) NOT NULL,
+  `movie_id` BIGINT(20) NOT NULL,
+  `created_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `movie_images_unique` (`link`),
+  CONSTRAINT `fk_movie_images_to_movies` FOREIGN KEY (`movie_id`) REFERENCES `movies` (`id`)
+);
