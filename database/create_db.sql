@@ -85,3 +85,13 @@ CREATE TABLE IF NOT EXISTS `movie_images` (
   UNIQUE KEY `movie_images_unique` (`link`),
   CONSTRAINT `fk_movie_images_to_movies` FOREIGN KEY (`movie_id`) REFERENCES `movies` (`id`)
 );
+
+CREATE TABLE IF NOT EXISTS `users_to_movies` (
+  `user_id` BIGINT(20) NOT NULL,
+  `movie_id` BIGINT(20) NOT NULL,
+  `rating` FLOAT(2, 2) DEFAULT NULL,
+  `created_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  CONSTRAINT `fk_users_to_movies_to_users` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`),
+  CONSTRAINT `fk_users_to_movies_to_movies` FOREIGN KEY (`movie_id`) REFERENCES `movies` (`id`)
+);
