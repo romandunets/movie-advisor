@@ -63,3 +63,12 @@ CREATE TABLE IF NOT EXISTS `genres` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `genre_name_unique` (`name`)
 );
+
+CREATE TABLE IF NOT EXISTS `movies_to_genres` (
+  `movie_id` BIGINT(20) NOT NULL,
+  `genre_id` BIGINT(20) NOT NULL,
+  `created_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  CONSTRAINT `fk_movies_to_genres_to_movies` FOREIGN KEY (`movie_id`) REFERENCES `movies` (`id`),
+  CONSTRAINT `fk_movies_to_genres_to_genres` FOREIGN KEY (`genre_id`) REFERENCES `genres` (`id`)
+);
