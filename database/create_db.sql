@@ -95,3 +95,13 @@ CREATE TABLE IF NOT EXISTS `users_to_movies` (
   CONSTRAINT `fk_users_to_movies_to_users` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`),
   CONSTRAINT `fk_users_to_movies_to_movies` FOREIGN KEY (`movie_id`) REFERENCES `movies` (`id`)
 );
+
+CREATE TABLE IF NOT EXISTS `tags` (
+  `id` BIGINT(20) NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(50) NOT NULL,
+  `description` TEXT DEFAULT NULL,
+  `created_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `tag_name_unique` (`name`)
+);
