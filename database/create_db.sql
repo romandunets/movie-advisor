@@ -105,3 +105,12 @@ CREATE TABLE IF NOT EXISTS `tags` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `tag_name_unique` (`name`)
 );
+
+CREATE TABLE IF NOT EXISTS `movies_to_tags` (
+  `movie_id` BIGINT(20) NOT NULL,
+  `tag_id` BIGINT(20) NOT NULL,
+  `created_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  CONSTRAINT `fk_movies_to_tags_to_movies` FOREIGN KEY (`movie_id`) REFERENCES `movies` (`id`),
+  CONSTRAINT `fk_movies_to_tags_to_tags` FOREIGN KEY (`tag_id`) REFERENCES `tags` (`id`)
+);
