@@ -4,8 +4,6 @@ CREATE TABLE IF NOT EXISTS `roles` (
   `id` TINYINT(3) NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(50) NOT NULL,
   `description` TEXT DEFAULT NULL,
-  `created_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
   UNIQUE KEY `role_name_unique` (`name`)
 );
@@ -35,8 +33,8 @@ CREATE TABLE IF NOT EXISTS `follower_to_followed` (
   `followed_id` BIGINT(20) NOT NULL,
   `created_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  CONSTRAINT `fk_follower_to_followed_to_users` FOREIGN KEY (`follower_id`) REFERENCES `users` (`id`),
-  CONSTRAINT `fk_followed_to_followed_to_users` FOREIGN KEY (`followed_id`) REFERENCES `users` (`id`)
+  CONSTRAINT `fk_follower_to_followed_to_users` FOREIGN KEY (`follower_id`) REFERENCES `users` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `fk_followed_to_followed_to_users` FOREIGN KEY (`followed_id`) REFERENCES `users` (`id`) ON DELETE CASCADE
 );
 
 CREATE TABLE IF NOT EXISTS `movies` (
@@ -58,8 +56,6 @@ CREATE TABLE IF NOT EXISTS `genres` (
   `id` TINYINT(3) NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(50) NOT NULL,
   `description` TEXT DEFAULT NULL,
-  `created_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
   UNIQUE KEY `genre_name_unique` (`name`)
 );
@@ -67,10 +63,8 @@ CREATE TABLE IF NOT EXISTS `genres` (
 CREATE TABLE IF NOT EXISTS `movies_to_genres` (
   `movie_id` BIGINT(20) NOT NULL,
   `genre_id` TINYINT(3) NOT NULL,
-  `created_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  CONSTRAINT `fk_movies_to_genres_to_movies` FOREIGN KEY (`movie_id`) REFERENCES `movies` (`id`),
-  CONSTRAINT `fk_movies_to_genres_to_genres` FOREIGN KEY (`genre_id`) REFERENCES `genres` (`id`)
+  CONSTRAINT `fk_movies_to_genres_to_movies` FOREIGN KEY (`movie_id`) REFERENCES `movies` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `fk_movies_to_genres_to_genres` FOREIGN KEY (`genre_id`) REFERENCES `genres` (`id`) ON DELETE CASCADE
 );
 
 CREATE TABLE IF NOT EXISTS `movie_images` (
@@ -79,11 +73,9 @@ CREATE TABLE IF NOT EXISTS `movie_images` (
   `link` VARCHAR(200) NOT NULL,
   `type` VARCHAR(50) NOT NULL,
   `movie_id` BIGINT(20) NOT NULL,
-  `created_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
   UNIQUE KEY `movie_images_unique` (`link`),
-  CONSTRAINT `fk_movie_images_to_movies` FOREIGN KEY (`movie_id`) REFERENCES `movies` (`id`)
+  CONSTRAINT `fk_movie_images_to_movies` FOREIGN KEY (`movie_id`) REFERENCES `movies` (`id`) ON DELETE CASCADE
 );
 
 CREATE TABLE IF NOT EXISTS `users_to_movies` (
@@ -92,16 +84,14 @@ CREATE TABLE IF NOT EXISTS `users_to_movies` (
   `rating` FLOAT(2, 2) DEFAULT NULL,
   `created_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  CONSTRAINT `fk_users_to_movies_to_users` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`),
-  CONSTRAINT `fk_users_to_movies_to_movies` FOREIGN KEY (`movie_id`) REFERENCES `movies` (`id`)
+  CONSTRAINT `fk_users_to_movies_to_users` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `fk_users_to_movies_to_movies` FOREIGN KEY (`movie_id`) REFERENCES `movies` (`id`) ON DELETE CASCADE
 );
 
 CREATE TABLE IF NOT EXISTS `tags` (
   `id` INT(11) NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(50) NOT NULL,
   `description` TEXT DEFAULT NULL,
-  `created_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
   UNIQUE KEY `tag_name_unique` (`name`)
 );
@@ -109,10 +99,8 @@ CREATE TABLE IF NOT EXISTS `tags` (
 CREATE TABLE IF NOT EXISTS `movies_to_tags` (
   `movie_id` BIGINT(20) NOT NULL,
   `tag_id` INT(11) NOT NULL,
-  `created_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  CONSTRAINT `fk_movies_to_tags_to_movies` FOREIGN KEY (`movie_id`) REFERENCES `movies` (`id`),
-  CONSTRAINT `fk_movies_to_tags_to_tags` FOREIGN KEY (`tag_id`) REFERENCES `tags` (`id`)
+  CONSTRAINT `fk_movies_to_tags_to_movies` FOREIGN KEY (`movie_id`) REFERENCES `movies` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `fk_movies_to_tags_to_tags` FOREIGN KEY (`tag_id`) REFERENCES `tags` (`id`) ON DELETE CASCADE
 );
 
 CREATE TABLE IF NOT EXISTS `comments` (
@@ -124,6 +112,6 @@ CREATE TABLE IF NOT EXISTS `comments` (
   `created_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
-  CONSTRAINT `fk_comments_to_users` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`),
-  CONSTRAINT `fk_comments_to_movies` FOREIGN KEY (`movie_id`) REFERENCES `movies` (`id`)
+  CONSTRAINT `fk_comments_to_users` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `fk_comments_to_movies` FOREIGN KEY (`movie_id`) REFERENCES `movies` (`id`) ON DELETE CASCADE
 );
