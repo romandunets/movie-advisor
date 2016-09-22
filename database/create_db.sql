@@ -38,3 +38,18 @@ CREATE TABLE IF NOT EXISTS `follower_to_followed` (
   CONSTRAINT `fk_follower_to_followed_to_users` FOREIGN KEY (`follower_id`) REFERENCES `users` (`id`),
   CONSTRAINT `fk_followed_to_followed_to_users` FOREIGN KEY (`followed_id`) REFERENCES `users` (`id`)
 );
+
+CREATE TABLE IF NOT EXISTS `movies` (
+  `id` BIGINT(20) NOT NULL AUTO_INCREMENT,
+  `title` VARCHAR(100) NOT NULL,
+  `year` SMALLINT,
+  `studio` VARCHAR(100) DEFAULT NULL,
+  `producer` VARCHAR(100) DEFAULT NULL,
+  `duration` INT(11) DEFAULT NULL,
+  `age_restriction` TINYINT(2) DEFAULT NULL,
+  `description` TEXT DEFAULT NULL,
+  `created_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `movie_title_unique` (`title`)
+);
