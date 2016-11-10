@@ -8,5 +8,9 @@ export default {
   auth: {
     isAuthenticated: false,
     message: ''
+  },
+  movies: {
+    movies: [],
+    error: ''
   }
 }

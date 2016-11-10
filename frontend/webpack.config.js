@@ -50,7 +50,7 @@ const config = {
       loaders: [ 'style', 'raw' ],
       include: __dirname
     }]
-  },
+  }
 };
 
 module.exports = config;

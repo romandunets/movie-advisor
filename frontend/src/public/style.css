@@ -1,0 +1,61 @@
+img {max-width: 100%;}
+
+.title {text-align: center;}
+
+.plot {padding-top: 10px;}
+
+.people {padding-top: 10px;}
+
+.rating {font-size: 20px;}
+
+.movie-item {
+	border-bottom: 1px #ddd solid;
+	padding: 10px;
+	padding-top: 15px;
+}
+
+.movie-item .thumbnail { max-width: 150px;}
+
+.movie-item .btn {margin-right: 10px;}
+
+.detail-item {
+	padding-top: 15px;
+	padding-bottom: 15px;
+}
+
+nav{
+	border: 1px solid #ddd;
+	border-bottom: 0px;
+}
+
+.navbar-brand {font-weight: bold;}
+
+footer {
+	padding: 20px 0px 0px 15px;
+	border: 1px solid #ddd;
+	border-top: 0px;
+	background-color: #f7f7f9;
+	font-size: 13px;
+}
+
+.content{
+	padding-top: 15px;
+	padding-bottom: 15px;
+	border: 1px solid #ddd;
+}
+
+.ratingrow{
+	padding-top: 20px;
+}
+
+.youwatchedrow{
+	padding: 15px;
+}
+
+.br-widget a{
+	font-size: 200% !important;
+}
+
+ul{
+	padding-left: 0px;
+}
