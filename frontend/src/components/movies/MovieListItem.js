@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router';
 
 const MovieListItem = ({movie}) => (
 	<div className="movie-item">
@@ -38,8 +39,8 @@ const MovieListItem = ({movie}) => (
 			</div>
 			<div className="row">
 				<div className="text-md-right">
-					<a href={"/movies/" + movie.id} role="button" className="btn btn-secondary">Details</a>
-					<a href={"/movies/" + movie.id + "/watched"}  role="button" className="btn btn-secondary">Watched</a>
+					<Link to={"/movies/" + movie.id} role="button" className="btn btn-secondary">Details</Link>
+					<Link to={"/movies/" + movie.id + "/watched"}  role="button" className="btn btn-secondary">Watched</Link>
 				</div>
 			</div>
 		</div>

@@ -12,6 +12,7 @@ class AppWithMenu extends Component {
   }
 
   render() {
+    const { isAuthenticated } = this.props;
     return (
       <div className="container">
         <nav className="navbar navbar-light bg-faded navbar-full">

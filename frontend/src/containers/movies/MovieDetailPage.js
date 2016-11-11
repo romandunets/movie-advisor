@@ -4,19 +4,22 @@ import { Link } from 'react-router'
 import { bindActionCreators } from 'redux'
 
 import * as movieActions from '../../actions/movieActions'
-import MovieList from '../../components/movies/MovieList'
+import MovieDetail from '../../components/movies/MovieDetail'
 
-class RecommendedMoviesPage extends Component {
+class MovieDetailPage extends Component {
+  deleteMovie(id) {
+    this.props.actions.deleteMovie(id);
+  }
+
   componentWillMount() {
-    this.props.actions.fetchRecommendedMovies();
+    this.props.actions.fetchMovie(this.props.params.id);
   }
 
   render() {
-    const { movies, error } = this.props;
+    const { movie, error } = this.props;
     return (
       <div>
-        <h3>Recommended movies</h3>
-        <MovieList movies={ movies } />
+        <MovieDetail movie={ movie } deleteMovie={ this.deleteMovie.bind(this, movie.id) } />
       </div>
     );
   }
@@ -24,7 +27,7 @@ class RecommendedMoviesPage extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    movies: state.movies.movies,
+    movie: state.movies.movie,
     error: state.movies.error
   }
 }
@@ -35,4 +38,5 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(RecommendedMoviesPage);
+export default connect(mapStateToProps, mapDispatchToProps)(MovieDetailPage);
+

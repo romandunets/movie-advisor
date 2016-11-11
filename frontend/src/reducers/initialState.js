@@ -11,6 +11,7 @@ export default {
   },
   movies: {
     movies: [],
+    movie: {},
     error: ''
   }
 }

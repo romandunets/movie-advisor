@@ -12,11 +12,15 @@ class MoviesPage extends Component {
   }
 
   render() {
-    const { movies, error } = this.props;
+    const { movies, message, error } = this.props;
     return (
       <div>
+        <h4>{message}</h4>
         <h3>All movies</h3>
         <MovieList movies={ movies } />
+        <div className="text-md-right">
+          <Link to='/movies/new' role="button" className="btn btn-secondary">Add movie</Link>
+        </div> 
       </div>
     );
   }
@@ -25,6 +29,7 @@ class MoviesPage extends Component {
 const mapStateToProps = (state) => {
   return {
     movies: state.movies.movies,
+    message: state.movies.message,
     error: state.movies.error
   }
 }

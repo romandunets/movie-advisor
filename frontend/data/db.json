@@ -13,20 +13,41 @@
       "username": "testuser4"
     },
     {
-      "username": "asdg",
-      "id": 4
-    },
-    {
       "username": "blabla",
       "id": 5
     }
   ],
-
   "movies": [
-    { "id": 1, "title": "Iron Man", "year": "2008", "studio": "Studio1", "producer": "Jon Favreau", "duration": 120, "age_restriction": "PEG13", "description": "After being held captive in an Afghan cave, a billionaire engineer creates a unique weaponized suit of armor to fight", "genre": ["Action", "Sci-Fi", "Adventure"], "image": "https://images-na.ssl-images-amazon.com/images/M/MV5BMTczNTI2ODUwOF5BMl5BanBnXkFtZTcwMTU0NTIzMw@@._V1_SX300.jpg"},
-    { "id": 2, "title": "The Godfather", "year": "1972", "studio": "Studio2", "producer": "Francis Ford Coppola", "duration": 120, "age_restriction": "R", "description": "The aging patriarch of an organized crime dynasty transfers control of his clandestine empire to his reluctant son.", "genre": ["Crime", "Drama"], "image": "https://images-na.ssl-images-amazon.com/images/M/MV5BMjEyMjcyNDI4MF5BMl5BanBnXkFtZTcwMDA5Mzg3OA@@._V1_SX300.jpg"}
-  ],
-  "recommendedMovies": [
-    { "id": 1, "title": "Iron Man", "year": "2008", "studio": "Studio1", "producer": "Jon Favreau", "duration": 120, "age_restriction": "PEG13", "description": "After being held captive in an Afghan cave, a billionaire engineer creates a unique weaponized suit of armor to fight", "genre": ["Action", "Sci-Fi", "Adventure"], "image": "https://images-na.ssl-images-amazon.com/images/M/MV5BMTczNTI2ODUwOF5BMl5BanBnXkFtZTcwMTU0NTIzMw@@._V1_SX300.jpg"}
+    {
+      "id": 1,
+      "title": "Iron Man",
+      "year": "2008",
+      "studio": "Studio1",
+      "producer": "Jon Favreau",
+      "duration": 120,
+      "age_restriction": "PEG13",
+      "description": "After being held captive in an Afghan cave, a billionaire engineer creates a unique weaponized suit of armor to fight",
+      "genre": [
+        "Action",
+        "Sci-Fi",
+        "Adventure"
+      ],
+      "image": "https://images-na.ssl-images-amazon.com/images/M/MV5BMTczNTI2ODUwOF5BMl5BanBnXkFtZTcwMTU0NTIzMw@@._V1_SX300.jpg"
+    },
+    {
+      "id": 2,
+      "title": "The Godfather",
+      "year": "1972",
+      "studio": "Studio2",
+      "producer": "Francis Ford Coppola",
+      "duration": 120,
+      "age_restriction": "R",
+      "description": "The aging patriarch of an organized crime dynasty transfers control of his clandestine empire to his reluctant son.",
+      "genre": [
+        "Crime",
+        "Drama"
+      ],
+      "image": "https://images-na.ssl-images-amazon.com/images/M/MV5BMjEyMjcyNDI4MF5BMl5BanBnXkFtZTcwMDA5Mzg3OA@@._V1_SX300.jpg"
+    }
   ]
 }

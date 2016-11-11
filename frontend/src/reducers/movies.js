@@ -9,19 +9,34 @@ const movieReducer = (state = initialState.movies, action) => {
       return {...state, error: action.payload}
     case types.FETCH_MOVIES_REQUEST:
       return {...state, movies: []}
+    case types.FETCH_MOVIE_SUCCESS:
+      return {...state, movie: action.payload.movie}
+    case types.FETCH_MOVIE_FAILED:
+      return {...state, error: action.payload}
+    case types.FETCH_MOVIE_REQUEST:
+      return {...state, movie: {}}
+    case types.CREATE_MOVIE_REQUEST:
+      return {...state, message: '', error: ''}
+    case types.CREATE_MOVIE_SUCCESS:
+      return {...state, message: 'Movie successfully created', error: ''}
+    case types.CREATE_MOVIE_FAILURE:
+      return {...state, message: '', error: action.payload}
+    case types.UPDATE_MOVIE_REQUEST:
+      return {...state, message: '', error: ''}
+    case types.UPDATE_MOVIE_SUCCESS:
+      return {...state, message: 'Movie successfully updated', error: ''}
+    case types.UPDATE_MOVIE_FAILURE:
+      return {...state, message: '', error: action.payload}
+    case types.DELETE_MOVIE_REQUEST:
+      return {...state, message: '', error: ''}
+    case types.DELETE_MOVIE_SUCCESS:
+      return {...state, message: 'Movie successfully deleted', error: ''}
+    case types.DELETE_MOVIE_FAILURE:
+      return {...state, message: '', error: action.payload}
     default:
       return state;
   }
 }
-
-/*const movie = (state = {}, action) => {
-  switch(action.type) {
-    default:
-      return state;
-  }
-}*/
-
-
 
 export default movieReducer
   

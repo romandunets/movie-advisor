@@ -11,8 +11,20 @@ class MovieApi {
     return this.getClient().get(`/movies`);
   }
 
-  static fetchRecommendedMovies(userid) {
-    return this.getClient().get(`/recommendedMovies`);
+  static fetchMovie(id){
+    return this.getClient().get(`/movies/`+id);
+  }
+
+  static createMovie(movie) {
+    return this.getClient().post(`/movies`, movie);
+  }
+
+  static updateMovie(movie) {
+    return this.getClient().put(`/movies/${movie.id}`, movie);
+  }
+
+  static deleteMovie(id) {
+    return this.getClient().delete(`/movies/${id}`);
   }
 }
 

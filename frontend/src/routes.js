@@ -13,20 +13,25 @@ import UserNewPage from './containers/users/UserNewPage';
 import UserEditPage from './containers/users/UserEditPage';
 
 import MoviesPage from './containers/movies/MoviesPage';
-import RecommendedMoviesPage from './containers/movies/RecommendedMoviesPage';
+import MovieDetailPage from './containers/movies/MovieDetailPage';
+import MovieNewPage from './containers/movies/MovieNewPage';
+import MovieEditPage from './containers/movies/MovieEditPage';
 
 export default (store) => {
   return (
     <Route path="/" component={AppWithMenu}>
 
       <IndexRoute component={MoviesPage} />
-      <Route path="movies">
-        <IndexRoute component={MoviesPage} />
-        <Route path="recommended" component={RecommendedMoviesPage} />
-      </Route>
 
       <Route path="login" component={LoginPage} />
       <Route path="signup" component={SignupPage} />
+
+      <Route path="movies">
+        <IndexRoute component={MoviesPage} />
+        <Route path="new" component={MovieNewPage} />
+        <Route path=":id" component={MovieDetailPage} />
+        <Route path=":id/edit" component={MovieEditPage} />
+      </Route>
 
       <Route path="users" onEnter={requireAuthentication(store)}>
         <IndexRoute component={UsersListPage} />
@@ -34,9 +39,6 @@ export default (store) => {
         <Route path=":id" component={UserPage} />
         <Route path=":id/edit" component={UserEditPage} />
       </Route>
-
-      
-
     </Route>
   )
 };
