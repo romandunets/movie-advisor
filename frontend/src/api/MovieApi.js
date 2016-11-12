@@ -7,11 +7,11 @@ class MovieApi {
     });
   }
 
-  static fetchMovies() {
+  static listMovies() {
     return this.getClient().get(`/movies`);
   }
 
-  static fetchMovie(id){
+  static getMovie(id){
     return this.getClient().get(`/movies/`+id);
   }
 

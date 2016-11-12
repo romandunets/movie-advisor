@@ -3,17 +3,17 @@ import initialState from './initialState';
 
 const movieReducer = (state = initialState.movies, action) => {
   switch(action.type) {
-    case types.FETCH_MOVIES_SUCCESS:
+    case types.LIST_MOVIES_SUCCESS:
       return {...state, movies: action.payload.movies}
-    case types.FETCH_MOVIES_FAILED:
+    case types.LIST_MOVIES_FAILUREED:
       return {...state, error: action.payload}
-    case types.FETCH_MOVIES_REQUEST:
+    case types.LIST_MOVIES_REQUEST:
       return {...state, movies: []}
-    case types.FETCH_MOVIE_SUCCESS:
+    case types.GET_MOVIE_SUCCESS:
       return {...state, movie: action.payload.movie}
-    case types.FETCH_MOVIE_FAILED:
+    case types.GET_MOVIE_FAILUREED:
       return {...state, error: action.payload}
-    case types.FETCH_MOVIE_REQUEST:
+    case types.GET_MOVIE_REQUEST:
       return {...state, movie: {}}
     case types.CREATE_MOVIE_REQUEST:
       return {...state, message: '', error: ''}

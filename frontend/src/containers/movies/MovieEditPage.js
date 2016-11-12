@@ -8,7 +8,7 @@ import { reset } from 'redux-form';
 
 class MovieEditPage extends Component {
   componentWillMount() {
-    this.props.actions.fetchMovie(this.props.params.id);
+    this.props.actions.getMovie(this.props.params.id);
   }
 
   handleSubmit(movie) {

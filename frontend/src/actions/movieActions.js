@@ -3,65 +3,65 @@ import { browserHistory } from 'react-router';
 import * as types from '../actions/actionTypes';
 import MovieApi from '../api/MovieApi';
 
-export function fetchMovies() {
+export function listMovies() {
   return function(dispatch) {
-    dispatch(fetchMoviesRequest());
-    MovieApi.fetchMovies()
+    dispatch(listMoviesRequest());
+    MovieApi.listMovies()
       .then(function (response) {
-        dispatch(fetchMoviesSuccess(response.data));
+        dispatch(listMoviesSuccess(response.data));
       })
       .catch(function (error) {
-        dispatch(fetchMoviesFail(error));
+        dispatch(listMoviesFail(error));
       });
   }
 }
 
-function fetchMoviesRequest() {
-  return { type: types.FETCH_MOVIES_REQUEST }
+function listMoviesRequest() {
+  return { type: types.LIST_MOVIES_REQUEST }
 }
 
-function fetchMoviesSuccess(movies){
+function listMoviesSuccess(movies){
   return{
-    type: types.FETCH_MOVIES_SUCCESS,
+    type: types.LIST_MOVIES_SUCCESS,
     payload: { movies }
   }
 }
 
-function fetchMoviesFail(error){
+function listMoviesFail(error){
   return{
-    type: types.FETCH_MOVIES_FAILED,
+    type: types.LIST_MOVIES_FAILUREED,
     payload: { error }
   }
 }
 
 
-export function fetchMovie(id) {
+export function getMovie(id) {
   return function(dispatch) {
-    dispatch(fetchMovieRequest());
-    MovieApi.fetchMovie(id)
+    dispatch(getMovieRequest());
+    MovieApi.getMovie(id)
       .then(function (response) {
-        dispatch(fetchMovieSuccess(response.data));
+        dispatch(listMoviesuccess(response.data));
       })
       .catch(function (error) {
-        dispatch(fetchMovieFail(error));
+        dispatch(getMovieFail(error));
       })
   }
 }
 
-function fetchMovieRequest() {
-  return { type: types.FETCH_MOVIE_REQUEST }
+function getMovieRequest() {
+  return { type: types.GET_MOVIE_REQUEST }
 }
 
-function fetchMovieSuccess(movie){
+function listMoviesuccess(movie){
   return{
-    type: types.FETCH_MOVIE_SUCCESS,
+    type: types.GET_MOVIE_SUCCESS,
     payload: { movie }
   }
 }
 
-function fetchMovieFail(error){
+function getMovieFail(error){
   return{
-    type: types.FETCH_MOVIE_FAILED,
+    type: types.GET_MOVIE_FAILUREED,
     payload: { error }
   }
 }

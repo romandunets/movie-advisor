@@ -8,7 +8,7 @@ import MovieList from '../../components/movies/MovieList'
 
 class MoviesPage extends Component {
   componentWillMount() {
-    this.props.actions.fetchMovies();
+    this.props.actions.listMovies();
   }
 
   render() {
