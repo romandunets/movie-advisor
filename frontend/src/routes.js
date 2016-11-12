@@ -19,21 +19,22 @@ import MovieEditPage from './containers/movies/MovieEditPage';
 
 export default (store) => {
   return (
-    <Route path="/" component={AppWithMenu}>
+    <Route path="/">
+      <Route component={App}>
+        <IndexRoute component={MoviesPage} />
 
-      <IndexRoute component={MoviesPage} />
+        <Route path="login" component={LoginPage} />
+        <Route path="signup" component={SignupPage} />
+      </Route>
 
-      <Route path="login" component={LoginPage} />
-      <Route path="signup" component={SignupPage} />
-
-      <Route path="movies">
+      <Route path="movies" component={AppWithMenu}>
         <IndexRoute component={MoviesPage} />
         <Route path="new" component={MovieNewPage} />
         <Route path=":id" component={MovieDetailPage} />
         <Route path=":id/edit" component={MovieEditPage} />
       </Route>
 
-      <Route path="users" onEnter={requireAuthentication(store)}>
+      <Route path="users" component={AppWithMenu} onEnter={requireAuthentication(store)}>
         <IndexRoute component={UsersListPage} />
         <Route path="new" component={UserNewPage} />
         <Route path=":id" component={UserPage} />
