@@ -14,9 +14,7 @@ class MovieForm extends Component {
     if(title.length > 0){
       axios("http://www.omdbapi.com/?t="+title+"&y=&plot=short&r=json")
         .then(function(res){
-          console.log(res);
           var data = res.data;
-          console.log(data);
           if(res.data.Response != "False"){
             change("title", data.Title);
             change("description", data.Plot);
@@ -36,7 +34,6 @@ class MovieForm extends Component {
 
   render() {
     const { handleSubmit, change } = this.props;
-    console.log(this.props);
     return (
       <form onSubmit={ handleSubmit }>
         <div className="form-group">
