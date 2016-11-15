@@ -1,4 +1,4 @@
-SELECT `movie_id`, COUNT(*)
+SELECT `movie_id`, COUNT(*) AS `score`
 FROM `users_to_movies`
 INNER JOIN (
   SELECT `users`.`id`
