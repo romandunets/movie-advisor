@@ -29,7 +29,7 @@ function listMoviesSuccess(movies){
 
 function listMoviesFail(error){
   return{
-    type: types.LIST_MOVIES_FAILUREED,
+    type: types.LIST_MOVIES_FAILURE,
     payload: { error }
   }
 }

@@ -12,12 +12,12 @@ class MoviesPage extends Component {
   }
 
   render() {
-    const { movies, message, error } = this.props;
+    const { movies, message, error, isAuthenticated } = this.props;
     return (
       <div>
         <h4>{message}</h4>
         <h3>All movies</h3>
-        <MovieList movies={ movies } />
+        <MovieList movies={ movies } isAuthenticated = { isAuthenticated }  />
         <div className="text-md-right">
           <Link to='/movies/new' role="button" className="btn btn-secondary">Add movie</Link>
         </div> 
@@ -30,7 +30,8 @@ const mapStateToProps = (state) => {
   return {
     movies: state.movies.movies,
     message: state.movies.message,
-    error: state.movies.error
+    error: state.movies.error,
+    isAuthenticated: state.auth.isAuthenticated
   }
 }
 

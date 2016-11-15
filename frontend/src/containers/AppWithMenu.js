@@ -14,6 +14,7 @@ class AppWithMenu extends Component {
 
 
   render() {
+    const { isAuthenticated } = this.props;
     return (
       <div className="container">
         <nav className="navbar navbar-light bg-faded navbar-full">
@@ -31,11 +32,16 @@ class AppWithMenu extends Component {
             <li className="nav-item">
               <Link className="nav-link" activeClassName="active" to="/movies/watched">Watched</Link>
             </li>
+            {isAuthenticated &&
             <li className="nav-item">
               <Link className="nav-link" activeClassName="active" to="/users/1">Profile</Link>
             </li>
+            }
             <li className="nav-item">
-              <Link className="nav-link" to="" onClick={ this.handleLogout.bind(this) }>Logout</Link>
+              {isAuthenticated ?
+              <Link className="nav-link" to="" onClick={ this.handleLogout.bind(this) }>Logout</Link>:
+              <Link className="nav-link" to="/login">Login</Link>
+              }
             </li>
           </ul>
           <form className="form-inline pull-xs-right">
@@ -54,10 +60,16 @@ class AppWithMenu extends Component {
   }
 }
 
+const mapStateToProps = (state) => {
+  return {
+    isAuthenticated: state.auth.isAuthenticated
+  }
+}
+
 const mapDispatchToProps = (dispatch) => {
   return {
     actions: bindActionCreators(authActions, dispatch)
   }
 }
 
-export default connect(null, mapDispatchToProps)(AppWithMenu);
+export default connect(mapStateToProps, mapDispatchToProps)(AppWithMenu);

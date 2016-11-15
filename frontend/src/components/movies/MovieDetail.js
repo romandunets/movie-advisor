@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router';
 
-const MovieDetail = ({movie, deleteMovie}) => (
+const MovieDetail = ({movie, deleteMovie, isAuthenticated}) => (
 	<div>
 		<div className="row">
 			<div className="thumbnail col-md-3">
@@ -44,6 +44,7 @@ const MovieDetail = ({movie, deleteMovie}) => (
 				</div>
 			</div>
 		</div>
+		{ isAuthenticated &&
 		<div className="row">
 			<div className="col-md-12">
 				<div className="text-md-right">
@@ -53,6 +54,7 @@ const MovieDetail = ({movie, deleteMovie}) => (
 				</div>
 			</div>
 		</div>	
+		}
 	</div>
 )
 
