@@ -34,6 +34,37 @@ function listMoviesFail(error){
   }
 }
 
+export function searchMovies(keyword) {
+  return function(dispatch) {
+    dispatch(searchMoviesRequest());
+    MovieApi.searchMovies(keyword)
+      .then(function (response) {
+        dispatch(searchMoviesSuccess(response.data));
+      })
+      .catch(function (error) {
+        dispatch(searchMoviesFail(error));
+      });
+  }
+}
+
+function searchMoviesRequest() {
+  return { type: types.SEARCH_MOVIES_REQUEST }
+}
+
+function searchMoviesSuccess(movies){
+  return{
+    type: types.SEARCH_MOVIES_SUCCESS,
+    payload: { movies }
+  }
+}
+
+function searchMoviesFail(error){
+  return{
+    type: types.SEARCH_MOVIES_FAILURE,
+    payload: { error }
+  }
+}
+
 
 export function getMovie(id) {
   return function(dispatch) {

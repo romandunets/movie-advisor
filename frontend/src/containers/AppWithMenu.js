@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { Link, IndexLink } from 'react-router';
 import { bindActionCreators } from 'redux';
+import {browserHistory} from 'react-router';
 
 import * as authActions from '../actions/authActions'
 
@@ -11,7 +12,16 @@ class AppWithMenu extends Component {
     this.props.actions.logout();
   }
 
-
+  handleSearch(event){
+    event.preventDefault();
+    var searchKeywords = document.getElementById("searchField").value;
+    if(searchKeywords.length > 0){
+      browserHistory.push("/movies/search/"+searchKeywords);
+    }
+    else{
+      browserHistory.push("/");
+    }
+  }
 
   render() {
     const { isAuthenticated } = this.props;
@@ -45,8 +55,8 @@ class AppWithMenu extends Component {
             </li>
           </ul>
           <form className="form-inline pull-xs-right">
-            <input className="form-control" type="text" placeholder="Search" />
-            <button className="btn btn-outline-success" type="submit">Search</button>
+            <input className="form-control" type="text" placeholder="Search" id="searchField"/>
+            <button className="btn btn-outline-success" onClick={this.handleSearch.bind(this)}>Search</button>
           </form>
         </nav>
         <div className="container content">

@@ -22,7 +22,6 @@ const MovieListItem = ({movie, isAuthenticated}) => (
 										<span>★</span>
 										<span>★</span>
 										<span>☆</span>
-										<small>7.9 / 10</small>
 									</div>
 								</div>
 				</div>

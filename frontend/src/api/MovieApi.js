@@ -11,6 +11,10 @@ class MovieApi {
     return this.getClient().get(`/movies`);
   }
 
+   static searchMovies(keyword) {
+    return this.getClient().get(`/movies?q=${keyword}`);
+  }
+
   static getMovie(id){
     return this.getClient().get(`/movies/`+id);
   }
