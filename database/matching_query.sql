@@ -18,5 +18,5 @@ AND `users_to_movies`.`movie_id` NOT IN (
   FROM `users_to_movies`
   WHERE `user_id` = 1
 )
-GROUP BY `movie_id`;
-
+GROUP BY `movie_id`
+ORDER BY `score` DESC;
