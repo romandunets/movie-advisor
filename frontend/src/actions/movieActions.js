@@ -11,7 +11,7 @@ export function listMovies() {
         dispatch(listMoviesSuccess(response.data));
       })
       .catch(function (error) {
-        dispatch(listMoviesFail(error));
+        dispatch(listMoviesFailure(error));
       });
   }
 }
@@ -27,7 +27,7 @@ function listMoviesSuccess(movies){
   }
 }
 
-function listMoviesFail(error){
+function listMoviesFailure(error){
   return{
     type: types.LIST_MOVIES_FAILURE,
     payload: { error }
@@ -42,7 +42,7 @@ export function searchMovies(keyword) {
         dispatch(searchMoviesSuccess(response.data));
       })
       .catch(function (error) {
-        dispatch(searchMoviesFail(error));
+        dispatch(searchMoviesFailure(error));
       });
   }
 }
@@ -58,23 +58,22 @@ function searchMoviesSuccess(movies){
   }
 }
 
-function searchMoviesFail(error){
+function searchMoviesFailure(error){
   return{
     type: types.SEARCH_MOVIES_FAILURE,
     payload: { error }
   }
 }
 
-
 export function getMovie(id) {
   return function(dispatch) {
     dispatch(getMovieRequest());
     MovieApi.getMovie(id)
       .then(function (response) {
-        dispatch(listMoviesuccess(response.data));
+        dispatch(getMovieSuccess(response.data));
       })
       .catch(function (error) {
-        dispatch(getMovieFail(error));
+        dispatch(getMovieFailure(error));
       })
   }
 }
@@ -83,16 +82,16 @@ function getMovieRequest() {
   return { type: types.GET_MOVIE_REQUEST }
 }
 
-function listMoviesuccess(movie){
+function getMovieSuccess(movie){
   return{
     type: types.GET_MOVIE_SUCCESS,
     payload: { movie }
   }
 }
 
-function getMovieFail(error){
+function getMovieFailure(error){
   return{
-    type: types.GET_MOVIE_FAILUREED,
+    type: types.GET_MOVIE_FAILURE,
     payload: { error }
   }
 }
