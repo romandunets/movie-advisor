@@ -12,14 +12,14 @@ class AppWithMenu extends Component {
     this.props.actions.logout();
   }
 
-  handleSearch(event){
+  handleSearch(event) {
     event.preventDefault();
-    var searchKeywords = document.getElementById("searchField").value;
-    if(searchKeywords.length > 0){
-      browserHistory.push("/movies/search/"+searchKeywords);
+    var query = document.getElementById('searchField').value;
+    if (query.length > 0) {
+      browserHistory.push('/movies/search/' + query);
     }
-    else{
-      browserHistory.push("/");
+    else {
+      browserHistory.push('/');
     }
   }
 
@@ -43,14 +43,14 @@ class AppWithMenu extends Component {
               <Link className="nav-link" activeClassName="active" to="/movies/watched">Watched</Link>
             </li>
             {isAuthenticated &&
-            <li className="nav-item">
-              <Link className="nav-link" activeClassName="active" to="/users/1">Profile</Link>
-            </li>
+              <li className="nav-item">
+                <Link className="nav-link" activeClassName="active" to="/users/1">Profile</Link>
+              </li>
             }
             <li className="nav-item">
-              {isAuthenticated ?
-              <Link className="nav-link" to="" onClick={ this.handleLogout.bind(this) }>Logout</Link>:
-              <Link className="nav-link" to="/login">Login</Link>
+              {isAuthenticated &&
+                <Link className="nav-link" to="" onClick={ this.handleLogout.bind(this) }>Logout</Link>:
+                <Link className="nav-link" to="/login">Login</Link>
               }
             </li>
           </ul>
