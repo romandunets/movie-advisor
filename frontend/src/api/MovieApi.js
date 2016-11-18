@@ -1,18 +1,16 @@
-import axios from 'axios';
+import Api from './Api';
 
-class MovieApi {
-  static getClient() {
-    return axios.create({
-      baseURL: process.env.API_HOST
-    });
-  }
-
+class MovieApi extends Api {
   static listMovies() {
     return this.getClient().get(`/movies`);
   }
 
-  static getMovie(id){
-    return this.getClient().get(`/movies/`+id);
+  static searchMovies(query) {
+    return this.getClient().get(`/movies?q=${query}`);
+  }
+
+  static getMovie(id) {
+    return this.getClient().get(`/movies/${id}`);
   }
 
   static createMovie(movie) {
@@ -27,6 +25,5 @@ class MovieApi {
     return this.getClient().delete(`/movies/${id}`);
   }
 }
-
 
 export default MovieApi;

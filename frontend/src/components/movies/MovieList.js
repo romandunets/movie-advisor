@@ -3,9 +3,9 @@ import { connect } from 'react-redux'
 
 import MovieListItem from './MovieListItem'
 
-const MovieList = ({ movies }) => {
+const MovieList = ({ movies, isAuthenticated }) => {
   return (
-    <ul>{ movies.map (movie => <MovieListItem key={movie.id} movie={movie} />) }</ul>
+    <ul>{ movies.map (movie => <MovieListItem key={movie.id} movie={movie} isAuthenticated={ isAuthenticated } />) }</ul>
   );
 }
 

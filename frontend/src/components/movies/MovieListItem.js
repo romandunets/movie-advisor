@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router';
 
-const MovieListItem = ({movie}) => (
+const MovieListItem = ({movie, isAuthenticated}) => (
 	<div className="movie-item">
 		<div className="row">
 			<div className="thumbnail col-md-2">
@@ -22,7 +22,6 @@ const MovieListItem = ({movie}) => (
 										<span>★</span>
 										<span>★</span>
 										<span>☆</span>
-										<small>7.9 / 10</small>
 									</div>
 								</div>
 				</div>
@@ -40,7 +39,9 @@ const MovieListItem = ({movie}) => (
 			<div className="row">
 				<div className="text-md-right">
 					<Link to={"/movies/" + movie.id} role="button" className="btn btn-secondary">Details</Link>
+					{ isAuthenticated &&
 					<Link to={"/movies/" + movie.id + "/watched"}  role="button" className="btn btn-secondary">Watched</Link>
+					}
 				</div>
 			</div>
 		</div>

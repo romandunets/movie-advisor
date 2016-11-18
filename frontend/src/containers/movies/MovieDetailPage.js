@@ -16,10 +16,10 @@ class MovieDetailPage extends Component {
   }
 
   render() {
-    const { movie, error } = this.props;
+    const { movie, error, isAuthenticated } = this.props;
     return (
       <div>
-        <MovieDetail movie={ movie } deleteMovie={ this.deleteMovie.bind(this, movie.id) } />
+        <MovieDetail movie={ movie } deleteMovie={ this.deleteMovie.bind(this, movie.id) } isAuthenticated={ isAuthenticated } />
       </div>
     );
   }
@@ -28,7 +28,8 @@ class MovieDetailPage extends Component {
 const mapStateToProps = (state) => {
   return {
     movie: state.movies.movie,
-    error: state.movies.error
+    error: state.movies.error,
+    isAuthenticated: state.auth.isAuthenticated
   }
 }
 

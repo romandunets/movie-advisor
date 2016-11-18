@@ -1,12 +1,6 @@
-import axios from 'axios';
+import Api from './Api';
 
-class AuthApi {
-  static getClient() {
-    return axios.create({
-      baseURL: process.env.API_HOST
-    });
-  }
-
+class AuthApi extends Api {
   static login(credentials) {
     return this.getClient().post('/login', credentials);
   }

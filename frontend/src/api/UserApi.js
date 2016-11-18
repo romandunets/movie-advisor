@@ -1,12 +1,6 @@
-import axios from 'axios';
+import Api from './Api';
 
-class UserApi {
-  static getClient() {
-    return axios.create({
-      baseURL: process.env.API_HOST
-    });
-  }
-
+class UserApi extends Api {
   static listUsers() {
     return this.getClient().get(`/users`);
   }

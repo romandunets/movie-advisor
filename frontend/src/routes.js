@@ -13,6 +13,7 @@ import UserNewPage from './containers/users/UserNewPage';
 import UserEditPage from './containers/users/UserEditPage';
 
 import MoviesPage from './containers/movies/MoviesPage';
+import MovieSearchPage from './containers/movies/MovieSearchPage';
 import MovieDetailPage from './containers/movies/MovieDetailPage';
 import MovieNewPage from './containers/movies/MovieNewPage';
 import MovieEditPage from './containers/movies/MovieEditPage';
@@ -30,6 +31,10 @@ export default (store) => {
       <Route path="movies" component={AppWithMenu}>
         <IndexRoute component={MoviesPage} />
         <Route path="new" component={MovieNewPage} />
+        <Route path="search/:keyword" component={MovieSearchPage} />
+        <Route path="rated" component={MoviesPage} />
+        <Route path="watched" component={MoviesPage} />
+        <Route path="recommended" component={MoviesPage} />
         <Route path=":id" component={MovieDetailPage} />
         <Route path=":id/edit" component={MovieEditPage} />
       </Route>
