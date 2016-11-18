@@ -5,7 +5,7 @@ import MovieListItem from './MovieListItem'
 
 const MovieList = ({ movies, isAuthenticated }) => {
   return (
-    <ul>{ movies.map (movie => <MovieListItem key={movie.id} movie={movie} isAuthenticated={ isAuthenticated } />) }</ul>
+    <ul>{ movies.map (movie => <MovieListItem key={movie.id} movie={movie} isAuthenticated={isAuthenticated} />) }</ul>
   );
 }
 
@@ -13,4 +13,4 @@ MovieList.propTypes = {
   movies: PropTypes.array.isRequired
 }
 
-export default MovieList
+export default MoviesList;
