@@ -10,11 +10,11 @@ const usersReducer = (state = initialState.users, action) => {
     case types.LIST_USERS_FAILURE:
       return {...state, error: action.payload}
     case types.GET_USER_REQUEST:
-      return {...state, user: {}}
+      return {...state, user: {}, isLoading: true}
     case types.GET_USER_SUCCESS:
-      return {...state, user: action.payload.user}
+      return {...state, user: action.payload.user, isLoading: false}
     case types.GET_USER_FAILURE:
-      return {...state, error: action.payload}
+      return {...state, error: action.payload, isLoading: false}
     case types.CREATE_USER_REQUEST:
       return {...state, message: '', error: ''}
     case types.CREATE_USER_SUCCESS:

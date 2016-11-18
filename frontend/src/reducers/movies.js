@@ -15,12 +15,12 @@ const movieReducer = (state = initialState.movies, action) => {
       return {...state, error: action.payload}
     case types.SEARCH_MOVIES_REQUEST:
       return {...state, movies: []}
-    case types.GET_MOVIE_SUCCESS:
-      return {...state, movie: action.payload.movie}
-    case types.GET_MOVIE_FAILUREED:
-      return {...state, error: action.payload}
     case types.GET_MOVIE_REQUEST:
-      return {...state, movie: {}}
+      return {...state, movie: {}, isLoading: true}
+    case types.GET_MOVIE_SUCCESS:
+      return {...state, movie: action.payload.movie, isLoading: false}
+    case types.GET_MOVIE_FAILUREED:
+      return {...state, error: action.payload, isLoading: false}
     case types.CREATE_MOVIE_REQUEST:
       return {...state, message: '', error: ''}
     case types.CREATE_MOVIE_SUCCESS:

@@ -1,11 +1,11 @@
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
 
-import MovieListItem from './MovieListItem'
+import MoviesListItem from './MoviesListItem'
 
-const MovieList = ({ movies, isAuthenticated }) => {
+const MoviesList = ({ movies, isAuthenticated }) => {
   return (
-    <ul>{ movies.map (movie => <MovieListItem key={movie.id} movie={movie} isAuthenticated={isAuthenticated} />) }</ul>
+    <ul>{ movies.map (movie => <MoviesListItem key={movie.id} movie={movie} isAuthenticated={isAuthenticated} />) }</ul>
   );
 }
 

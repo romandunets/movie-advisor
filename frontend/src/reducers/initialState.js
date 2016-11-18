@@ -3,7 +3,8 @@ export default {
   	users: [],
     user: {},
     message: '',
-    error: ''
+    error: '',
+    isLoading: false
   },
   auth: {
     isAuthenticated: false,
@@ -12,6 +13,7 @@ export default {
   movies: {
     movies: [],
     movie: {},
-    error: ''
+    error: '',
+    isLoading: false
   }
 }

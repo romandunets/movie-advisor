@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router';
 
-const MovieListItem = ({ movie, isAuthenticated }) => {
+const MoviesListItem = ({ movie, isAuthenticated }) => {
   <div className="movie-item">
     <div className="row">
       <div className="thumbnail col-md-2">
@@ -48,4 +48,4 @@ const MovieListItem = ({ movie, isAuthenticated }) => {
   </div>
 }
 
-export default MovieListItem;
+export default MoviesListItem;
