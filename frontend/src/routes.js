@@ -1,8 +1,8 @@
 import React from 'react';
 import { Route, IndexRoute, IndexRedirect } from 'react-router';
 
-import App from './containers/App';
-import AppWithMenu from './containers/AppWithMenu';
+import AppAuthorized from './containers/shared/AppAuthorized';
+import AppUnauthorized from './containers/shared/AppUnauthorized';
 
 import LoginPage from './containers/auth/LoginPage';
 import SignupPage from './containers/auth/SignupPage';
@@ -13,7 +13,7 @@ import UserNewPage from './containers/users/UserNewPage';
 import UserEditPage from './containers/users/UserEditPage';
 
 import MoviesPage from './containers/movies/MoviesPage';
-import MovieSearchPage from './containers/movies/MovieSearchPage';
+import MoviesSearchPage from './containers/movies/MoviesSearchPage';
 import MovieDetailPage from './containers/movies/MovieDetailPage';
 import MovieNewPage from './containers/movies/MovieNewPage';
 import MovieEditPage from './containers/movies/MovieEditPage';
@@ -28,10 +28,10 @@ export default (store) => {
         <Route path="signup" component={SignupPage} />
       </Route>
 
-      <Route path="movies" component={AppWithMenu}>
+      <Route path="movies" component={AppAuthorized}>
         <IndexRoute component={MoviesPage} />
         <Route path="new" component={MovieNewPage} />
-        <Route path="search/:keyword" component={MovieSearchPage} />
+        <Route path="search/:keyword" component={MoviesSearchPage} />
         <Route path="rated" component={MoviesPage} />
         <Route path="watched" component={MoviesPage} />
         <Route path="recommended" component={MoviesPage} />
@@ -39,7 +39,7 @@ export default (store) => {
         <Route path=":id/edit" component={MovieEditPage} />
       </Route>
 
-      <Route path="users" component={AppWithMenu} onEnter={requireAuthentication(store)}>
+      <Route path="users" component={AppUnauthorized} onEnter={requireAuthentication(store)}>
         <IndexRoute component={UsersListPage} />
         <Route path="new" component={UserNewPage} />
         <Route path=":id" component={UserPage} />
