@@ -12,16 +12,16 @@ VALUES ('John', 'pass', 'john@email.com', 'salt', 1);
 INSERT INTO `users` (`username`, `password`, `email`, `salt`, `role_id`)
 VALUES ('Alex', 'pass', 'alex@email.com', 'salt', 1);
 
-INSERT INTO `movies` (`title`)
-VALUES ('Zootopia');
-INSERT INTO `movies` (`title`)
-VALUES ('The Martian');
-INSERT INTO `movies` (`title`)
-VALUES ('Mad Max');
-INSERT INTO `movies` (`title`)
-VALUES ('Gravity');
-INSERT INTO `movies` (`title`)
-VALUES ('Star Wars: Episode VII');
+INSERT INTO `movies` (`title`, `cover_image`)
+VALUES ('Zootopia', `https://www.kinopoisk.ru/images/film_big/928391.jpg`);
+INSERT INTO `movies` (`title`, `cover_image`)
+VALUES ('The Martian', `https://www.kinopoisk.ru/images/film_big/928391.jpg`);
+INSERT INTO `movies` (`title`, `cover_image`)
+VALUES ('Mad Max', `https://www.kinopoisk.ru/images/film_big/928391.jpg`);
+INSERT INTO `movies` (`title`, `cover_image`)
+VALUES ('Gravity', `https://www.kinopoisk.ru/images/film_big/928391.jpg`);
+INSERT INTO `movies` (`title`, `cover_image`)
+VALUES ('Star Wars: Episode VII', `https://www.kinopoisk.ru/images/film_big/928391.jpg`);
 
 INSERT INTO `users_to_movies` (`user_id`, `movie_id`)
 VALUES (1, 1);
