@@ -4,22 +4,22 @@ import { Link } from 'react-router'
 import { bindActionCreators } from 'redux'
 
 import * as movieActions from '../../actions/movieActions'
-import MovieDetail from '../../components/movies/MovieDetail'
+import MovieCard from '../../components/movies/MovieDetail'
 
-class MovieDetailPage extends Component {
-  deleteMovie(id) {
-    this.props.actions.deleteMovie(id);
-  }
-
+class MoviePage extends Component {
   componentWillMount() {
     this.props.actions.getMovie(this.props.params.id);
   }
 
+  deleteMovie(id) {
+    this.props.actions.deleteMovie(id);
+  }
+
   render() {
-    const { movie, error, isAuthenticated } = this.props;
+    const { movie, isAuthenticated } = this.props;
     return (
       <div>
-        <MovieDetail movie={ movie } deleteMovie={ this.deleteMovie.bind(this, movie.id) } isAuthenticated={ isAuthenticated } />
+        <MovieDetail movie={movie} isAuthenticated={isAuthenticated} deleteMovie={this.deleteMovie.bind(this, movie.id)} />
       </div>
     );
   }
@@ -28,7 +28,6 @@ class MovieDetailPage extends Component {
 const mapStateToProps = (state) => {
   return {
     movie: state.movies.movie,
-    error: state.movies.error,
     isAuthenticated: state.auth.isAuthenticated
   }
 }

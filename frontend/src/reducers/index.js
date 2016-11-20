@@ -8,8 +8,8 @@ import movies from './movies';
 const reducer = combineReducers({
   auth,
   users,
-  form: formReducer,
-  movies
+  movies,
+  form: formReducer
 });
 
 export default reducer;

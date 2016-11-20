@@ -1,10 +1,9 @@
-import React, { Component, PropTypes } from 'react'
+import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 
 import * as movieActions from '../../actions/movieActions'
 import MovieForm from '../../components/movies/MovieForm'
-import { reset } from 'redux-form';
 
 class MovieEditPage extends Component {
   componentWillMount() {
@@ -16,10 +15,10 @@ class MovieEditPage extends Component {
   }
 
   render() {
-    const { movie } = this.props;
+    const { movie, isLoading } = this.props;
     const formValues = { initialValues: movie }
 
-    if (Object.keys(movie).length > 0) {
+    if (!isLoading) {
       return (
         <MovieForm onSubmit={ this.handleSubmit.bind(this) } {...formValues} />
       );
@@ -32,7 +31,8 @@ class MovieEditPage extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    movie: state.movies.movie
+    movie: state.movies.movie,
+    isLoading: state.movies.isLoading
   }
 }
 

@@ -8,23 +8,22 @@ import MovieList from '../../components/movies/MovieList'
 
 class MovieSearchPage extends Component {
   componentWillMount() {
-    this.props.actions.searchMovies(this.props.params.keyword);
+    this.props.actions.searchMovies(this.props.search.keyword);
   }
 
-  componentWillReceiveProps(nextProps){
-    //Check if URL params changed
-    if (this.props.params.keyword != nextProps.params.keyword){
-      this.props.actions.searchMovies(nextProps.params.keyword);
+  componentWillReceiveProps(nextProps) {
+    if (this.props.search.keyword != nextProps.search.keyword){
+      this.props.actions.searchMovies(nextProps.search.keyword);
     }
   }
 
   render() {
-    const { movies, message, error, isAuthenticated, params } = this.props;
+    const { movies, message, isAuthenticated, search } = this.props;
     return (
       <div>
         <h4>{message}</h4>
-        <h3>Search results for {params.keyword}</h3>
-        <MovieList movies={ movies } isAuthenticated = { isAuthenticated }  />
+        <h3>Search results for {search.keyword}</h3>
+        <MovieList movies={movies} isAuthenticated={isAuthenticated} />
       </div>
     );
   }
@@ -34,7 +33,6 @@ const mapStateToProps = (state) => {
   return {
     movies: state.movies.movies,
     message: state.movies.message,
-    error: state.movies.error,
     isAuthenticated: state.auth.isAuthenticated
   }
 }

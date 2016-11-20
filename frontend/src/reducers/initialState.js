@@ -1,17 +1,20 @@
 export default {
-  users: {
-  	users: [],
-    user: {},
-    message: '',
-    error: ''
-  },
   auth: {
     isAuthenticated: false,
     message: ''
   },
+  users: {
+    users: [],
+    user: {},
+    message: '',
+    error: '',
+    isLoading: false
+  },
   movies: {
     movies: [],
     movie: {},
-    error: ''
+    message: '',
+    error: '',
+    isLoading: false
   }
 }
