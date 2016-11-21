@@ -29,6 +29,7 @@ class MovieForm extends Component {
 
   render() {
     const { handleSubmit, change } = this.props;
+
     return (
       <form onSubmit={ handleSubmit }>
         <div className="form-group">
