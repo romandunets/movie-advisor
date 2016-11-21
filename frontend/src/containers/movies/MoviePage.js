@@ -17,11 +17,16 @@ class MoviePage extends Component {
 
   render() {
     const { movie, isAuthenticated } = this.props;
-    return (
-      <div>
-        <MovieDetail movie={movie} isAuthenticated={isAuthenticated} deleteMovie={this.deleteMovie.bind(this, movie.id)} />
-      </div>
-    );
+
+    if (!isLoading) {
+      return (
+        <div>
+          <MovieDetail movie={movie} isAuthenticated={isAuthenticated} deleteMovie={this.deleteMovie.bind(this, movie.id)} />
+        </div>
+      );
+    }
+
+    return null;
   }
 }
 

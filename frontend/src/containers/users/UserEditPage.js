@@ -23,9 +23,8 @@ class UserEditPage extends Component {
         <UserForm onSubmit={ this.handleSubmit.bind(this) } {...formValues} />
       );
     }
-    else {
-      return null;
-    }
+
+    return null;
   }
 }
 

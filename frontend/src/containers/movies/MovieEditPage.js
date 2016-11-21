@@ -23,9 +23,8 @@ class MovieEditPage extends Component {
         <MovieForm onSubmit={ this.handleSubmit.bind(this) } {...formValues} />
       );
     }
-    else {
-      return null;
-    }
+
+    return null;
   }
 }
 

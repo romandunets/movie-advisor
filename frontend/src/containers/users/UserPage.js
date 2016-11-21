@@ -17,13 +17,18 @@ class UserPage extends Component {
 
   render() {
     const { user, message } = this.props;
-    return (
-      <div>
-        <h2>{ message }</h2>
-        <Link to={`/users`}>Back</Link> | <Link to={`/users/${user.id}/edit`}>Edit</Link> | <a href='#' onClick={this.deleteUser.bind(this, user.id)}>Delete</a>
-        <UserCard user={ user } />
-      </div>
-    );
+
+    if (!isLoading) {
+      return (
+        <div>
+          <h2>{ message }</h2>
+          <Link to={`/users`}>Back</Link> | <Link to={`/users/${user.id}/edit`}>Edit</Link> | <a href='#' onClick={this.deleteUser.bind(this, user.id)}>Delete</a>
+          <UserCard user={ user } />
+        </div>
+      );
+    }
+
+    return null;
   }
 }
 
