@@ -4,9 +4,9 @@ import { Link } from 'react-router'
 import { bindActionCreators } from 'redux'
 
 import * as movieActions from '../../actions/movieActions'
-import MovieList from '../../components/movies/MovieList'
+import MoviesList from '../../components/movies/MoviesList'
 
-class MovieSearchPage extends Component {
+class MoviesSearchPage extends Component {
   componentWillMount() {
     this.props.actions.searchMovies(this.props.search.keyword);
   }
@@ -23,7 +23,7 @@ class MovieSearchPage extends Component {
       <div>
         <h4>{message}</h4>
         <h3>Search results for {search.keyword}</h3>
-        <MovieList movies={movies} isAuthenticated={isAuthenticated} />
+        <MoviesList movies={movies} isAuthenticated={isAuthenticated} />
       </div>
     );
   }
@@ -43,4 +43,4 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(MovieSearchPage);
+export default connect(mapStateToProps, mapDispatchToProps)(MoviesSearchPage);

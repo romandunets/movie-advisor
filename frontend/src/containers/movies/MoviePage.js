@@ -4,7 +4,7 @@ import { Link } from 'react-router'
 import { bindActionCreators } from 'redux'
 
 import * as movieActions from '../../actions/movieActions'
-import MovieCard from '../../components/movies/MovieDetail'
+import MovieCard from '../../components/movies/MovieCard'
 
 class MoviePage extends Component {
   componentWillMount() {
@@ -21,7 +21,7 @@ class MoviePage extends Component {
     if (!isLoading) {
       return (
         <div>
-          <MovieDetail movie={movie} isAuthenticated={isAuthenticated} deleteMovie={this.deleteMovie.bind(this, movie.id)} />
+          <MovieCard movie={movie} isAuthenticated={isAuthenticated} deleteMovie={this.deleteMovie.bind(this, movie.id)} />
         </div>
       );
     }

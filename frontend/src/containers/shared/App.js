@@ -2,16 +2,17 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { Link, IndexLink } from 'react-router';
 import { bindActionCreators } from 'redux';
-import {browserHistory} from 'react-router';
+import { browserHistory } from 'react-router';
 
-import * as authActions from '../actions/authActions'
+import * as authActions from '../../actions/authActions'
 
-class AppWithMenu extends Component {
+class App extends Component {
   handleLogout(event) {
     event.preventDefault();
     this.props.actions.logout();
   }
 
+  // TODO: REFACTORING
   handleSearch(event) {
     event.preventDefault();
     var query = document.getElementById('searchField').value;
@@ -48,9 +49,12 @@ class AppWithMenu extends Component {
               </li>
             }
             <li className="nav-item">
-              {isAuthenticated &&
-                <Link className="nav-link" to="" onClick={ this.handleLogout.bind(this) }>Logout</Link>:
-                <Link className="nav-link" to="/login">Login</Link>
+              {
+                isAuthenticated &&
+                <div>
+                  <Link className="nav-link" to="" onClick={ this.handleLogout.bind(this) }>Logout</Link>
+                  <Link className="nav-link" to="/login">Login</Link>
+                </div>
               }
             </li>
           </ul>
@@ -82,4 +86,4 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(AppWithMenu);
+export default connect(mapStateToProps, mapDispatchToProps)(App);

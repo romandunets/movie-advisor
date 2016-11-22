@@ -4,7 +4,7 @@ import { Link } from 'react-router'
 import { bindActionCreators } from 'redux'
 
 import * as movieActions from '../../actions/movieActions'
-import MovieList from '../../components/movies/MovieList'
+import MoviesList from '../../components/movies/MoviesList'
 
 class MoviesPage extends Component {
   componentWillMount() {
@@ -17,7 +17,7 @@ class MoviesPage extends Component {
       <div>
         <h4>{message}</h4>
         <h3>All movies</h3>
-        <MovieList movies={movies} isAuthenticated={isAuthenticated} />
+        <MoviesList movies={movies} isAuthenticated={isAuthenticated} />
         <div className="text-md-right">
           <Link to='/movies/new' role="button" className="btn btn-secondary">Add movie</Link>
         </div> 
