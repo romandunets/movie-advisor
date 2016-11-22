@@ -1,14 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router';
 
+import MovieThumbnail from './MovieThumbnail';
 import MovieInfo from './MovieInfo';
 
 const MovieDetail = ({ movie, deleteMovie, isAuthenticated }) => {
   <div>
     <div className="row">
-      <div className="thumbnail col-md-3">
-        <img src={ movie.image } className="img-fluid img-rounded" />
-      </div>
+      <MovieThumbnail />
       <MovieInfo />
     { isAuthenticated &&
       <div className="row">
