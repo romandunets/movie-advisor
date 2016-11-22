@@ -3,23 +3,13 @@ import { Link } from 'react-router';
 
 import MovieThumbnail from './MovieThumbnail';
 import MovieInfo from './MovieInfo';
+import MovieActions from './MovieActions';
 
 const MovieDetail = ({ movie, deleteMovie, isAuthenticated }) => {
-  <div>
-    <div className="row">
-      <MovieThumbnail />
-      <MovieInfo />
-    { isAuthenticated &&
-      <div className="row">
-        <div className="col-md-12">
-          <div className="text-md-right">
-            <Link to='#' role="button" className="btn btn-secondary" onClick={deleteMovie(movie.id)}>Delete</Link>
-            <Link to={`/movies/${movie.id}/edit`} role="button" className="btn btn-secondary">Edit</Link> 
-            <Link to={`/movies/${movie.id}/watched`} role="button" className="btn btn-secondary">Watched</Link>
-          </div>
-        </div>
-      </div>
-    }
+  <div className="row">
+    <MovieThumbnail movie={movie} />
+    <MovieInfo movie={movie} />
+    <MovieActions movie={movie} movie={deleteMovie} movie={isAuthenticated} />
   </div>
 }
 
