@@ -6,7 +6,7 @@ import { bindActionCreators } from 'redux'
 import * as movieActions from '../../actions/movieActions'
 import MoviesList from '../../components/movies/MoviesList'
 
-class MoviesPage extends Component {
+class MoviesListPage extends Component {
   componentWillMount() {
     this.props.actions.listMovies();
   }
@@ -40,4 +40,4 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(MoviesPage);
+export default connect(mapStateToProps, mapDispatchToProps)(MoviesListPage);

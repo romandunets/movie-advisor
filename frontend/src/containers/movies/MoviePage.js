@@ -16,7 +16,7 @@ class MoviePage extends Component {
   }
 
   render() {
-    const { movie, isAuthenticated } = this.props;
+    const { movie, isLoading, isAuthenticated } = this.props;
 
     if (!isLoading) {
       return (
@@ -43,5 +43,5 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(MovieDetailPage);
+export default connect(mapStateToProps, mapDispatchToProps)(MoviePage);
 

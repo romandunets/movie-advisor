@@ -1,6 +1,6 @@
 import React from 'react';
 
-const MovieInfo = ({ movie }) => {
+const MovieInfo = ({ movie }) => (
   <div className="col-md-9">
     <div className="row">
       <div className="col-md-6">
@@ -36,6 +36,6 @@ const MovieInfo = ({ movie }) => {
       </div>
     </div>
   </div>
-}
+)
 
 export default MovieInfo;
