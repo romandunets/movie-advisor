@@ -5,6 +5,7 @@ import { browserHistory } from 'react-router';
 
 import * as authActions from '../../actions/authActions';
 import AppNavigation from '../../components/shared/AppNavigation';
+import AppFooter from '../../components/shared/AppFooter';
 
 class App extends Component {
   handleLogout(event) {
@@ -32,9 +33,7 @@ class App extends Component {
         <div className="container content">
           <div>{ this.props.children }</div>
         </div>
-        <footer>
-          <p>Copyright &copy; Movie Advisor 2016</p>
-        </footer>
+        <AppFooter />
       </div>
     );
   }
