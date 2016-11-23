@@ -20,7 +20,7 @@ import MovieEditPage from './containers/movies/MovieEditPage';
 export default (store) => {
   return (
     <Route path="/" component={App}>
-      <IndexRoute component={MoviePage} />
+      <IndexRoute component={MoviesListPage} />
 
       <Route path="login" component={LoginPage} />
       <Route path="signup" component={SignupPage} />
