@@ -20,7 +20,7 @@ const AppNavigation = ({ isAuthenticated, handleLogout, handleSearch  }) => (
         <Link className="nav-link" activeClassName="active" to="/movies/watched">Watched</Link>
       </li>
       {
-      	isAuthenticated &&
+        isAuthenticated &&
         <li className="nav-item">
           <Link className="nav-link" activeClassName="active" to="/profile">Profile</Link>
         </li>
