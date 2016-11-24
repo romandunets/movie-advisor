@@ -2,10 +2,12 @@ import React from 'react';
 import { Link, IndexLink } from 'react-router';
 
 const AppNavigation = ({ isAuthenticated, handleLogout, handleSearch  }) => (
-  <nav className="navbar navbar-light bg-faded navbar-full">
-    <Link className="navbar-brand" to="/">Movie Advisor</Link>
+  <nav className="navbar navbar-light bg-faded">
+    <Link className="navbar-brand" to="/">
+      <img src="/images/icon.png" className="icon" alt="Movie Advisor" />
+    </Link>
     <ul className="nav navbar-nav">
-      <li className="nav-item ">
+      <li className="nav-item">
         <IndexLink className="nav-link" activeClassName="active"to="/">All</IndexLink>
       </li>
       <li className="nav-item">
@@ -17,12 +19,12 @@ const AppNavigation = ({ isAuthenticated, handleLogout, handleSearch  }) => (
       <li className="nav-item">
         <Link className="nav-link" activeClassName="active" to="/movies/watched">Watched</Link>
       </li>
-        {
-      	  isAuthenticated &&
-          <li className="nav-item">
-            <Link className="nav-link" activeClassName="active" to="/profile">Profile</Link>
-          </li>
-        }
+      {
+      	isAuthenticated &&
+        <li className="nav-item">
+          <Link className="nav-link" activeClassName="active" to="/profile">Profile</Link>
+        </li>
+      }
       <li className="nav-item">
         {
           isAuthenticated &&
@@ -33,7 +35,7 @@ const AppNavigation = ({ isAuthenticated, handleLogout, handleSearch  }) => (
         }
       </li>
     </ul>
-    <form className="form-inline pull-xs-right">
+    <form className="form-inline float-xs-right">
       <input className="form-control" type="text" placeholder="Search" id="searchField"/>
       <button className="btn btn-outline-success" onClick={handleSearch}>Search</button>
     </form>
