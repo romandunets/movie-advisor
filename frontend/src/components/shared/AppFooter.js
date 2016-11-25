@@ -1,9 +1,9 @@
 import React from 'react';
 
 const AppFooter = () => (
-  <footer>
+  <div className="container footer">
     <p>Copyright &copy; Movie Advisor 2016</p>
-  </footer>
+  </div>
 )
 
 export default AppFooter;
