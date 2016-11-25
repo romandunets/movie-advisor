@@ -30,7 +30,7 @@ class App extends Component {
     return (
       <div className="container">
         <AppNavigation isAuthenticated={isAuthenticated} handleLogout={this.handleLogout.bind(this)} handleSearch={this.handleSearch.bind(this)} />
-        <div className="container content">
+        <div className="content">
           <div>{ this.props.children }</div>
         </div>
         <AppFooter />
