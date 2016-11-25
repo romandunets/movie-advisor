@@ -16,11 +16,13 @@ class MoviesListPage extends Component {
     return (
       <div>
         <h4>{message}</h4>
-        <h3>All movies</h3>
+        <div className="header">
+          <h3>All movies</h3>
+          <div className="actions text-md-right">
+            <Link to='/movies/new' role="button" className="btn btn-secondary">Add movie</Link>
+          </div>
+        </div>
         <MoviesList movies={movies} isAuthenticated={isAuthenticated} />
-        <div className="text-md-right">
-          <Link to='/movies/new' role="button" className="btn btn-secondary">Add movie</Link>
-        </div> 
       </div>
     );
   }

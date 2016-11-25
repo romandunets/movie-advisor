@@ -25,6 +25,15 @@ img {
   /*border: 1px solid #ddd;*/
 }
 
+.header h3 {
+  display: inline-block;
+}
+
+.header .actions {
+  display: inline-block;
+  float: right;
+}
+
 .footer {
   position: absolute;
   bottom: 20px;
