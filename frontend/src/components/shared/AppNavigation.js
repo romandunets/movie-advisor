@@ -8,17 +8,18 @@ const AppNavigation = ({ isAuthenticated, handleLogout, handleSearch  }) => (
     </Link>
     <ul className="nav navbar-nav">
       <li className="nav-item">
-        <IndexLink className="nav-link" activeClassName="active"to="/">All</IndexLink>
+        <IndexLink className="nav-link" activeClassName="active"to="/">Movies</IndexLink>
       </li>
-      <li className="nav-item">
-        <Link className="nav-link" activeClassName="active" to="/movies/recommended">Recommended</Link>
-      </li>
-      <li className="nav-item">
-        <Link className="nav-link" activeClassName="active" to="/movies/rated">Rated</Link>
-      </li>
-      <li className="nav-item">
-        <Link className="nav-link" activeClassName="active" to="/movies/watched">Watched</Link>
-      </li>
+      { isAuthenticated &&
+        <li className="nav-item">
+          <Link className="nav-link" activeClassName="active" to="/movies/recommended">Recommended</Link>
+        </li>
+      }
+      { isAuthenticated &&
+        <li className="nav-item">
+          <Link className="nav-link" activeClassName="active" to="/movies/watched">Watched</Link>
+        </li>
+      }
       {
         isAuthenticated &&
         <li className="nav-item">
@@ -26,13 +27,10 @@ const AppNavigation = ({ isAuthenticated, handleLogout, handleSearch  }) => (
         </li>
       }
       <li className="nav-item">
-        {
-          isAuthenticated &&
-          <div>
-            <Link className="nav-link" to="" onClick={handleLogout}>Logout</Link>
-            <Link className="nav-link" to="/login">Login</Link>
-          </div>
-        }
+        <div>
+          { isAuthenticated && <Link className="nav-link" to="" onClick={handleLogout}>Logout</Link> }
+          { !isAuthenticated && <Link className="nav-link" to="/login">Login</Link> }
+        </div>
       </li>
     </ul>
     <form className="form-inline float-xs-right">
