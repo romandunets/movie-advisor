@@ -19,7 +19,7 @@ class MoviesListPage extends Component {
         <div className="header">
           <h3>All movies</h3>
           <div className="actions text-md-right">
-            <Link to='/movies/new' role="button" className="btn btn-secondary">Add movie</Link>
+            <Link to='/movies/new' role="button" className="btn btn-primary btn-sm">New movie</Link>
           </div>
         </div>
         <MoviesList movies={movies} isAuthenticated={isAuthenticated} />
