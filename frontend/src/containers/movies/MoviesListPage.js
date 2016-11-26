@@ -18,9 +18,11 @@ class MoviesListPage extends Component {
         <h4>{message}</h4>
         <div className="header">
           <h3>All movies</h3>
-          <div className="actions text-md-right">
-            <Link to='/movies/new' role="button" className="btn btn-primary btn-sm">New movie</Link>
-          </div>
+          { isAuthenticated &&
+            <div className="actions text-md-right">
+              <Link to='/movies/new' role="button" className="btn btn-primary btn-sm">New movie</Link>
+            </div>
+          }
         </div>
         <MoviesList movies={movies} isAuthenticated={isAuthenticated} />
       </div>
