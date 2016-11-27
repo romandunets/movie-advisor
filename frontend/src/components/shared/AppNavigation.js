@@ -26,13 +26,18 @@ const AppNavigation = ({ isAuthenticated, handleLogout, handleSearch  }) => (
           <Link className="nav-link" activeClassName="active" to="/profile">Profile</Link>
         </li>
       }
-      <li className="nav-item">
-        <div>
-          { isAuthenticated && <Link className="nav-link" to="" onClick={handleLogout}>Logout</Link> }
-          { !isAuthenticated && <Link className="nav-link" to="/login">Login</Link> }
-        </div>
-      </li>
     </ul>
+    { !isAuthenticated &&
+      <span className="nav-actions float-xs-right">
+        <Link className="btn btn-secondary" to="signin">Sign in</Link>
+        <Link className="btn btn-primary" to="signup">Sign up</Link>
+      </span>
+    }
+    { isAuthenticated &&
+      <span className="nav-actions float-xs-right">
+        <Link className="btn btn-secondary" to="logout">Logout</Link>
+      </span>
+    }
     <form className="form-inline float-xs-right">
       <input className="form-control" type="text" placeholder="Search" id="searchField"/>
       <button className="btn btn-outline-success" onClick={handleSearch}>Search</button>

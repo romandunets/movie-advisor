@@ -20,6 +20,10 @@ img {
   margin-left: 10px;
 }
 
+.navbar .nav-actions .btn {
+  margin-left: 10px;
+}
+
 .content{
   padding: 15px;
   /*border: 1px solid #ddd;*/
