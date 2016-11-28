@@ -12,8 +12,12 @@ img {
 }
 
 .navbar .navbar-brand .icon {
-  width: 30px;
-  height: 30px;
+  width: 38px;
+  height: 38px;
+}
+
+.navbar .nav-item {
+  font-weight: bold;
 }
 
 .navbar .form-inline .btn {
