@@ -14,14 +14,16 @@ class App extends Component {
   }
 
   // TODO: REFACTORING
-  handleSearch(event) {
-    event.preventDefault();
-    var query = document.getElementById('searchField').value;
-    if (query.length > 0) {
-      browserHistory.push('/movies/search/' + query);
-    }
-    else {
-      browserHistory.push('/');
+  handleSearch(target) {
+    if (target.charCode == 13) {
+      event.preventDefault();
+      var query = document.getElementById('searchField').value;
+      if (query.length > 0) {
+        browserHistory.push('/movies/search/' + query);
+      }
+      else {
+        browserHistory.push('/');
+      }
     }
   }
 

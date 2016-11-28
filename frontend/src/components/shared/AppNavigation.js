@@ -39,8 +39,7 @@ const AppNavigation = ({ isAuthenticated, handleLogout, handleSearch  }) => (
       </span>
     }
     <form className="form-inline float-xs-right">
-      <input className="form-control" type="text" placeholder="Search" id="searchField"/>
-      <button className="btn btn-outline-success" onClick={handleSearch}>Search</button>
+      <input className="form-control" type="text" placeholder="Search" id="searchField" onKeyPress={handleSearch}/>
     </form>
   </nav>
 )
