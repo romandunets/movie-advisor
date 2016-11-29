@@ -22,7 +22,7 @@ export default (store) => {
     <Route path="/" component={App}>
       <IndexRoute component={MoviesListPage} />
 
-      <Route path="login" component={LoginPage} />
+      <Route path="signin" component={LoginPage} />
       <Route path="signup" component={SignupPage} />
 
       <Route path="users" onEnter={requireAuthentication(store)}>
@@ -50,7 +50,7 @@ const requireAuthentication = (store) => {
   return (nextState, replaceState) => {
     const state = store.getState();
     if (!state.auth.isAuthenticated && localStorage.getItem("token") === null) {
-      replaceState({ pathname: '/login', nextPathname: nextState.location.pathname });
+      replaceState({ pathname: '/signin', nextPathname: nextState.location.pathname });
     }
   }
 }
