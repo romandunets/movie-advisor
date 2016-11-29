@@ -7,17 +7,18 @@ class LoginForm extends Component {
   render() {
     const { handleSubmit } = this.props;
     return (
-      <form onSubmit={ handleSubmit }>
+      <form className="form-narrow" onSubmit={ handleSubmit }>
         <div className="form-group">
-          <label htmlFor="username">Username</label>
-          <Field name="username" component="input" type="text" className="form-control" />
+          <Field name="username" component="input" type="text" placeholder="Username" className="form-control" />
         </div>
         <div className="form-group">
-          <label htmlFor="password">Password</label>
-          <Field name="password" component="input" type="password" className="form-control" />
+          <Field name="password" component="input" type="password" placeholder="Password" className="form-control" />
         </div>
-        <Link to="/signup" className="btn btn-secondary">Signup</Link>
-        <button type="submit" className="btn btn-primary">Login</button>
+        <div className="form-group">
+          <button type="submit" className="btn btn-primary full-width">Login</button>
+        </div>
+        
+        <Link to="/signup" className="btn btn-link">Signup</Link>
       </form>
     );
   }

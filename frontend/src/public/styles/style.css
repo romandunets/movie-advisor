@@ -60,6 +60,15 @@ img {
   margin-bottom: 0px;
 }
 
+.full-width {
+  width: 100%;
+}
+
+.form-narrow {
+  width: 400px;
+  margin: auto;
+}
+
 .title {
   text-align: center;
 }
