@@ -64,8 +64,12 @@ img {
   width: 100%;
 }
 
+.text-center {
+  text-align: center;
+}
+
 .form-narrow {
-  width: 400px;
+  width: 300px;
   margin: auto;
 }
 

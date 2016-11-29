@@ -15,7 +15,7 @@ class LoginPage extends Component {
     const { message } = this.props;
     return (
       <div>
-        <h4>Login</h4>
+        <h4 className="text-center">Sign in</h4>
         <h5>{ message }</h5>
         <LoginForm onSubmit={ this.handleSubmit.bind(this) } />
       </div>

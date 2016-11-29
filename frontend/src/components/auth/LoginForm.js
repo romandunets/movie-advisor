@@ -14,11 +14,10 @@ class LoginForm extends Component {
         <div className="form-group">
           <Field name="password" component="input" type="password" placeholder="Password" className="form-control" />
         </div>
-        <div className="form-group">
+        <div className="form-group text-center">
           <button type="submit" className="btn btn-primary full-width">Login</button>
+          <Link to="/signup" className="btn btn-link">Create an account</Link>
         </div>
-        
-        <Link to="/signup" className="btn btn-link">Signup</Link>
       </form>
     );
   }
