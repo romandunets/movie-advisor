@@ -35,7 +35,7 @@ const AppNavigation = ({ isAuthenticated, handleLogout, handleSearch  }) => (
     }
     { isAuthenticated &&
       <span className="nav-actions float-xs-right">
-        <Link className="btn btn-secondary" to="logout">Logout</Link>
+        <button className="btn btn-secondary" onClick={handleLogout}>Logout</button>
       </span>
     }
     <form className="form-inline float-xs-right">

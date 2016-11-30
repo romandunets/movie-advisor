@@ -14,10 +14,12 @@ class LoginPage extends Component {
   render() {
     const { message } = this.props;
     return (
-      <div>
-        <h4 className="text-center">Sign in</h4>
-        <h5>{ message }</h5>
-        <LoginForm onSubmit={ this.handleSubmit.bind(this) } />
+      <div className="center-container">
+        <div className="center-content">
+          <h3 className="title text-center">Sign in to Movie Advisor</h3>
+          { message && <h5>{ message }</h5> }
+          <LoginForm onSubmit={ this.handleSubmit.bind(this) } />
+        </div>
       </div>
     );
   }

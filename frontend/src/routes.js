@@ -19,28 +19,30 @@ import MovieEditPage from './containers/movies/MovieEditPage';
 
 export default (store) => {
   return (
-    <Route path="/" component={App}>
-      <IndexRoute component={MoviesListPage} />
-
+    <Route path="/">
       <Route path="signin" component={LoginPage} />
       <Route path="signup" component={SignupPage} />
 
-      <Route path="users" onEnter={requireAuthentication(store)}>
-        <IndexRoute component={UsersListPage} />
-        <Route path="new" component={UserNewPage} />
-        <Route path=":id" component={UserPage} />
-        <Route path=":id/edit" component={UserEditPage} />
-      </Route>
-
-      <Route path="movies" onEnter={requireAuthentication(store)}>
+      <Route component={App}>
         <IndexRoute component={MoviesListPage} />
-        <Route path="new" component={MovieNewPage} />
-        <Route path="search/:keyword" component={MoviesSearchPage} />
-        <Route path="rated" component={MoviesListPage} />
-        <Route path="watched" component={MoviesListPage} />
-        <Route path="recommended" component={MoviesListPage} />
-        <Route path=":id" component={MoviePage} />
-        <Route path=":id/edit" component={MovieEditPage} />
+
+        <Route path="users" onEnter={requireAuthentication(store)}>
+          <IndexRoute component={UsersListPage} />
+          <Route path="new" component={UserNewPage} />
+          <Route path=":id" component={UserPage} />
+          <Route path=":id/edit" component={UserEditPage} />
+        </Route>
+
+        <Route path="movies" onEnter={requireAuthentication(store)}>
+          <IndexRoute component={MoviesListPage} />
+          <Route path="new" component={MovieNewPage} />
+          <Route path="search/:keyword" component={MoviesSearchPage} />
+          <Route path="rated" component={MoviesListPage} />
+          <Route path="watched" component={MoviesListPage} />
+          <Route path="recommended" component={MoviesListPage} />
+          <Route path=":id" component={MoviePage} />
+          <Route path=":id/edit" component={MovieEditPage} />
+        </Route>
       </Route>
     </Route>
   )

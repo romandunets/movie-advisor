@@ -1,10 +1,19 @@
+html {
+  height: 100%;
+}
+
 body {
+  height: 100%;
   padding-top: 20px;
   padding-bottom: 20px;
 }
 
 img {
   max-width: 100%;
+}
+
+#app {
+  height: 100%;
 }
 
 .navbar .navbar-brand {
@@ -44,6 +53,10 @@ img {
   vertical-align: top;
 }
 
+.title {
+  margin-bottom: 20px;
+}
+
 .footer {
   position: absolute;
   bottom: 20px;
@@ -71,6 +84,17 @@ img {
 .form-narrow {
   width: 300px;
   margin: auto;
+}
+
+.center-container {
+  display: table;
+  height: 100%;
+  margin: auto;
+}
+
+.center-content {
+  display: table-cell;
+  vertical-align: middle;
 }
 
 .title {
