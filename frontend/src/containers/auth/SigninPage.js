@@ -6,7 +6,7 @@ import { bindActionCreators } from 'redux';
 import * as authActions from '../../actions/authActions';
 import LoginForm from '../../components/auth/LoginForm';
 
-class LoginPage extends Component {
+class SigninPage extends Component {
   handleSubmit(credentials) {
     this.props.actions.login(credentials);
   }
@@ -17,7 +17,14 @@ class LoginPage extends Component {
       <div className="center-container">
         <div className="center-content">
           <h3 className="title text-center">Sign in to Movie Advisor</h3>
-          { message && <h5>{ message }</h5> }
+          { message &&
+            <div className="alert alert-info alert-dismissible fade in" role="alert">
+              <button type="button" className="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+              <span>{ message }</span>
+            </div>
+          }
           <LoginForm onSubmit={ this.handleSubmit.bind(this) } />
         </div>
       </div>
@@ -37,4 +44,4 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(LoginPage);
+export default connect(mapStateToProps, mapDispatchToProps)(SigninPage);

@@ -68,6 +68,6 @@ export function logout() {
   return function(dispatch) {
     localStorage.removeItem('token');
     dispatch({ type: types.LOGOUT });
-    browserHistory.replace('/login');
+    browserHistory.replace('/signin');
   }
 }

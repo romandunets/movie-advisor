@@ -3,7 +3,7 @@ import { Route, IndexRoute, IndexRedirect } from 'react-router';
 
 import App from './containers/shared/App';
 
-import LoginPage from './containers/auth/LoginPage';
+import SigninPage from './containers/auth/SigninPage';
 import SignupPage from './containers/auth/SignupPage';
 
 import UsersListPage from './containers/users/UsersListPage';
@@ -20,7 +20,7 @@ import MovieEditPage from './containers/movies/MovieEditPage';
 export default (store) => {
   return (
     <Route path="/">
-      <Route path="signin" component={LoginPage} />
+      <Route path="signin" component={SigninPage} />
       <Route path="signup" component={SignupPage} />
 
       <Route component={App}>
