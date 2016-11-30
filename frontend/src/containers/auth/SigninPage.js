@@ -4,6 +4,7 @@ import { Link } from 'react-router';
 import { bindActionCreators } from 'redux';
 
 import * as authActions from '../../actions/authActions';
+import MessageBox from '../../components/shared/MessageBox';
 import LoginForm from '../../components/auth/LoginForm';
 
 class SigninPage extends Component {
@@ -17,15 +18,8 @@ class SigninPage extends Component {
       <div className="center-container">
         <div className="center-content">
           <h3 className="title text-center">Sign in to Movie Advisor</h3>
-          { message &&
-            <div className="alert alert-info alert-dismissible fade in" role="alert">
-              <button type="button" className="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-              <span>{ message }</span>
-            </div>
-          }
-          <LoginForm onSubmit={ this.handleSubmit.bind(this) } />
+          <MessageBox message={message} />
+          <LoginForm onSubmit={this.handleSubmit.bind(this)} />
         </div>
       </div>
     );
