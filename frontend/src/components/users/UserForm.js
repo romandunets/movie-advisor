@@ -14,8 +14,18 @@ class UserForm extends Component {
           <label htmlFor="username">Username</label>
           <Field name="username" component="input" type="text" className="form-control"/>
         </div>
-        <Link to='#'  className="btn btn-secondary"onClick={browserHistory.goBack}>Cancel</Link>
-        <button type="submit" className="btn btn-primary">Submit</button>
+        <div className="form-group">
+          <label htmlFor="email">Email</label>
+          <Field name="email" component="input" type="email" className="form-control"/>
+        </div>
+        <div className="form-group">
+          <label htmlFor="email">Password</label>
+          <Field name="password" component="input" type="password" className="form-control"/>
+        </div>
+        <div className="form-group">
+          <button type="submit" className="btn btn-primary">Submit</button>
+          <button className="btn btn-link float-xs-right" onClick={browserHistory.goBack}>Cancel</button>
+        </div>
       </form>
     );
   }
