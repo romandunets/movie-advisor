@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
 import * as authActions from '../../actions/authActions';
+import MessageBox from '../../components/shared/MessageBox';
 import UserForm from '../../components/users/UserForm';
 
 class SignupPage extends Component {
@@ -11,9 +12,22 @@ class SignupPage extends Component {
   }
 
   render() {
+    const { message } = this.props;
     return (
-      <UserForm onSubmit={ this.handleSubmit.bind(this) } />
+      <div className="center-container">
+        <div className="center-content">
+          <h3 className="title text-center">Sign up to Movie Advisor</h3>
+          <MessageBox message={message} />
+          <UserForm onSubmit={ this.handleSubmit.bind(this) } />
+        </div>
+      </div>
     );
+  }
+}
+
+const mapStateToProps = (state) => {
+  return {
+    message: state.auth.message
   }
 }
 
@@ -23,4 +37,4 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-export default connect(null, mapDispatchToProps)(SignupPage);
+export default connect(mapStateToProps, mapDispatchToProps)(SignupPage);
