@@ -86,6 +86,10 @@ img {
   margin: auto;
 }
 
+.form-horizontal {
+  min-width: 400px;
+}
+
 .center-container {
   display: table;
   height: 100%;

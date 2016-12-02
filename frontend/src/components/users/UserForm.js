@@ -9,7 +9,7 @@ class UserForm extends Component {
   render() {
     const { handleSubmit } = this.props;
     return (
-      <form onSubmit={ handleSubmit }>
+      <form className="form-horizontal" onSubmit={ handleSubmit }>
         <div className="form-group">
           <label htmlFor="username">Username</label>
           <Field name="username" component="input" type="text" className="form-control"/>
@@ -39,16 +39,16 @@ class UserForm extends Component {
           <Field name="birthday" component="input" type="date" className="form-control"/>
         </div>
         <div className="form-group">
-          <label>Gender</label>
-          <div class="radio">
+          <label htmlFor="gender">Gender</label>
+          <div className="radio">
             <label><Field name="gender" component="input" type="radio" value="male" /> Male</label>
           </div>
-          <div class="radio">
+          <div className="radio">
             <label><Field name="gender" component="input" type="radio" value="female" /> Female</label>
           </div>
         </div>
         <div className="form-group">
-          <label for="description">About me</label>
+          <label htmlFor="description">About me</label>
           <Field name="description" component="textarea" className="form-control"/>
         </div>
         <div className="form-group">
