@@ -19,8 +19,37 @@ class UserForm extends Component {
           <Field name="email" component="input" type="email" className="form-control"/>
         </div>
         <div className="form-group">
-          <label htmlFor="email">Password</label>
+          <label htmlFor="password">Password</label>
           <Field name="password" component="input" type="password" className="form-control"/>
+        </div>
+        <div className="form-group">
+          <label htmlFor="passwordConfirmation">Password confirmation</label>
+          <Field name="passwordConfirmation" component="input" type="password" className="form-control"/>
+        </div>
+        <div className="form-group">
+          <label htmlFor="firstName">First name</label>
+          <Field name="firstName" component="input" type="text" className="form-control"/>
+        </div>
+        <div className="form-group">
+          <label htmlFor="firstName">Second name</label>
+          <Field name="secondName" component="input" type="text" className="form-control"/>
+        </div>
+        <div className="form-group">
+          <label htmlFor="birthday">Birthday</label>
+          <Field name="birthday" component="input" type="date" className="form-control"/>
+        </div>
+        <div className="form-group">
+          <label>Gender</label>
+          <div class="radio">
+            <label><Field name="gender" component="input" type="radio" value="male" /> Male</label>
+          </div>
+          <div class="radio">
+            <label><Field name="gender" component="input" type="radio" value="female" /> Female</label>
+          </div>
+        </div>
+        <div className="form-group">
+          <label for="description">About me</label>
+          <Field name="description" component="textarea" className="form-control"/>
         </div>
         <div className="form-group">
           <button type="submit" className="btn btn-primary">Submit</button>
