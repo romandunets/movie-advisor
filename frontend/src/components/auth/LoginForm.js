@@ -9,10 +9,10 @@ class LoginForm extends Component {
     return (
       <form className="form-narrow" onSubmit={ handleSubmit }>
         <div className="form-group">
-          <Field name="username" component="input" type="text" placeholder="Username" className="form-control" />
+          <Field name="username" component="input" type="text" placeholder="Username" required="required" className="form-control" />
         </div>
         <div className="form-group">
-          <Field name="password" component="input" type="password" placeholder="Password" className="form-control" />
+          <Field name="password" component="input" type="password" placeholder="Password" required="required" className="form-control" />
         </div>
         <div className="form-group text-center">
           <button type="submit" className="btn btn-primary full-width">Login</button>

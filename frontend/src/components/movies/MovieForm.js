@@ -35,7 +35,7 @@ class MovieForm extends Component {
         <div className="form-group">
           <label htmlFor="title">Title</label>
           <Field name="title" component="input" type="text" className="form-control" id="TitleInput"/>
-          <a href='#' onClick={this.searchOMDB.bind(this, change)} className="btn btn-secondary">Load from OMDB</a>
+          <button onClick={this.searchOMDB.bind(this, change)} className="btn btn-secondary">Load from OMDB</button>
         </div>
         <div className="form-group">
           <label htmlFor="year">Year</label>
