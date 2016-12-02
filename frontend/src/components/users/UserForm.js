@@ -10,21 +10,21 @@ class UserForm extends Component {
     const { handleSubmit } = this.props;
     return (
       <form className="form-horizontal" onSubmit={ handleSubmit }>
-        <div className="form-group">
+        <div className="form-group required">
           <label htmlFor="username">Username</label>
-          <Field name="username" component="input" type="text" className="form-control"/>
+          <Field name="username" component="input" type="text" required="required" className="form-control"/>
         </div>
-        <div className="form-group">
+        <div className="form-group required">
           <label htmlFor="email">Email</label>
-          <Field name="email" component="input" type="email" className="form-control"/>
+          <Field name="email" component="input" type="email" required="required" className="form-control"/>
         </div>
-        <div className="form-group">
+        <div className="form-group required">
           <label htmlFor="password">Password</label>
-          <Field name="password" component="input" type="password" className="form-control"/>
+          <Field name="password" component="input" type="password" required="required" className="form-control"/>
         </div>
-        <div className="form-group">
+        <div className="form-group required">
           <label htmlFor="passwordConfirmation">Password confirmation</label>
-          <Field name="passwordConfirmation" component="input" type="password" className="form-control"/>
+          <Field name="passwordConfirmation" component="input" type="password" required="required" className="form-control"/>
         </div>
         <div className="form-group">
           <label htmlFor="firstName">First name</label>
@@ -48,7 +48,7 @@ class UserForm extends Component {
           </div>
         </div>
         <div className="form-group">
-          <label htmlFor="description">About me</label>
+          <label htmlFor="description">Description</label>
           <Field name="description" component="textarea" className="form-control"/>
         </div>
         <div className="form-group">

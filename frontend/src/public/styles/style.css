@@ -90,6 +90,11 @@ img {
   min-width: 400px;
 }
 
+.form-group.required label:after {
+  content:" *";
+  color:red;
+}
+
 .center-container {
   display: table;
   height: 100%;
@@ -104,6 +109,8 @@ img {
 .title {
   text-align: center;
 }
+
+
 
 .plot {
   padding-top: 10px;
