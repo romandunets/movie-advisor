@@ -7,8 +7,4 @@ const MoviesList = ({ movies, isAuthenticated }) => (
   <ul>{ movies.map (movie => <MoviesListItem key={movie.id} movie={movie} isAuthenticated={isAuthenticated} />) }</ul>
 )
 
-MoviesList.propTypes = {
-  movies: PropTypes.array.isRequired
-}
-
 export default MoviesList;
