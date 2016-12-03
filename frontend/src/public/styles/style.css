@@ -115,6 +115,10 @@ body {
   padding-right: 0px
 }
 
+.list-item .properties p {
+  margin-bottom: 0px
+}
+
 .plot {
   padding-top: 10px;
 }

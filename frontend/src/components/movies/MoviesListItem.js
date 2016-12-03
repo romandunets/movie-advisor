@@ -27,7 +27,7 @@ const MoviesListItem = ({ movie, isAuthenticated }) => (
       </div>
       <div className="row">
         <div className="col-md-12">
-          { movie.age_restriction } |  { movie.duration } min | Action, Adventure, Sci-Fi
+          { movie.age_restriction } | { movie.duration } min | Action, Adventure, Sci-Fi
         </div>
       </div>
       <div className="row">
@@ -40,6 +40,12 @@ const MoviesListItem = ({ movie, isAuthenticated }) => (
           { isAuthenticated &&
             <Link to={`/movies/${movie.id}/watched`} role="button" className="btn btn-secondary">Watched</Link>
           }
+        </div>
+      </div>
+      <div className="row">
+        <div className="col-md-12 properties">
+          <p><b>Director:</b> { movie.director }</p>
+          <p><b>Studio:</b> { movie.studio }</p>
         </div>
       </div>
     </div>
