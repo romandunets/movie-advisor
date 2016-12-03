@@ -40,7 +40,8 @@ export function login(credentials) {
     /*return authApi.login(credentials)
       .then(function (response) {*/
         localStorage.setItem('token', 'TOKEN');//localStorage.setItem('token', response.data.token);
-        dispatch(loginSuccess());
+        const user = { username: credentials.username }
+        dispatch(loginSuccess(user));
         browserHistory.replace('/');
     /*  })
       .catch(function (error) {
@@ -53,8 +54,11 @@ function loginRequest() {
   return { type: types.LOGIN_REQUEST }
 }
 
-function loginSuccess() {
-  return { type: types.LOGIN_SUCCESS }
+function loginSuccess(user) {
+  return {
+    type: types.LOGIN_SUCCESS,
+    payload: user
+  }
 }
 
 function loginFailure(error) {

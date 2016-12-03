@@ -12,7 +12,8 @@ function authReducer(state = initialState.auth, action) {
     case types.LOGIN_REQUEST:
       return {...state, message: '', isAuthenticated: false}
     case types.LOGIN_SUCCESS:
-      return {...state, message: '', isAuthenticated: true}
+    console.log(action);
+      return {...state, message: '', isAuthenticated: true, currentUser: action.payload}
     case types.LOGIN_FAILURE:
       return {...state, message: action.payload, isAuthenticated: false}
     case types.LOGOUT:

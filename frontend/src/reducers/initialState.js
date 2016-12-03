@@ -1,5 +1,6 @@
 export default {
   auth: {
+    currentUser: {},
     isAuthenticated: false,
     message: ''
   },

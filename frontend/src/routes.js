@@ -26,6 +26,8 @@ export default (store) => {
       <Route component={App}>
         <IndexRoute component={MoviesListPage} />
 
+        <Route path="profile" component={UserPage} />
+
         <Route path="users" onEnter={requireAuthentication(store)}>
           <IndexRoute component={UsersListPage} />
           <Route path="new" component={UserNewPage} />

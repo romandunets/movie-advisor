@@ -29,11 +29,11 @@ img {
   font-weight: bold;
 }
 
-.navbar .form-inline .btn {
+.navbar .nav-actions .btn {
   margin-left: 10px;
 }
 
-.navbar .nav-actions .btn {
+.navbar .navbar-nav.float-xs-right {
   margin-left: 10px;
 }
 

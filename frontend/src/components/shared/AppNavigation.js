@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link, IndexLink } from 'react-router';
 
-const AppNavigation = ({ isAuthenticated, handleLogout, handleSearch  }) => (
+const AppNavigation = ({ isAuthenticated, username, handleLogout, handleSearch  }) => (
   <nav className="navbar navbar-light bg-faded">
     <Link className="navbar-brand" to="/">
       <img src="/images/icon.png" className="icon" alt="Movie Advisor" />
@@ -20,12 +20,6 @@ const AppNavigation = ({ isAuthenticated, handleLogout, handleSearch  }) => (
           <Link className="nav-link" activeClassName="active" to="/movies/watched">Watched</Link>
         </li>
       }
-      {
-        isAuthenticated &&
-        <li className="nav-item">
-          <Link className="nav-link" activeClassName="active" to="/profile">Profile</Link>
-        </li>
-      }
     </ul>
     { !isAuthenticated &&
       <span className="nav-actions float-xs-right">
@@ -34,9 +28,15 @@ const AppNavigation = ({ isAuthenticated, handleLogout, handleSearch  }) => (
       </span>
     }
     { isAuthenticated &&
-      <span className="nav-actions float-xs-right">
-        <button className="btn btn-secondary" onClick={handleLogout}>Logout</button>
-      </span>
+      <ul className="nav navbar-nav float-xs-right">
+        <li className="nav-item dropdown">
+          <a className="nav-link dropdown-toggle" href="#" id="supportedContentDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{username}</a>
+          <div className="dropdown-menu" aria-labelledby="supportedContentDropdown">
+            <Link className="dropdown-item" activeClassName="active" to="/profile">My profile</Link>
+            <Link className="dropdown-item" to="#" onClick={handleLogout}>Logout</Link>
+          </div>
+        </li>
+      </ul>
     }
     <form className="form-inline float-xs-right">
       <input className="form-control" type="text" placeholder="Search" id="searchField" onKeyPress={handleSearch}/>
