@@ -1,19 +1,9 @@
-html {
+html, body, #app {
   height: 100%;
 }
 
 body {
-  height: 100%;
-  padding-top: 20px;
-  padding-bottom: 20px;
-}
-
-img {
-  max-width: 100%;
-}
-
-#app {
-  height: 100%;
+  padding: 20px 0px;
 }
 
 .navbar .navbar-brand {
@@ -114,11 +104,22 @@ img {
   text-align: center;
 }
 
+.list-item {
+  display: inline-block;
+  width: 100%;
+  border-bottom: 1px #dddddd solid;
+  padding: 10px 0px;
+}
 
+.list-item .thumbnail {
+  padding-right: 0px
+}
 
 .plot {
   padding-top: 10px;
 }
+
+
 
 .people {
   padding-top: 10px;
@@ -128,36 +129,9 @@ img {
   font-size: 20px;
 }
 
-.movie-item {
-  border-bottom: 1px #ddd solid;
-  padding: 10px;
-  padding-top: 15px;
-}
-
-.movie-item .thumbnail {
-  max-width: 150px;
-}
-
-/*.btn {
-  margin-right: 10px;
-}*/
-
 .detail-item {
   padding-top: 15px;
   padding-bottom: 15px;
-}
-
-/*nav{
-  border: 1px solid #ddd;
-  border-bottom: 0px;
-}*/
-
-footer {
-  padding: 20px 0px 0px 15px;
-  border: 1px solid #ddd;
-  border-top: 0px;
-  background-color: #f7f7f9;
-  font-size: 13px;
 }
 
 .ratingrow{
