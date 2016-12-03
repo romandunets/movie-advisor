@@ -28,11 +28,11 @@ class App extends Component {
   }
 
   render() {
-    const { isAuthenticated } = this.props;
+    const { isAuthenticated, isAdmin } = this.props;
     const username = this.props.currentUser.username;
     return (
       <div className="container">
-        <AppNavigation username={username} isAuthenticated={isAuthenticated} handleLogout={this.handleLogout.bind(this)} handleSearch={this.handleSearch.bind(this)} />
+        <AppNavigation username={username} isAuthenticated={isAuthenticated} isAdmin={isAdmin} handleLogout={this.handleLogout.bind(this)} handleSearch={this.handleSearch.bind(this)} />
         <div className="content">
           <div>{ this.props.children }</div>
         </div>
@@ -45,7 +45,8 @@ class App extends Component {
 const mapStateToProps = (state) => {
   return {
     currentUser: state.auth.currentUser,
-    isAuthenticated: state.auth.isAuthenticated
+    isAuthenticated: state.auth.isAuthenticated,
+    isAdmin: state.auth.currentUser.role == 'admin'
   }
 }
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link, IndexLink } from 'react-router';
 
-const AppNavigation = ({ isAuthenticated, username, handleLogout, handleSearch  }) => (
+const AppNavigation = ({ isAuthenticated, isAdmin, username, handleLogout, handleSearch  }) => (
   <nav className="navbar navbar-light bg-faded">
     <Link className="navbar-brand" to="/">
       <img src="/images/icon.png" className="icon" alt="Movie Advisor" />
@@ -18,6 +18,11 @@ const AppNavigation = ({ isAuthenticated, username, handleLogout, handleSearch  
       { isAuthenticated &&
         <li className="nav-item">
           <Link className="nav-link" activeClassName="active" to="/movies/watched">Watched</Link>
+        </li>
+      }
+      { isAuthenticated && isAdmin &&
+        <li className="nav-item">
+          <Link className="nav-link" activeClassName="active" to="/users">Users</Link>
         </li>
       }
     </ul>
