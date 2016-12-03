@@ -2,19 +2,15 @@
   "users": [
     {
       "id": 1,
-      "username": "testuser1"
+      "username": "admin",
+      "password": "admin",
+      "email": "admin@email.com"
     },
     {
       "id": 2,
-      "username": "testuser2"
-    },
-    {
-      "id": 3,
-      "username": "testuser4"
-    },
-    {
-      "username": "blabla",
-      "id": 5
+      "username": "test",
+      "password": "test",
+      "email": "test@email.com"
     }
   ],
   "movies": [

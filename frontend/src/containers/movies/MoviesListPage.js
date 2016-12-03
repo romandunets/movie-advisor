@@ -15,7 +15,6 @@ class MoviesListPage extends Component {
     const { movies, message, isAuthenticated, isAdmin } = this.props;
     return (
       <div>
-        <h4>{message}</h4>
         <div className="header">
           <h3>All movies</h3>
           { isAuthenticated && isAdmin &&
