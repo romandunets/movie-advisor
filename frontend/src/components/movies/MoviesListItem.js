@@ -27,7 +27,7 @@ const MoviesListItem = ({ movie, isAuthenticated }) => (
       </div>
       <div className="row">
         <div className="col-md-12">
-          { movie.age_restriction } | { movie.duration } min | Action, Adventure, Sci-Fi
+          { movie.age_restriction } | { movie.duration } min | { movie.genres.join(', ') }
         </div>
       </div>
       <div className="row">

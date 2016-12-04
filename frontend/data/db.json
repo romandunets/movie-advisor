@@ -23,7 +23,7 @@
       "duration": 120,
       "age_restriction": "PEG13",
       "description": "After being held captive in an Afghan cave, a billionaire engineer creates a unique weaponized suit of armor to fight",
-      "genre": [
+      "genres": [
         "Action",
         "Sci-Fi",
         "Adventure"
@@ -39,7 +39,7 @@
       "duration": 120,
       "age_restriction": "R",
       "description": "The aging patriarch of an organized crime dynasty transfers control of his clandestine empire to his reluctant son.",
-      "genre": [
+      "genres": [
         "Crime",
         "Drama"
       ],
