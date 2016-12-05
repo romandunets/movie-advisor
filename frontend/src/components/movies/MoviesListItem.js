@@ -20,7 +20,8 @@ class MoviesListItem extends Component {
           <div className="row">
             <div className="col-md-6">
               <h4>
-                <Link to={`/movies/${movie.id}`}>{ movie.title } ({ movie.year })</Link>
+                <Link to={`/movies/${movie.id}`}>{ movie.title }</Link>
+                <span className="text-muted"> ({ movie.year })</span>
               </h4>
             </div>
             <div className="col-md-6 text-md-right">
