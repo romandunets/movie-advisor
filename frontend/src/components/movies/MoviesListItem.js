@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
-import StarRatingComponent from 'react-star-rating-component';
 
 class MoviesListItem extends Component {
   onStarClick(nextValue, prevValue, name) {
@@ -25,7 +24,8 @@ class MoviesListItem extends Component {
               </h4>
             </div>
             <div className="col-md-6 text-md-right">
-              <StarRatingComponent name={`movie_rating_${movie.id}`} value={movie.rating} editing={true} onStarClick={this.onStarClick.bind(this)} />
+              <span className="star">&#9733;</span>
+              <span className="rating">{movie.rating}</span>
             </div>
           </div>
           <div className="row">
