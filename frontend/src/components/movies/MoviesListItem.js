@@ -11,7 +11,7 @@ class MoviesListItem extends Component {
 
     return (
       <div className="list-item">
-        <div className="thumbnail col-md-2">
+        <div className="thumbnail-box col-md-2">
           <Link to={`/movies/${movie.id}`}>
             <img src={ movie.image } className="img-fluid"/>
           </Link>
@@ -24,9 +24,15 @@ class MoviesListItem extends Component {
                 <span className="text-muted"> ({ movie.year })</span>
               </h4>
             </div>
-            <div className="col-md-6 text-md-right">
-              <span className="star">&#9733;</span>
-              <span className="rating">{movie.rating}</span>
+            <div className="col-md-6">
+              <div className="pull-right">
+                <span className="match">&#10084;</span>
+                <span className="rating">{ movie.match }%</span>
+              </div>
+              <div className="pull-right">
+                <span className="star">&#9733;</span>
+                <span className="rating">{ movie.rating }</span>
+              </div>
             </div>
           </div>
           <div className="row">
@@ -40,7 +46,7 @@ class MoviesListItem extends Component {
             </div>
           </div>
           <div className="row">
-            <div className="text-md-right">
+            <div className="text-right">
               { isAuthenticated &&
                 <Link to={`/movies/${movie.id}/watched`} role="button" className="btn btn-secondary">Watched</Link>
               }

@@ -6,6 +6,10 @@ body {
   padding: 20px 0px;
 }
 
+img {
+  max-width: 100%;
+}
+
 .navbar .navbar-brand {
   padding: 0px;
 }
@@ -29,7 +33,6 @@ body {
 
 .content{
   padding: 15px;
-  /*border: 1px solid #ddd;*/
 }
 
 .header {
@@ -111,7 +114,7 @@ body {
   padding: 10px 0px;
 }
 
-.list-item .thumbnail {
+.list-item .thumbnail-box {
   padding-right: 0px
 }
 
@@ -123,14 +126,22 @@ body {
   padding-top: 10px;
 }
 
-.star {
+.star, .match {
   font-size: 22px;
+  padding-left: 10px;
+  padding-right: 5px;
+}
+
+.star {
   color: #ffc107;
+}
+
+.match {
+  color: #f44336;
 }
 
 .rating {
   font-size: 18px;
-  padding-left: 5px;
 }
 
 
