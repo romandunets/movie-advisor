@@ -1,6 +1,6 @@
 import React from 'react';
 
-const MessageBox = ({message }) => (
+const MessageBox = ({ message }) => (
   <div>
     { message &&
       <div className="alert alert-info alert-dismissible fade in" role="alert">

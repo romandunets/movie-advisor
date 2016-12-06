@@ -70,6 +70,10 @@ img {
   margin-bottom: 0px;
 }
 
+.pagination {
+  margin: 0px;
+}
+
 .full-width {
   width: 100%;
 }

@@ -4,7 +4,9 @@ import { connect } from 'react-redux'
 import MoviesListItem from './MoviesListItem'
 
 const MoviesList = ({ movies, isAuthenticated }) => (
-  <ul>{ movies.map (movie => <MoviesListItem key={movie.id} movie={movie} isAuthenticated={isAuthenticated} />) }</ul>
+  <div>
+    { movies.map (movie => <MoviesListItem key={movie.id} movie={movie} isAuthenticated={isAuthenticated} />) }
+  </div>
 )
 
 export default MoviesList;

@@ -25,11 +25,11 @@ class MoviesListItem extends Component {
               </h4>
             </div>
             <div className="col-md-6">
-              <div className="pull-right">
+              <div className="float-xs-right">
                 <span className="match">&#10084;</span>
                 <span className="rating">{ movie.match }%</span>
               </div>
-              <div className="pull-right">
+              <div className="float-xs-right">
                 <span className="star">&#9733;</span>
                 <span className="rating">{ movie.rating }</span>
               </div>
