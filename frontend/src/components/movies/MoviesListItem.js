@@ -2,10 +2,6 @@ import React, { Component } from 'react';
 import { Link } from 'react-router';
 
 class MoviesListItem extends Component {
-  onStarClick(nextValue, prevValue, name) {
-    console.log(nextValue);
-  }
-
   render() {
     const { movie, isAuthenticated } = this.props;
 

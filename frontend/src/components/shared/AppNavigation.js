@@ -8,7 +8,7 @@ const AppNavigation = ({ isAuthenticated, isAdmin, username, handleLogout, handl
     </Link>
     <ul className="nav navbar-nav">
       <li className="nav-item">
-        <IndexLink className="nav-link" activeClassName="active"to="/">Movies</IndexLink>
+        <IndexLink className="nav-link" activeClassName="active"to="/movies">Movies</IndexLink>
       </li>
       { isAuthenticated &&
         <li className="nav-item">
