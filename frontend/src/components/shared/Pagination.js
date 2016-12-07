@@ -12,14 +12,14 @@ class Pagination extends Component {
   }
 
   render() {
-    const { onPageSelect, total, page = 1, visible = 5 } = this.props;
+    const { onPageSelect, total, page = 1, visible = 5, className = "float-md-right" } = this.props;
     const currentSet = Math.ceil(page / visible);
     const totalSets = Math.ceil(total / visible);
     const pagesCount = this.getPagesCount(total, visible, currentSet, totalSets);
     const shift = Math.floor(page / (visible + 1)) * visible + 1;
 
     return (
-      <div className="text-center">
+      <div className={className}>
         <nav aria-label="Page navigation">
           <ul className="pagination pagination-sm">
             <li className={`page-item ${(currentSet == 1) ? 'disabled' : ''}`}>

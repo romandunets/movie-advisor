@@ -5,6 +5,7 @@ import { bindActionCreators } from 'redux';
 
 import * as movieActions from '../../actions/movieActions';
 import MoviesList from '../../components/movies/MoviesList';
+import MoviesSearchBar from '../../components/movies/MoviesSearchBar';
 import Pagination from '../../components/shared/Pagination';
 
 class MoviesListPage extends Component {
@@ -24,6 +25,7 @@ class MoviesListPage extends Component {
     return (
       <div>
         <div className="header">
+          <MoviesSearchBar />
           <Pagination page={page} total={total} location={location} onPageSelect={this.handlePageSelect.bind(this)} />
           { isAuthenticated && isAdmin &&
             <div className="actions text-md-right">
@@ -32,7 +34,7 @@ class MoviesListPage extends Component {
           }
         </div>
         <MoviesList movies={movies} isAuthenticated={isAuthenticated} />
-        <Pagination page={page} total={total} location={location} onPageSelect={this.handlePageSelect} />
+        <Pagination className="text-center" page={page} total={total} location={location} onPageSelect={this.handlePageSelect} />
       </div>
     );
   }

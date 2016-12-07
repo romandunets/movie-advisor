@@ -70,8 +70,13 @@ img {
   margin-bottom: 0px;
 }
 
+.header {
+  display: inline-block;
+  width: 100%;
+}
+
 .pagination {
-  margin: 0px;
+  margin: 3px 0px 0px 0px;
 }
 
 .full-width {
@@ -89,6 +94,10 @@ img {
 
 .form-horizontal {
   min-width: 400px;
+}
+
+.form-inline .btn {
+  margin-left: 10px;
 }
 
 .form-group.required label:after {
