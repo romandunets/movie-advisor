@@ -124,7 +124,7 @@ img {
   display: inline-block;
   width: 100%;
   border-bottom: 1px #dddddd solid;
-  padding: 10px 0px;
+  padding-bottom: 8px;
 }
 
 .list-item .thumbnail-box {

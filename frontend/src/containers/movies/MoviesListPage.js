@@ -18,11 +18,10 @@ class MoviesListPage extends Component {
     browserHistory.push({ pathname: this.props.location.pathname, query: { ...search }});
   }
 
-  handlePageSelect(e, page) {
-    e.preventDefault();
+  handlePageSelect(page) {
     const search = this.props.location.query.search;
-    this.props.actions.listMovies({ page, search });
-    browserHistory.push({ pathname: this.props.location.pathname, query: { ...search, page }});
+    this.props.actions.listMovies({ search, page });
+    browserHistory.push({ pathname: this.props.location.pathname, query: { search, page }});
   }
 
   render() {
