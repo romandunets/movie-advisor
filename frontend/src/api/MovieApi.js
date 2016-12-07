@@ -1,8 +1,8 @@
 import Api from './Api';
 
 class MovieApi extends Api {
-  static listMovies(page) {
-    return this.getClient().get(`/movies?page=${page}`);
+  static listMovies(params) {
+    return this.getClient().get(`/movies`, { params });
   }
 
   static searchMovies(query) {

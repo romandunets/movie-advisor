@@ -14,6 +14,7 @@ export default {
   movies: {
     movies: [],
     movie: {},
+    pages: 8,
     message: '',
     error: '',
     isLoading: false

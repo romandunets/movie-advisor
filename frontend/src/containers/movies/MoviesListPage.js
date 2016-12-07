@@ -10,22 +10,29 @@ import Pagination from '../../components/shared/Pagination';
 
 class MoviesListPage extends Component {
   componentWillMount() {
-    this.props.actions.listMovies(this.props.location.query.page);
+    this.props.actions.listMovies({ page: this.props.location.query.page });
+  }
+
+  handleSearch(search) {
+    this.props.actions.listMovies(search);
+    browserHistory.push({ pathname: this.props.location.pathname, query: { ...search }});
   }
 
   handlePageSelect(e, page) {
     e.preventDefault();
-    this.props.actions.listMovies(page);
-    browserHistory.push({ pathname: this.props.location.pathname, search: `?page=${page}`});
+    const search = this.props.location.query.search;
+    this.props.actions.listMovies({ page, search });
+    browserHistory.push({ pathname: this.props.location.pathname, query: { ...search, page }});
   }
 
   render() {
     const { movies, message, total, isAuthenticated, isAdmin } = this.props;
     const page = this.props.location.query.page;
+
     return (
       <div>
         <div className="header">
-          <MoviesSearchBar />
+          <MoviesSearchBar onSubmit={ this.handleSearch.bind(this) } />
           <Pagination page={page} total={total} location={location} onPageSelect={this.handlePageSelect.bind(this)} />
           { isAuthenticated && isAdmin &&
             <div className="actions text-md-right">
@@ -34,7 +41,7 @@ class MoviesListPage extends Component {
           }
         </div>
         <MoviesList movies={movies} isAuthenticated={isAuthenticated} />
-        <Pagination className="text-center" page={page} total={total} location={location} onPageSelect={this.handlePageSelect} />
+        <Pagination className="text-center" page={page} total={total} location={location} onPageSelect={this.handlePageSelect.bind(this)} />
       </div>
     );
   }
@@ -44,7 +51,7 @@ const mapStateToProps = (state) => {
   return {
     movies: state.movies.movies,
     message: state.movies.message,
-    total: 8,
+    total: state.movies.pages,
     isAuthenticated: state.auth.isAuthenticated,
     isAdmin: state.auth.currentUser.role == 'admin'
   }
