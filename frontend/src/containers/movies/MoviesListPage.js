@@ -6,6 +6,7 @@ import { bindActionCreators } from 'redux';
 import * as movieActions from '../../actions/movieActions';
 import MoviesList from '../../components/movies/MoviesList';
 import MoviesSearchBar from '../../components/movies/MoviesSearchBar';
+import MoviesActionBar from '../../components/movies/MoviesActionBar';
 import Pagination from '../../components/shared/Pagination';
 
 class MoviesListPage extends Component {
@@ -32,15 +33,13 @@ class MoviesListPage extends Component {
       <div>
         <div className="header">
           <MoviesSearchBar onSubmit={ this.handleSearch.bind(this) } />
-          <Pagination page={page} total={total} location={location} onPageSelect={this.handlePageSelect.bind(this)} />
-          { isAuthenticated && isAdmin &&
-            <div className="actions text-md-right">
-              <Link to='/movies/new' role="button" className="btn btn-primary btn-sm">New movie</Link>
-            </div>
-          }
+          <Pagination page={page} total={total} onPageSelect={this.handlePageSelect.bind(this)} />
+          <MoviesActionBar isAuthenticated={isAuthenticated} isAdmin={isAdmin} />
         </div>
         <MoviesList movies={movies} isAuthenticated={isAuthenticated} />
-        <Pagination className="text-center" page={page} total={total} location={location} onPageSelect={this.handlePageSelect.bind(this)} />
+        <div>
+          <Pagination className="text-center" page={page} total={total} onPageSelect={this.handlePageSelect.bind(this)} />
+        </div>
       </div>
     );
   }

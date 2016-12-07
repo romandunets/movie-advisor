@@ -1,10 +1,10 @@
-import React, { Component, PropTypes } from 'react'
-import { connect } from 'react-redux'
-import { Link } from 'react-router'
-import { bindActionCreators } from 'redux'
+import React, { Component, PropTypes } from 'react';
+import { connect } from 'react-redux';
+import { Link } from 'react-router';
+import { bindActionCreators } from 'redux';
 
-import * as movieActions from '../../actions/movieActions'
-import MoviesList from '../../components/movies/MoviesList'
+import * as movieActions from '../../actions/movieActions';
+import MoviesList from '../../components/movies/MoviesList';
 
 class MoviesSearchPage extends Component {
   componentWillMount() {

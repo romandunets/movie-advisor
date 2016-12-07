@@ -22,6 +22,11 @@ class MoviesListItem extends Component {
             </div>
             <div className="col-md-6">
               <div className="float-xs-right">
+                { isAuthenticated &&
+                  <Link to={`/movies/${movie.id}/watched`} role="button" className="btn btn-sm btn-secondary">Watched</Link>
+                }
+              </div>
+              <div className="float-xs-right">
                 <span className="match">&#10084;</span>
                 <span className="rating">{ movie.match }%</span>
               </div>
@@ -39,13 +44,6 @@ class MoviesListItem extends Component {
           <div className="row">
             <div className="col-md-8 plot">
               <p>{ movie.description }</p>
-            </div>
-          </div>
-          <div className="row">
-            <div className="text-right">
-              { isAuthenticated &&
-                <Link to={`/movies/${movie.id}/watched`} role="button" className="btn btn-secondary">Watched</Link>
-              }
             </div>
           </div>
           <div className="row">

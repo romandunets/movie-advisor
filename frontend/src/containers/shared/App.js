@@ -33,9 +33,7 @@ class App extends Component {
     return (
       <div className="container">
         <AppNavigation username={username} isAuthenticated={isAuthenticated} isAdmin={isAdmin} handleLogout={this.handleLogout.bind(this)} handleSearch={this.handleSearch.bind(this)} />
-        <div className="content">
-          <div>{ this.props.children }</div>
-        </div>
+        <div className="content">{ this.props.children }</div>
         <AppFooter />
       </div>
     );
