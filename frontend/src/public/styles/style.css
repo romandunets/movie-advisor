@@ -142,7 +142,7 @@ img {
 
 .star, .match {
   font-size: 22px;
-  padding-left: 10px;
+  padding-left: 15px;
   padding-right: 5px;
 }
 
@@ -156,6 +156,10 @@ img {
 
 .rating {
   font-size: 18px;
+}
+
+.action {
+      margin: 4px 0px 4px 15px;
 }
 
 
