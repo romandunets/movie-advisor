@@ -16,10 +16,12 @@ const MovieInfo = ({ movie, isAuthenticated }) => (
             <Link to={`/movies/${movie.id}/watched`} role="button" className="btn btn-sm btn-secondary action">Watched</Link>
           }
         </div>
-        <div className="float-xs-right">
-          <span className="match">&#10084;</span>
-          <span className="rating">{ movie.match }%</span>
-        </div>
+        { isAuthenticated &&
+          <div className="float-xs-right">
+            <span className="match">&#10084;</span>
+            <span className="rating">{ movie.match }%</span>
+          </div>
+        }
         <div className="float-xs-right">
           <span className="star">&#9733;</span>
           <span className="rating">{ movie.rating }</span>
