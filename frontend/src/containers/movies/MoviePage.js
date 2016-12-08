@@ -15,12 +15,12 @@ class MoviePage extends Component {
   }
 
   render() {
-    const { movie, isLoading, isAuthenticated } = this.props;
+    const { movie, isLoading, isAuthenticated, isAdmin } = this.props;
 
     if (!isLoading) {
       return (
         <div>
-          <MovieCard movie={movie} isAuthenticated={isAuthenticated} deleteMovie={this.deleteMovie.bind(this, movie.id)} />
+          <MovieCard movie={movie} deleteMovie={this.deleteMovie.bind(this, movie.id)} isAuthenticated={isAuthenticated} isAdmin={isAdmin} />
         </div>
       );
     }
@@ -33,7 +33,8 @@ const mapStateToProps = (state) => {
   return {
     movie: state.movies.movie,
     isLoading: state.movies.isLoading,
-    isAuthenticated: state.auth.isAuthenticated
+    isAuthenticated: state.auth.isAuthenticated,
+    isAdmin: state.auth.currentUser.role == 'admin'
   }
 }
 

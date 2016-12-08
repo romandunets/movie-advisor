@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router';
 
-const MovieInfo = ({ movie, isAuthenticated }) => (
+const MovieInfo = ({ movie, deleteMovie, isAuthenticated, isAdmin }) => (
   <div className="col-md-9">
     <div className="row">
       <div className="col-md-6">
@@ -14,6 +14,12 @@ const MovieInfo = ({ movie, isAuthenticated }) => (
         <div className="float-xs-right">
           { isAuthenticated &&
             <Link to={`/movies/${movie.id}/watched`} role="button" className="btn btn-sm btn-secondary action">Watched</Link>
+          }
+          { isAuthenticated && isAdmin &&
+            <Link to={`/movies/${movie.id}/edit`} role="button" className="btn btn-sm btn-primary action">Edit</Link>
+          }
+          { isAuthenticated && isAdmin &&
+            <Link to='#' role="button" className="btn btn-sm btn-danger action" onClick={(e) => deleteMovie(movie.id)}>Delete</Link>
           }
         </div>
         { isAuthenticated &&
