@@ -1,6 +1,5 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router';
 import { bindActionCreators } from 'redux';
 
 import * as movieActions from '../../actions/movieActions';
@@ -33,6 +32,7 @@ class MoviePage extends Component {
 const mapStateToProps = (state) => {
   return {
     movie: state.movies.movie,
+    isLoading: state.movies.isLoading,
     isAuthenticated: state.auth.isAuthenticated
   }
 }
