@@ -158,8 +158,12 @@ img {
   font-size: 18px;
 }
 
+.actions {
+  margin-left: 20px;
+}
+
 .action {
-      margin: 4px 0px 4px 15px;
+  margin: 4px 0px 4px 5px;
 }
 
 
