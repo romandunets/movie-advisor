@@ -61,7 +61,7 @@ class UserForm extends Component {
 }
 
 UserForm = reduxForm({
-  form: 'user'
+  form: 'userForm'
 })(UserForm);
 
 export default UserForm;
