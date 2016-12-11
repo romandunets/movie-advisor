@@ -48,17 +48,25 @@ class MovieForm extends Component {
           <label htmlFor="producer">Producer</label>
           <Field name="producer" component="input" type="text" required="required" className="form-control"/>
         </div>
-        <div className="form-group required">
+        <div className="form-group">
           <label htmlFor="duration">Duration (min)</label>
-          <Field name="duration" component="input" type="text" required="required" className="form-control"/>
+          <Field name="duration" component="input" type="text" className="form-control"/>
         </div>
-        <div className="form-group required">
+        <div className="form-group">
           <label htmlFor="ageRestriction">Age restriction</label>
+          <Field name="ageRestriction" component="select" className="form-control">
+            <option></option>
+            <option value="PG">G</option>
+            <option value="PG">PG</option>
+            <option value="PG-13">PG-13</option>
+            <option value="R">R</option>
+            <option value="NC-17">NC-17</option>
+          </Field>
         </div>
-        <div className="form-group required">
-          <label htmlFor="year">Images</label>
+        <div className="form-group">
+          <label htmlFor="images">Cover image</label>
         </div>
-        <div className="form-group required">
+        <div className="form-group">
           <label htmlFor="description">Description</label>
           <Field name="description" component="textarea" className="form-control"/>
         </div>
