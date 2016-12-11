@@ -65,9 +65,12 @@ class MovieForm extends Component {
         </div>
         <div className="form-group">
           <label htmlFor="coverImage">Cover image</label>
-          <label className="btn btn-secondary btn-sm btn-file">
-            Browse <input type="file" style={{ display: 'none' }} />
-          </label>
+          <div className="form-group">
+            <label className="custom-file">
+              <input type="file" id="file" className="custom-file-input" />
+              <span className="custom-file-control"></span>
+            </label>
+          </div>
         </div>
         <div className="form-group">
           <label htmlFor="description">Description</label>
