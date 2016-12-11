@@ -73,6 +73,16 @@ class MovieForm extends Component {
           </div>
         </div>
         <div className="form-group">
+          <label htmlFor="coverImage">Other images</label>
+          <div className="form-group">
+            <label className="custom-file">
+              <input type="file" id="file" className="custom-file-input" />
+              <span className="custom-file-control"></span>
+            </label>
+          </div>
+          <button type="submit" className="btn btn-secondary btn-sm">Add</button>
+        </div>
+        <div className="form-group">
           <label htmlFor="description">Description</label>
           <Field name="description" component="textarea" className="form-control"/>
         </div>
