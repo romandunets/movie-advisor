@@ -190,3 +190,69 @@ function deleteMovieFailure(error) {
     payload: { error }
   }
 }
+
+export function loadMovieFromOMDB(title) {
+  return function(dispatch) {
+    if (title.length > 0) {
+      dispatch(loadMovieFromOMDBRequest());
+      MovieApi.loadFromOMDB(id)
+        .then(function (response) {
+          if (res.data.Response != "False") {
+            dispatch(loadMovieFromOMDBSuccess(response.data));
+          }
+          else {
+            dispatch(loadMovieFromOMDBFailure("Movie not found"));
+          }
+        })
+        .catch(function (error) {
+          dispatch(loadMovieFromOMDBFailure(error));
+        });
+    }
+  }
+}
+
+function loadMovieFromOMDBRequest() {
+  return { type: types.LOAD_MOVIE_FROM_OMDB_REQUEST }
+}
+
+function loadMovieFromOMDBSuccess(data) {
+  return {
+    type: types.LOAD_MOVIE_FROM_OMDB_SUCCESS,
+    payload: {
+      title: data.Title,
+      year: data.Year,
+      image: data.Poster,
+      director: data.Director,
+      duration: data.Runtime.replace(" min", ""),
+      age_restriction: data.Rated
+    }
+  }
+}
+
+function loadMovieFromOMDBFailure(error) {
+  return {
+    type: types.LOAD_MOVIE_FROM_OMDB_FAILURE,
+    payload: { error }
+  }
+}
+
+/*searchOMDB(change){
+    var title = document.getElementsByName("title")[0].value;
+
+    if(title.length > 0){
+      axios("http://www.omdbapi.com/?t="+title+"&y=&plot=short&r=json")
+        .then(function(res){
+          var data = res.data;
+          if(res.data.Response != "False"){
+            change("title", data.Title);
+            change("description", data.Plot);
+            change("year", data.Year);
+            change("image", data.Poster);
+            change("producer", data.Director);
+            change("duration", data.Runtime.replace(" min", ""));
+            change("age_restriction", data.Rated);
+          }
+      });
+    }
+  }
+*/
