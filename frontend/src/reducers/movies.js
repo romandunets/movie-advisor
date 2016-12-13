@@ -39,11 +39,11 @@ const moviesReducer = (state = initialState.movies, action) => {
       return {...state, message: 'Movie successfully deleted', error: ''}
     case types.DELETE_MOVIE_FAILURE:
       return {...state, message: '', error: action.payload}
-    case LOAD_MOVIE_FROM_OMDB_REQUEST:
+    case types.LOAD_MOVIE_FROM_OMDB_REQUEST:
       return {...state, movie: {}, isLoading: true}
-    case LOAD_MOVIE_FROM_OMDB_SUCCESS:
+    case types.LOAD_MOVIE_FROM_OMDB_SUCCESS:
       return {...state, movie: action.payload, isLoading: false}
-    case LOAD_MOVIE_FROM_OMDB_FAILURE:
+    case types.LOAD_MOVIE_FROM_OMDB_FAILURE:
       return {...state, error: action.payload, isLoading: false}
     default:
       return state;

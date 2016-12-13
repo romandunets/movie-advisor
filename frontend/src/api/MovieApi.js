@@ -26,7 +26,7 @@ class MovieApi extends Api {
   }
 
   static loadFromOMDB(title) {
-    return axios.get(`http://www.omdbapi.com/?t=#{title}&y=&plot=short&r=json`);
+    return this.getDefaultClient().get(`http://www.omdbapi.com/?t=${title}&y=&plot=short&r=json`);
   }
 }
 

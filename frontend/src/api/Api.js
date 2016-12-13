@@ -1,6 +1,10 @@
 import axios from 'axios';
 
 class Api {
+  static getDefaultClient() {
+    return axios.create();
+  }
+
   static getClient() {
     var config = {
       baseURL: process.env.API_HOST
