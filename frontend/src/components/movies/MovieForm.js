@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import { Field, reduxForm } from 'redux-form';
 import { browserHistory } from 'react-router';
 
-import axios from 'axios';
-
 class MovieForm extends Component {
   searchOMDB(change){
     var title = document.getElementsByName("title")[0].value;

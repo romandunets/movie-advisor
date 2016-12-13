@@ -192,8 +192,8 @@ function deleteMovieFailure(error) {
 }
 
 export function loadMovieFromOMDB(title) {
-  return function(dispatch) {
-    if (title.length > 0) {
+  if (title.length > 0) {
+    return function(dispatch) {
       dispatch(loadMovieFromOMDBRequest());
       MovieApi.loadFromOMDB(id)
         .then(function (response) {
@@ -235,24 +235,3 @@ function loadMovieFromOMDBFailure(error) {
     payload: { error }
   }
 }
-
-/*searchOMDB(change){
-    var title = document.getElementsByName("title")[0].value;
-
-    if(title.length > 0){
-      axios("http://www.omdbapi.com/?t="+title+"&y=&plot=short&r=json")
-        .then(function(res){
-          var data = res.data;
-          if(res.data.Response != "False"){
-            change("title", data.Title);
-            change("description", data.Plot);
-            change("year", data.Year);
-            change("image", data.Poster);
-            change("producer", data.Director);
-            change("duration", data.Runtime.replace(" min", ""));
-            change("age_restriction", data.Rated);
-          }
-      });
-    }
-  }
-*/

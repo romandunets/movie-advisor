@@ -24,6 +24,10 @@ class MovieApi extends Api {
   static deleteMovie(id) {
     return this.getClient().delete(`/movies/${id}`);
   }
+
+  static loadFromOMDB(title) {
+    return axios.get(`http://www.omdbapi.com/?t=#{title}&y=&plot=short&r=json`);
+  }
 }
 
 export default MovieApi;
