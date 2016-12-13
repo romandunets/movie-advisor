@@ -11,6 +11,10 @@ class MovieNewPage extends Component {
     this.props.actions.createMovie(movie);
   }
 
+  handleLoadFromOMDB(title) {
+    this.props.actions.loadMovieFromOMDB(title);
+  }
+
   render() {
     const { message } = this.props;
     return (
@@ -18,7 +22,7 @@ class MovieNewPage extends Component {
         <div className="center-content">
           <h3 className="title text-center">Create new movie</h3>
           <MessageBox message={ message } />
-          <MovieForm onSubmit={ this.handleSubmit.bind(this) } />
+          <MovieForm onSubmit={ this.handleSubmit.bind(this) } loadFromOMDB={ this.handleLoadFromOMDB.bind(this) } />
         </div>
       </div>
     );

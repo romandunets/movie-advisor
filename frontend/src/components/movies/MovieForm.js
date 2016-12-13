@@ -3,40 +3,21 @@ import { Field, reduxForm } from 'redux-form';
 import { browserHistory } from 'react-router';
 
 class MovieForm extends Component {
-  searchOMDB(change){
-    var title = document.getElementsByName("title")[0].value;
-
-    if(title.length > 0){
-      axios("http://www.omdbapi.com/?t="+title+"&y=&plot=short&r=json")
-        .then(function(res){
-          var data = res.data;
-          if(res.data.Response != "False"){
-            change("title", data.Title);
-            change("description", data.Plot);
-            change("year", data.Year);
-            change("image", data.Poster);
-            change("producer", data.Director);
-            change("duration", data.Runtime.replace(" min", ""));
-            change("age_restriction", data.Rated);
-          }
-      });
-    }
-  }
-
-  handleClick(event) {
+  handleLoadFromOMDB(event) {
     event.preventDefault();
-    this.searchOMDB();
+    const title = document.getElementsByName("title")[0].value;
+    this.props.loadFromOMDB(title);
   }
 
   render() {
-    const { handleSubmit, change } = this.props;
+    const { handleSubmit } = this.props;
 
     return (
       <form className="form-horizontal" onSubmit={ handleSubmit }>
         <div className="form-group required">
           <label htmlFor="title">Title</label>
           <Field name="title" component="input" type="text" required="required" id="movie-title" className="form-control" />
-          <button onClick={this.searchOMDB.bind(this, change)} className="btn btn-secondary">Load from OMDB</button>
+          <button onClick={ this.handleLoadFromOMDB.bind(this) } className="btn btn-secondary">Load from OMDB</button>
         </div>
         <div className="form-group required">
           <label htmlFor="year">Year</label>
