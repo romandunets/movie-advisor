@@ -64,7 +64,6 @@ class MovieForm extends Component {
               <input type="file" id="file" className="custom-file-input" />
               <span className="custom-file-control"></span>
             </label>
-            <button className="btn btn-secondary btn-sm button-additional">Add</button>
           </div>
         </div>
         <div className="form-group">

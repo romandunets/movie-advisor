@@ -197,7 +197,7 @@ export function loadMovieFromOMDB(title) {
       dispatch(loadMovieFromOMDBRequest());
       MovieApi.loadFromOMDB(title)
         .then(function (response) {
-          if (res.data.Response != "False") {
+          if (response.data.Response != "False") {
             dispatch(loadMovieFromOMDBSuccess(response.data));
           }
           else {

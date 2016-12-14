@@ -16,7 +16,9 @@ class MovieNewPage extends Component {
   }
 
   render() {
-    const { message } = this.props;
+    const { message, movie } = this.props;
+    const formValues = { initialValues: movie };
+
     return (
       <div className="center-container">
         <div className="center-content">
@@ -31,6 +33,7 @@ class MovieNewPage extends Component {
 
 const mapStateToProps = (state) => {
   return {
+    movie: state.movies.movie,
     message: state.auth.message
   }
 }
