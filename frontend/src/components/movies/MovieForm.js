@@ -15,9 +15,11 @@ class MovieForm extends Component {
     return (
       <form className="form-horizontal" onSubmit={ handleSubmit }>
         <div className="form-group required">
-          <label htmlFor="title">Title</label>
-          <Field name="title" component="input" type="text" required="required" id="movie-title" className="form-control" />
-          <button onClick={ this.handleLoadFromOMDB.bind(this) } className="btn btn-secondary">Load from OMDB</button>
+          <div className="form-group">
+            <label htmlFor="title">Title</label>
+            <Field name="title" component="input" type="text" required="required" id="movie-title" className="form-control" />
+          </div>
+          <button onClick={ this.handleLoadFromOMDB.bind(this) } className="btn btn-secondary btn-sm">Load from OMDB</button>
         </div>
         <div className="form-group required">
           <label htmlFor="year">Year</label>
@@ -62,8 +64,8 @@ class MovieForm extends Component {
               <input type="file" id="file" className="custom-file-input" />
               <span className="custom-file-control"></span>
             </label>
+            <button className="btn btn-secondary btn-sm button-additional">Add</button>
           </div>
-          <button type="submit" className="btn btn-secondary btn-sm">Add</button>
         </div>
         <div className="form-group">
           <label htmlFor="description">Description</label>
