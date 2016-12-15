@@ -3,6 +3,8 @@ import { Route, IndexRoute, IndexRedirect } from 'react-router';
 
 import App from './containers/shared/App';
 
+import HomePage from './containers/home/HomePage';
+
 import SigninPage from './containers/auth/SigninPage';
 import SignupPage from './containers/auth/SignupPage';
 
@@ -24,7 +26,7 @@ export default (store) => {
       <Route path="signup" component={SignupPage} />
 
       <Route component={App}>
-        <IndexRoute component={MoviesListPage} />
+        <IndexRoute component={HomePage} />
 
         <Route path="profile" component={UserPage} />
 
