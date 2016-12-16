@@ -34,6 +34,37 @@ function listMoviesFailure(error){
   }
 }
 
+export function listRecommendedMovies(query) {
+  return function(dispatch) {
+    dispatch(listRecommendedMoviesRequest());
+    MovieApi.listRecommendedMovies(query)
+      .then(function (response) {
+        dispatch(listRecommendedMoviesSuccess(response.data));
+      })
+      .catch(function (error) {
+        dispatch(listRecommendedMoviesFailure(error));
+      });
+  }
+}
+
+function listRecommendedMoviesRequest() {
+  return { type: types.LIST_RECOMMENDED_MOVIES_REQUEST }
+}
+
+function listRecommendedMoviesSuccess(movies){
+  return{
+    type: types.LIST_RECOMMENDED_MOVIES_SUCCESS,
+    payload: { movies }
+  }
+}
+
+function listRecommendedMoviesFailure(error){
+  return{
+    type: types.LIST_RECOMMENDED_MOVIES_FAILURE,
+    payload: { error }
+  }
+}
+
 export function searchMovies(keyword) {
   return function(dispatch) {
     dispatch(searchMoviesRequest());
@@ -95,7 +126,6 @@ function getMovieFailure(error){
     payload: { error }
   }
 }
-
 
 export function createMovie(movie) {
   return function(dispatch) {
