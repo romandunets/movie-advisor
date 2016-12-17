@@ -15,6 +15,7 @@ import UserEditPage from './containers/users/UserEditPage';
 
 import MoviePage from './containers/movies/MoviePage';
 import MoviesListPage from './containers/movies/MoviesListPage';
+import RecommendedMoviesListPage from './containers/movies/RecommendedMoviesListPage'
 import MoviesSearchPage from './containers/movies/MoviesSearchPage';
 import MovieNewPage from './containers/movies/MovieNewPage';
 import MovieEditPage from './containers/movies/MovieEditPage';
@@ -39,6 +40,7 @@ export default (store) => {
 
         <Route path="movies" onEnter={requireAuthentication(store)}>
           <IndexRoute component={MoviesListPage} />
+          <Route path="recommended" component={RecommendedMoviesListPage} />
           <Route path="new" component={MovieNewPage} />
           <Route path="search/:keyword" component={MoviesSearchPage} />
           <Route path="rated" component={MoviesListPage} />
