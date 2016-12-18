@@ -20,14 +20,14 @@ function listMoviesRequest() {
   return { type: types.LIST_MOVIES_REQUEST }
 }
 
-function listMoviesSuccess(movies){
+function listMoviesSuccess(movies) {
   return{
     type: types.LIST_MOVIES_SUCCESS,
     payload: { movies }
   }
 }
 
-function listMoviesFailure(error){
+function listMoviesFailure(error) {
   return{
     type: types.LIST_MOVIES_FAILURE,
     payload: { error }
@@ -51,16 +51,47 @@ function listRecommendedMoviesRequest() {
   return { type: types.LIST_RECOMMENDED_MOVIES_REQUEST }
 }
 
-function listRecommendedMoviesSuccess(movies){
+function listRecommendedMoviesSuccess(movies) {
   return{
     type: types.LIST_RECOMMENDED_MOVIES_SUCCESS,
     payload: { movies }
   }
 }
 
-function listRecommendedMoviesFailure(error){
+function listRecommendedMoviesFailure(error) {
   return{
-    type: types.LIST_RECOMMENDED_MOVIES_FAILURE,
+    type: types.LIST_WATCHED_MOVIES_FAILURE,
+    payload: { error }
+  }
+}
+
+export function listWatchedMovies(query) {
+  return function(dispatch) {
+    dispatch(listWatchedMoviesRequest());
+    MovieApi.listWatchedMovies(query)
+      .then(function (response) {
+        dispatch(listWatchedMoviesSuccess(response.data));
+      })
+      .catch(function (error) {
+        dispatch(listWatchedMoviesFailure(error));
+      });
+  }
+}
+
+function listWatchedMoviesRequest() {
+  return { type: types.LIST_WATCHED_MOVIES_REQUEST }
+}
+
+function listWatchedMoviesSuccess(movies) {
+  return{
+    type: types.LIST_WATCHED_MOVIES_SUCCESS,
+    payload: { movies }
+  }
+}
+
+function listWatchedMoviesFailure(error) {
+  return{
+    type: types.LIST_WATCHED_MOVIES_FAILURE,
     payload: { error }
   }
 }
@@ -82,14 +113,14 @@ function searchMoviesRequest() {
   return { type: types.SEARCH_MOVIES_REQUEST }
 }
 
-function searchMoviesSuccess(movies){
+function searchMoviesSuccess(movies) {
   return{
     type: types.SEARCH_MOVIES_SUCCESS,
     payload: { movies }
   }
 }
 
-function searchMoviesFailure(error){
+function searchMoviesFailure(error) {
   return{
     type: types.SEARCH_MOVIES_FAILURE,
     payload: { error }
@@ -113,14 +144,14 @@ function getMovieRequest() {
   return { type: types.GET_MOVIE_REQUEST }
 }
 
-function getMovieSuccess(movie){
+function getMovieSuccess(movie) {
   return{
     type: types.GET_MOVIE_SUCCESS,
     payload: { movie }
   }
 }
 
-function getMovieFailure(error){
+function getMovieFailure(error) {
   return{
     type: types.GET_MOVIE_FAILURE,
     payload: { error }
