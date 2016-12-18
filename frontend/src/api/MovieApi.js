@@ -9,6 +9,10 @@ class MovieApi extends Api {
     return this.getClient().get(`/movies`, { params }); '/recommended'
   }
 
+  static listWatchedMovies(params) {
+    return this.getClient().get(`/movies`, { params }); '/watched'
+  }
+
   static searchMovies(query) {
     return this.getClient().get(`/movies?q=${query}`);
   }
