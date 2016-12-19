@@ -32,7 +32,7 @@ class MoviesListPage extends Component {
     return (
       <div>
         <div className="header">
-          <MoviesSearchBar onSubmit={ this.handleSearch.bind(this) } />
+          <MoviesSearchBar onSubmit={ this.handleSearch.bind(this) } initialValues={{ search: this.props.location.query.search }} />
           <Pagination page={page} total={total} onPageSelect={this.handlePageSelect.bind(this)} />
           <MoviesActionBar isAuthenticated={isAuthenticated} isAdmin={isAdmin} />
         </div>
