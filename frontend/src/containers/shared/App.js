@@ -19,7 +19,7 @@ class App extends Component {
       event.preventDefault();
       var query = document.getElementById('searchField').value;
       if (query.length > 0) {
-        browserHistory.push('/movies/search/' + query);
+        browserHistory.push({ pathname: 'movies', query: { search: query }});
       }
       else {
         browserHistory.push('/');
