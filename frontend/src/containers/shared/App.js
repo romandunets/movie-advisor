@@ -14,8 +14,8 @@ class App extends Component {
   }
 
   // TODO: REFACTORING
-  handleSearch(target) {
-    if (target.charCode == 13) {
+  handleSearch(event) {
+    if (event.charCode == 13) {
       event.preventDefault();
       var query = document.getElementById('searchField').value;
       if (query.length > 0) {
