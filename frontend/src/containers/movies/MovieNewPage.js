@@ -16,15 +16,16 @@ class MovieNewPage extends Component {
   }
 
   render() {
-    const { message, movie } = this.props;
-    const formValues = { initialValues: movie };
+    const { message, movie, isLoading } = this.props;
 
     return (
       <div className="center-container">
         <div className="center-content">
           <h3 className="title text-center">Create new movie</h3>
           <MessageBox message={ message } />
-          <MovieForm onSubmit={ this.handleSubmit.bind(this) } loadFromOMDB={ this.handleLoadFromOMDB.bind(this) } />
+          { !isLoading &&
+            <MovieForm onSubmit={ this.handleSubmit.bind(this) } loadFromOMDB={ this.handleLoadFromOMDB.bind(this) } initialValues={ movie }/>
+          }
         </div>
       </div>
     );
@@ -34,7 +35,8 @@ class MovieNewPage extends Component {
 const mapStateToProps = (state) => {
   return {
     movie: state.movies.movie,
-    message: state.auth.message
+    isLoading: state.movies.isLoading,
+    message: state.movies.message
   }
 }
 

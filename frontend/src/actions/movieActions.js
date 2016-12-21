@@ -282,10 +282,11 @@ function loadMovieFromOMDBSuccess(data) {
     payload: {
       title: data.Title,
       year: data.Year,
-      image: data.Poster,
-      director: data.Director,
+      producer: data.Director,
       duration: data.Runtime.replace(" min", ""),
-      age_restriction: data.Rated
+      ageRestriction: data.Rated,
+      image: data.Poster,
+      description: data.Plot
     }
   }
 }

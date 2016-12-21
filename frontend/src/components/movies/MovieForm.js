@@ -30,17 +30,17 @@ class MovieForm extends Component {
           <Field name="studio" component="input" type="text" required="required" className="form-control"/>
         </div>
         <div className="form-group required">
-          <label htmlFor="producer">Producer</label>
+          <label htmlFor="producer">Director</label>
           <Field name="producer" component="input" type="text" required="required" className="form-control"/>
         </div>
-        <div className="form-group">
+        <div className="form-group required">
           <label htmlFor="duration">Duration (min)</label>
-          <Field name="duration" component="input" type="text" className="form-control"/>
+          <Field name="duration" component="input" type="text" required="required" className="form-control"/>
         </div>
-        <div className="form-group">
+        <div className="form-group required">
           <label htmlFor="ageRestriction">Age restriction</label>
-          <Field name="ageRestriction" component="select" className="form-control">
-            <option></option>
+          <Field name="ageRestriction" component="select" required="required" className="form-control">
+            <option value="N/A">N/A</option>
             <option value="PG">G</option>
             <option value="PG">PG</option>
             <option value="PG-13">PG-13</option>
@@ -48,11 +48,11 @@ class MovieForm extends Component {
             <option value="NC-17">NC-17</option>
           </Field>
         </div>
-        <div className="form-group">
+        <div className="form-group required">
           <label htmlFor="coverImage">Cover image</label>
           <div className="form-group">
             <label className="custom-file">
-              <input type="file" id="file" className="custom-file-input" />
+              <input type="file" id="file" required="required" className="custom-file-input" />
               <span className="custom-file-control"></span>
             </label>
           </div>
