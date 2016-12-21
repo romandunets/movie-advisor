@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import Dropzone from 'react-dropzone';
 import { Field, reduxForm } from 'redux-form';
 import { browserHistory } from 'react-router';
+
+import FileDropzone from '../shared/FileDropzone';
 
 class MovieForm extends Component {
   handleLoadFromOMDB(event) {
@@ -51,9 +52,7 @@ class MovieForm extends Component {
         </div>
         <div className="form-group required">
           <label htmlFor="coverImage">Cover image</label>
-          <Dropzone>
-            <div>Drop file here, or click to select files to upload.</div>
-          </Dropzone>
+          <Field name="coverImage" component={ FileDropzone } />
         </div>
         <div className="form-group">
           <label htmlFor="coverImage">Other images</label>
