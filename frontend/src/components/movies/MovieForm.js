@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Dropzone from 'react-dropzone';
 import { Field, reduxForm } from 'redux-form';
 import { browserHistory } from 'react-router';
 
@@ -50,12 +51,9 @@ class MovieForm extends Component {
         </div>
         <div className="form-group required">
           <label htmlFor="coverImage">Cover image</label>
-          <div className="form-group">
-            <label className="custom-file">
-              <input type="file" id="file" required="required" className="custom-file-input" />
-              <span className="custom-file-control"></span>
-            </label>
-          </div>
+          <Dropzone>
+            <div>Drop file here, or click to select files to upload.</div>
+          </Dropzone>
         </div>
         <div className="form-group">
           <label htmlFor="coverImage">Other images</label>
