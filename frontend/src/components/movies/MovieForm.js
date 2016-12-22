@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Field, reduxForm } from 'redux-form';
 import { browserHistory } from 'react-router';
 
-import FileDropzone from '../shared/FileDropzone';
+import ImageDropzone from '../shared/ImageDropzone';
 
 class MovieForm extends Component {
   handleLoadFromOMDB(event) {
@@ -57,12 +57,12 @@ class MovieForm extends Component {
         </div>
         <div className="form-group required">
           <label htmlFor="coverImage">Poster</label>
-          <Field name="coverImage" component={ FileDropzone } />
+          <Field name="coverImage" component={ ImageDropzone } />
         </div>
         <div className="form-group">
           <label htmlFor="photos">Photos</label>
           <div className="dropzone-block">
-            <Field name="photo_new" component={ FileDropzone } afterDrop={ this.afterDrop.bind(this) } />
+            <Field name="photo_new" component={ ImageDropzone } afterDrop={ this.afterDrop.bind(this) } />
             { photos &&
               photos.map (photo =>
                 <Field key={ photos.indexOf(photo) } name={ `photo_${photos.indexOf(photo)}` } component={ FileDropzone } photo={ photo } afterDrop={ this.afterDrop.bind(this) }/>

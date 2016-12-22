@@ -285,7 +285,8 @@ function loadMovieFromOMDBSuccess(data) {
       producer: data.Director,
       duration: data.Runtime.replace(" min", ""),
       ageRestriction: data.Rated,
-      image: data.Poster,
+      coverImage: data.Poster,
+      photos: [],
       description: data.Plot
     }
   }

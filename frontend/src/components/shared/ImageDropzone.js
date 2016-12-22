@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Dropzone from 'react-dropzone';
 
-class FileDropzone extends Component {
+class ImageDropzone extends Component {
   onDrop(files, e) {
     const { input, afterDrop } = this.props;
 
@@ -13,21 +13,17 @@ class FileDropzone extends Component {
 
   render() {
     const { name, input } = this.props;
-    const file = input.value[0];
+    const image = (input.value !== undefined) ? (Array.isArray(input.value) ? input.value[0].preview : input.value) : null;
 
     return (
       <div className="dropzone">
         <Dropzone name={name} multiple={false} onDrop={this.onDrop.bind(this)}>
-          { !file &&
-            <span>Drop file here, or click to select files to upload.</span>
-          }
-          { file &&
-            <img src={file.preview} />
-          }
+          { !image && <span>Drop image here, or click to select files to upload.</span> }
+          { image && <img src={image} /> }
         </Dropzone>
       </div>
     );
   }
 }
 
-export default FileDropzone;
+export default ImageDropzone;

@@ -30,7 +30,8 @@
       ],
       "image": "https://images-na.ssl-images-amazon.com/images/M/MV5BMTczNTI2ODUwOF5BMl5BanBnXkFtZTcwMTU0NTIzMw@@._V1_SX300.jpg",
       "rating": 8.4,
-      "match": 92
+      "match": 92,
+      "photos": []
     },
     {
       "id": 2,
@@ -47,7 +48,8 @@
       ],
       "image": "https://images-na.ssl-images-amazon.com/images/M/MV5BMjEyMjcyNDI4MF5BMl5BanBnXkFtZTcwMDA5Mzg3OA@@._V1_SX300.jpg",
       "rating": 9.2,
-      "match": 84
+      "match": 84,
+      "photos": []
     }
   ]
 }
