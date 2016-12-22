@@ -51,11 +51,11 @@ class MovieForm extends Component {
           </Field>
         </div>
         <div className="form-group required">
-          <label htmlFor="coverImage">Cover image</label>
+          <label htmlFor="coverImage">Poster</label>
           <Field name="coverImage" component={ FileDropzone } />
         </div>
         <div className="form-group">
-          <label htmlFor="coverImage">Other images</label>
+          <label htmlFor="coverImage">Photos</label>
           <div className="form-group">
             <label className="custom-file">
               <input type="file" id="file" className="custom-file-input" />

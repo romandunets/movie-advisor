@@ -112,6 +112,11 @@ img {
   margin: auto;
 }
 
+.dropzone span {
+  display: block;
+  padding: 20px;
+}
+
 .center-container {
   display: table;
   height: 100%;

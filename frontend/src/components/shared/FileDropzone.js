@@ -8,7 +8,7 @@ const FileDropzone = (field) => {
     <div className="dropzone">
       <Dropzone name={field.name} onDrop={(fileToUpload, e) => field.input.onChange(fileToUpload)}>
         { !file &&
-          <div>Drop file here, or click to select files to upload.</div>
+          <span>Drop file here, or click to select files to upload.</span>
         }
         { file &&
           <img src={file.preview} />
