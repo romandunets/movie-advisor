@@ -11,7 +11,7 @@ class MovieForm extends Component {
     this.props.loadFromOMDB(title);
   }
 
-  afterDrop(file) {
+  onDrop(file) {
     this.props.addPhoto(file);
   }
 
@@ -62,12 +62,12 @@ class MovieForm extends Component {
         <div className="form-group">
           <label htmlFor="photos">Photos</label>
           <div className="dropzone-block">
-            <Field name="photo_new" component={ ImageDropzone } afterDrop={ this.afterDrop.bind(this) } />
-            { photos &&
+            {
               photos.map (photo =>
-                <Field key={ photos.indexOf(photo) } name={ `photo_${photos.indexOf(photo)}` } component={ FileDropzone } photo={ photo } afterDrop={ this.afterDrop.bind(this) }/>
+                <Field key={ `photo_${photos.indexOf(photo)}` } name={ `photo_${photos.indexOf(photo)}` } component={ ImageDropzone } photo={ photo } />
               )
             }
+            <Field name="photo_new" component={ ImageDropzone } onDrop={ this.onDrop.bind(this) } />
           </div>
         </div>
         <div className="form-group">

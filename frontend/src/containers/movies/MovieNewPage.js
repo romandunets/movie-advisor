@@ -7,8 +7,21 @@ import MessageBox from '../../components/shared/MessageBox';
 import MovieForm from '../../components/movies/MovieForm';
 
 class MovieNewPage extends Component {
-  handleSubmit(movie) {
-    this.props.actions.createMovie(movie);
+  handleSubmit(data) {
+    const { photos } = this.props.movie;
+    var body = new FormData();
+
+    Object.keys(data).forEach(key => {
+      if (key != "photos") {
+        body.append(key, data[key]);
+      }
+    });
+
+    for (var i = 0; i < photos.length; i++) {
+      body.append("photos", photos[i]);
+    }
+
+    this.props.actions.createMovie(body);
   }
 
   handleLoadFromOMDB(title) {

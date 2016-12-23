@@ -3,17 +3,19 @@ import Dropzone from 'react-dropzone';
 
 class ImageDropzone extends Component {
   onDrop(files, e) {
-    const { input, afterDrop } = this.props;
+    const { input, afterDrop, onDrop } = this.props;
 
-    input.onChange(files);
-    if (afterDrop) {
-      afterDrop(files[0]);
+    if (onDrop) {
+      onDrop(files[0]);
+    }
+    else {
+      input.onChange(files);
     }
   }
 
   render() {
-    const { name, input } = this.props;
-    const image = (input.value !== undefined) ? (Array.isArray(input.value) ? input.value[0].preview : input.value) : null;
+    const { name, input, photo } = this.props;
+    const image = photo ? photo.preview : (Array.isArray(input.value) && input.value.length > 0 ? input.value[0].preview : input.value);
 
     return (
       <div className="dropzone">
