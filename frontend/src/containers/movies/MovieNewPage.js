@@ -9,6 +9,7 @@ import MovieForm from '../../components/movies/MovieForm';
 class MovieNewPage extends Component {
   componentWillMount() {
     this.props.actions.listGenres();
+    this.props.actions.listTags();
   }
 
   handleSubmit(data) {
@@ -37,8 +38,8 @@ class MovieNewPage extends Component {
   }
 
   render() {
-    const { message, movie, genres, isLoading } = this.props;
-    const initialValues = { ...movie, availableGenres: genres };
+    const { message, movie, genres, tags, isLoading } = this.props;
+    const initialValues = { ...movie, availableGenres: genres, availableTags: tags };
 
     return (
       <div className="center-container">
@@ -58,6 +59,7 @@ const mapStateToProps = (state) => {
   return {
     movie: state.movies.movie,
     genres: state.movies.genres,
+    tags: state.movies.tags,
     isLoading: state.movies.isLoading,
     message: state.movies.message
   }

@@ -17,7 +17,7 @@ class MovieForm extends Component {
 
   render() {
     const { handleSubmit } = this.props;
-    const { photos, genres, availableGenres } = this.props.initialValues;
+    const { photos, genres, tags, availableGenres, availableTags } = this.props.initialValues;
 
     return (
       <form className="form-horizontal" onSubmit={ handleSubmit }>
@@ -61,9 +61,23 @@ class MovieForm extends Component {
             {
               availableGenres.map ((genre, index) =>
                 <label key={`${index}`} className="custom-control custom-checkbox">
-                  <Field name={`genres[${genre.name}]`} component="input" type="checkbox" className="custom-control-input" />
+                  <Field name={`genres[${genre.id}]`} component="input" type="checkbox" className="custom-control-input" />
                   <span className="custom-control-indicator"></span>
                   <span className="custom-control-description">{ genre.name }</span>
+                </label>
+              )
+            }
+          </div>
+        </div>
+        <div className="form-group">
+          <label htmlFor="genres">Tags</label>
+          <div>
+            {
+              availableTags.map ((tag, index) =>
+                <label key={`${index}`} className="custom-control custom-checkbox">
+                  <Field name={`tags[${tag.id}]`} component="input" type="checkbox" className="custom-control-input" />
+                  <span className="custom-control-indicator"></span>
+                  <span className="custom-control-description">{ tag.name }</span>
                 </label>
               )
             }

@@ -339,3 +339,35 @@ function listGenresFailure(error) {
     payload: { error }
   }
 }
+
+export function listTags() {
+  return function(dispatch) {
+    dispatch(listTagsRequest());
+    MovieApi.listTags()
+      .then(function (response) {
+        dispatch(listTagsSuccess(response.data));
+      })
+      .catch(function (error) {
+        dispatch(listTagsFailure(error));
+      });
+  }
+}
+
+function listTagsRequest() {
+  return { type: types.LIST_TAGS_REQUEST }
+}
+
+function listTagsSuccess(tags) {
+  return {
+    type: types.LIST_TAGS_SUCCESS,
+    payload: { tags }
+  }
+}
+
+function listTagsFailure(error) {
+  return {
+    type: types.LIST_TAGS_FAILURE,
+    payload: { error }
+  }
+}
+

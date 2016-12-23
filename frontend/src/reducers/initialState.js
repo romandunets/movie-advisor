@@ -17,6 +17,7 @@ export default {
       photos: []
     },
     genres: [],
+    tags: [],
     pages: 8,
     message: '',
     error: '',

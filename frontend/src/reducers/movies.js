@@ -63,6 +63,12 @@ const moviesReducer = (state = initialState.movies, action) => {
       return {...state, genres: action.payload.genres}
     case types.LIST_GENRES_FAILURE:
       return {...state, error: action.payload}
+    case types.LIST_TAGS_REQUEST:
+      return {...state, tags: []}
+    case types.LIST_TAGS_SUCCESS:
+      return {...state, tags: action.payload.tags}
+    case types.LIST_TAGS_FAILURE:
+      return {...state, error: action.payload}
     case types.ADD_MOVIE_PHOTO:
       const movie = {...state.movie, photos: state.movie.photos.concat(action.payload) };
       return {...state, movie };

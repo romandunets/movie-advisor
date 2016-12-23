@@ -40,6 +40,10 @@ class MovieApi extends Api {
   static listGenres() {
     return this.getClient().get(`/genres`);
   }
+
+  static listTags() {
+    return this.getClient().get(`/tags`);
+  }
 }
 
 export default MovieApi;
