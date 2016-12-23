@@ -36,6 +36,10 @@ class MovieApi extends Api {
   static loadFromOMDB(title) {
     return this.getDefaultClient().get(`http://www.omdbapi.com/?t=${title}&y=&plot=short&r=json`);
   }
+
+  static listGenres() {
+    return this.getClient().get(`/genres`);
+  }
 }
 
 export default MovieApi;

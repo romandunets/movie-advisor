@@ -51,5 +51,19 @@
       "match": 84,
       "photos": []
     }
+  ],
+  "genres": [
+    {
+      "id": 1,
+      "name": "Comedy"
+    },
+    {
+      "id": 2,
+      "name": "Adventure"
+    },
+    {
+      "id": 3,
+      "name": "Sci-Fi"
+    }
   ]
 }

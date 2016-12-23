@@ -7,6 +7,10 @@ import MessageBox from '../../components/shared/MessageBox';
 import MovieForm from '../../components/movies/MovieForm';
 
 class MovieNewPage extends Component {
+  componentWillMount() {
+    this.props.actions.listGenres();
+  }
+
   handleSubmit(data) {
     const { photos } = this.props.movie;
     var body = new FormData();
@@ -33,7 +37,8 @@ class MovieNewPage extends Component {
   }
 
   render() {
-    const { message, movie, isLoading } = this.props;
+    const { message, movie, genres, isLoading } = this.props;
+    const initialValues = { ...movie, availableGenres: genres };
 
     return (
       <div className="center-container">
@@ -41,7 +46,7 @@ class MovieNewPage extends Component {
           <h3 className="title text-center">Create new movie</h3>
           <MessageBox message={ message } />
           { !isLoading &&
-            <MovieForm onSubmit={ this.handleSubmit.bind(this) } loadFromOMDB={ this.handleLoadFromOMDB.bind(this) } addPhoto={ this.handleAddPhoto.bind(this) } initialValues={ movie }/>
+            <MovieForm onSubmit={ this.handleSubmit.bind(this) } loadFromOMDB={ this.handleLoadFromOMDB.bind(this) } addPhoto={ this.handleAddPhoto.bind(this) } initialValues={ initialValues }/>
           }
         </div>
       </div>
@@ -52,6 +57,7 @@ class MovieNewPage extends Component {
 const mapStateToProps = (state) => {
   return {
     movie: state.movies.movie,
+    genres: state.movies.genres,
     isLoading: state.movies.isLoading,
     message: state.movies.message
   }

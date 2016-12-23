@@ -21,14 +21,14 @@ function listMoviesRequest() {
 }
 
 function listMoviesSuccess(movies) {
-  return{
+  return {
     type: types.LIST_MOVIES_SUCCESS,
     payload: { movies }
   }
 }
 
 function listMoviesFailure(error) {
-  return{
+  return {
     type: types.LIST_MOVIES_FAILURE,
     payload: { error }
   }
@@ -52,14 +52,14 @@ function listRecommendedMoviesRequest() {
 }
 
 function listRecommendedMoviesSuccess(movies) {
-  return{
+  return {
     type: types.LIST_RECOMMENDED_MOVIES_SUCCESS,
     payload: { movies }
   }
 }
 
 function listRecommendedMoviesFailure(error) {
-  return{
+  return {
     type: types.LIST_WATCHED_MOVIES_FAILURE,
     payload: { error }
   }
@@ -83,14 +83,14 @@ function listWatchedMoviesRequest() {
 }
 
 function listWatchedMoviesSuccess(movies) {
-  return{
+  return {
     type: types.LIST_WATCHED_MOVIES_SUCCESS,
     payload: { movies }
   }
 }
 
 function listWatchedMoviesFailure(error) {
-  return{
+  return {
     type: types.LIST_WATCHED_MOVIES_FAILURE,
     payload: { error }
   }
@@ -114,14 +114,14 @@ function searchMoviesRequest() {
 }
 
 function searchMoviesSuccess(movies) {
-  return{
+  return {
     type: types.SEARCH_MOVIES_SUCCESS,
     payload: { movies }
   }
 }
 
 function searchMoviesFailure(error) {
-  return{
+  return {
     type: types.SEARCH_MOVIES_FAILURE,
     payload: { error }
   }
@@ -145,14 +145,14 @@ function getMovieRequest() {
 }
 
 function getMovieSuccess(movie) {
-  return{
+  return {
     type: types.GET_MOVIE_SUCCESS,
     payload: { movie }
   }
 }
 
 function getMovieFailure(error) {
-  return{
+  return {
     type: types.GET_MOVIE_FAILURE,
     payload: { error }
   }
@@ -306,5 +306,36 @@ export function addPhoto(photo) {
       type: types.ADD_MOVIE_PHOTO,
       payload: photo
     });
+  }
+}
+
+export function listGenres() {
+  return function(dispatch) {
+    dispatch(listGenresRequest());
+    MovieApi.listGenres()
+      .then(function (response) {
+        dispatch(listGenresSuccess(response.data));
+      })
+      .catch(function (error) {
+        dispatch(listGenresFailure(error));
+      });
+  }
+}
+
+function listGenresRequest() {
+  return { type: types.LIST_GENRES_REQUEST }
+}
+
+function listGenresSuccess(genres) {
+  return {
+    type: types.LIST_GENRES_SUCCESS,
+    payload: { genres }
+  }
+}
+
+function listGenresFailure(error) {
+  return {
+    type: types.LIST_GENRES_FAILURE,
+    payload: { error }
   }
 }

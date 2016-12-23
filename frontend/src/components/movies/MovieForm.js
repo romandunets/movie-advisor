@@ -17,7 +17,7 @@ class MovieForm extends Component {
 
   render() {
     const { handleSubmit } = this.props;
-    const { photos } = this.props.initialValues;
+    const { photos, genres, availableGenres } = this.props.initialValues;
 
     return (
       <form className="form-horizontal" onSubmit={ handleSubmit }>
@@ -55,6 +55,20 @@ class MovieForm extends Component {
             <option value="NC-17">NC-17</option>
           </Field>
         </div>
+        <div className="form-group">
+          <label htmlFor="genres">Genres</label>
+          <div>
+            {
+              availableGenres.map ((genre, index) =>
+                <label key={`${index}`} className="custom-control custom-checkbox">
+                  <Field name={`genres[${genre.name}]`} component="input" type="checkbox" className="custom-control-input" />
+                  <span className="custom-control-indicator"></span>
+                  <span className="custom-control-description">{ genre.name }</span>
+                </label>
+              )
+            }
+          </div>
+        </div>
         <div className="form-group required">
           <label htmlFor="coverImage">Poster</label>
           <Field name="coverImage" component={ ImageDropzone } />
@@ -63,8 +77,8 @@ class MovieForm extends Component {
           <label htmlFor="photos">Photos</label>
           <div className="dropzone-block">
             {
-              photos.map (photo =>
-                <Field key={ `photo_${photos.indexOf(photo)}` } name={ `photo_${photos.indexOf(photo)}` } component={ ImageDropzone } photo={ photo } />
+              photos.map ((photo, index) =>
+                <Field key={ `photo_${index}` } name={ `photo_${index}` } component={ ImageDropzone } photo={ photo } />
               )
             }
             <Field name="photo_new" component={ ImageDropzone } onDrop={ this.onDrop.bind(this) } />

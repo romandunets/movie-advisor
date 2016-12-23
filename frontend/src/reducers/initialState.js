@@ -16,6 +16,7 @@ export default {
     movie: {
       photos: []
     },
+    genres: [],
     pages: 8,
     message: '',
     error: '',

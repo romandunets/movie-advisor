@@ -57,6 +57,12 @@ const moviesReducer = (state = initialState.movies, action) => {
       return {...state, movie: action.payload, isLoading: false}
     case types.LOAD_MOVIE_FROM_OMDB_FAILURE:
       return {...state, error: action.payload, isLoading: false}
+    case types.LIST_GENRES_REQUEST:
+      return {...state, genres: []}
+    case types.LIST_GENRES_SUCCESS:
+      return {...state, genres: action.payload.genres}
+    case types.LIST_GENRES_FAILURE:
+      return {...state, error: action.payload}
     case types.ADD_MOVIE_PHOTO:
       const movie = {...state.movie, photos: state.movie.photos.concat(action.payload) };
       return {...state, movie };
