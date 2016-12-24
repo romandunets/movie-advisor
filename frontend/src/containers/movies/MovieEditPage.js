@@ -1,37 +1,55 @@
-import React, { Component } from 'react'
-import { connect } from 'react-redux'
-import { bindActionCreators } from 'redux'
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 
-import * as movieActions from '../../actions/movieActions'
-import MovieForm from '../../components/movies/MovieForm'
+import * as movieActions from '../../actions/movieActions';
+import MessageBox from '../../components/shared/MessageBox';
+import MovieForm from '../../components/movies/MovieForm';
 
 class MovieEditPage extends Component {
   componentWillMount() {
     this.props.actions.getMovie(this.props.params.id);
+    this.props.actions.listGenres();
+    this.props.actions.listTags();
   }
 
   handleSubmit(movie) {
     this.props.actions.updateMovie(movie);
   }
 
+  handleLoadFromOMDB(title) {
+    this.props.actions.loadMovieFromOMDB(title);
+  }
+
+  handleAddPhoto(photo) {
+    this.props.actions.addPhoto(photo);
+  }
+
   render() {
-    const { movie, isLoading } = this.props;
-    const formValues = { initialValues: movie }
+    const { message, movie, genres, tags, isLoading } = this.props;
+    const initialValues = { ...movie, availableGenres: genres, availableTags: tags };
 
-    if (!isLoading) {
-      return (
-        <MovieForm onSubmit={ this.handleSubmit.bind(this) } {...formValues} />
-      );
-    }
-
-    return null;
+    return (
+      <div className="center-container">
+        <div className="center-content">
+          <h3 className="title text-center">Edit movie</h3>
+          <MessageBox message={ message } />
+          { !isLoading &&
+            <MovieForm onSubmit={ this.handleSubmit.bind(this) } loadFromOMDB={ this.handleLoadFromOMDB.bind(this) } addPhoto={ this.handleAddPhoto.bind(this) } initialValues={ initialValues } />
+          }
+        </div>
+      </div>
+    );
   }
 }
 
 const mapStateToProps = (state) => {
   return {
     movie: state.movies.movie,
-    isLoading: state.movies.isLoading
+    genres: state.movies.genres,
+    tags: state.movies.tags,
+    isLoading: state.movies.isLoading,
+    message: state.movies.message
   }
 }
 

@@ -47,7 +47,7 @@ class MovieNewPage extends Component {
           <h3 className="title text-center">Create new movie</h3>
           <MessageBox message={ message } />
           { !isLoading &&
-            <MovieForm onSubmit={ this.handleSubmit.bind(this) } loadFromOMDB={ this.handleLoadFromOMDB.bind(this) } addPhoto={ this.handleAddPhoto.bind(this) } initialValues={ initialValues }/>
+            <MovieForm onSubmit={ this.handleSubmit.bind(this) } loadFromOMDB={ this.handleLoadFromOMDB.bind(this) } addPhoto={ this.handleAddPhoto.bind(this) } initialValues={ initialValues } />
           }
         </div>
       </div>

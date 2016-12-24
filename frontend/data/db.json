@@ -21,14 +21,29 @@
       "studio": "Studio1",
       "director": "Jon Favreau",
       "duration": 120,
-      "age_restriction": "PEG13",
+      "ageRestriction": "PG-13",
       "description": "After being held captive in an Afghan cave, a billionaire engineer creates a unique weaponized suit of armor to fight",
       "genres": [
-        "Action",
-        "Sci-Fi",
-        "Adventure"
+        {
+          "id": 1,
+          "name": "Comedy"
+        },
+        {
+          "id": 3,
+          "name": "Sci-Fi"
+        }
       ],
-      "image": "https://images-na.ssl-images-amazon.com/images/M/MV5BMTczNTI2ODUwOF5BMl5BanBnXkFtZTcwMTU0NTIzMw@@._V1_SX300.jpg",
+      "tags": [
+        {
+          "id": 2,
+          "name": "Top-10"
+        },
+        {
+          "id": 3,
+          "name": "Sundance"
+        }
+      ],
+      "coverImage": "https://images-na.ssl-images-amazon.com/images/M/MV5BMTczNTI2ODUwOF5BMl5BanBnXkFtZTcwMTU0NTIzMw@@._V1_SX300.jpg",
       "rating": 8.4,
       "match": 92,
       "photos": []
@@ -40,13 +55,15 @@
       "studio": "Studio2",
       "director": "Francis Ford Coppola",
       "duration": 120,
-      "age_restriction": "R",
+      "ageRestriction": "R",
       "description": "The aging patriarch of an organized crime dynasty transfers control of his clandestine empire to his reluctant son.",
       "genres": [
-        "Crime",
-        "Drama"
+        {
+          "id": 2,
+          "name": "Adventure"
+        }
       ],
-      "image": "https://images-na.ssl-images-amazon.com/images/M/MV5BMjEyMjcyNDI4MF5BMl5BanBnXkFtZTcwMDA5Mzg3OA@@._V1_SX300.jpg",
+      "coverImage": "https://images-na.ssl-images-amazon.com/images/M/MV5BMjEyMjcyNDI4MF5BMl5BanBnXkFtZTcwMDA5Mzg3OA@@._V1_SX300.jpg",
       "rating": 9.2,
       "match": 84,
       "photos": []

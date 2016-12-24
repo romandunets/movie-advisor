@@ -9,7 +9,7 @@ class MoviesListItem extends Component {
       <div className="list-item">
         <div className="thumbnail-box col-md-2">
           <Link to={`/movies/${movie.id}`}>
-            <img src={ movie.image } className="img-fluid"/>
+            <img src={ movie.coverImage } className="img-fluid"/>
           </Link>
         </div>
         <div className="col-md-10">
@@ -40,7 +40,7 @@ class MoviesListItem extends Component {
           </div>
           <div className="row">
             <div className="col-md-12">
-              { movie.age_restriction } | { movie.duration } min | { movie.genres.join(', ') }
+              { movie.ageRestriction } | { movie.duration } min | { movie.genres && movie.genres.map(g => g.name).join(', ') }
             </div>
           </div>
           <div className="row">

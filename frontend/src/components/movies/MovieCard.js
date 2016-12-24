@@ -4,7 +4,7 @@ import { Link } from 'react-router';
 const MovieCard = ({ movie, deleteMovie, isAuthenticated, isAdmin }) => (
   <div className="row">
     <div className="thumbnail-box col-md-3">
-      <img src={ movie.image } className="img-fluid"/>
+      <img src={ movie.coverImage } className="img-fluid"/>
     </div>
     <div className="col-md-9">
       <div className="row">
@@ -40,7 +40,7 @@ const MovieCard = ({ movie, deleteMovie, isAuthenticated, isAdmin }) => (
       </div>
       <div className="row">
         <div className="col-md-12">
-          { movie.age_restriction } | { movie.duration } min | { movie.genres && movie.genres.join(', ') }
+          { movie.ageRestriction } | { movie.duration } min | { movie.genres && movie.genres.map(g => g.name).join(', ') }
         </div>
       </div>
       <div className="row">

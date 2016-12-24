@@ -37,8 +37,8 @@ class MovieForm extends Component {
           <Field name="studio" component="input" type="text" required="required" className="form-control"/>
         </div>
         <div className="form-group required">
-          <label htmlFor="producer">Director</label>
-          <Field name="producer" component="input" type="text" required="required" className="form-control"/>
+          <label htmlFor="director">Director</label>
+          <Field name="director" component="input" type="text" required="required" className="form-control"/>
         </div>
         <div className="form-group required">
           <label htmlFor="duration">Duration (min)</label>
@@ -61,7 +61,7 @@ class MovieForm extends Component {
             {
               availableGenres.map ((genre, index) =>
                 <label key={`${index}`} className="custom-control custom-checkbox">
-                  <Field name={`genres[${genre.id}]`} component="input" type="checkbox" className="custom-control-input" />
+                  <Field name={`genres[${genre.id}]`} checked={ genres.find(g => g.id == genre.id) } component="input" type="checkbox" className="custom-control-input" />
                   <span className="custom-control-indicator"></span>
                   <span className="custom-control-description">{ genre.name }</span>
                 </label>
@@ -75,7 +75,7 @@ class MovieForm extends Component {
             {
               availableTags.map ((tag, index) =>
                 <label key={`${index}`} className="custom-control custom-checkbox">
-                  <Field name={`tags[${tag.id}]`} component="input" type="checkbox" className="custom-control-input" />
+                  <Field name={`tags[${tag.id}]`} checked={ tags.find(t => t.id == tag.id) } component="input" type="checkbox" className="custom-control-input" />
                   <span className="custom-control-indicator"></span>
                   <span className="custom-control-description">{ tag.name }</span>
                 </label>
