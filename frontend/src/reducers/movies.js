@@ -28,7 +28,7 @@ const moviesReducer = (state = initialState.movies, action) => {
     case types.SEARCH_MOVIES_FAILURE:
       return {...state, error: action.payload}
     case types.GET_MOVIE_REQUEST:
-      return {...state, movie: {}, isLoading: true}
+      return {...state, movie: { photos: [] }, isLoading: true}
     case types.GET_MOVIE_SUCCESS:
       return {...state, movie: action.payload.movie, isLoading: false}
     case types.GET_MOVIE_FAILURE:
@@ -57,6 +57,9 @@ const moviesReducer = (state = initialState.movies, action) => {
       return {...state, movie: action.payload, isLoading: false}
     case types.LOAD_MOVIE_FROM_OMDB_FAILURE:
       return {...state, error: action.payload, isLoading: false}
+    case types.ADD_MOVIE_PHOTO:
+      const movie = {...state.movie, photos: state.movie.photos.concat(action.payload) };
+      return {...state, movie };
     default:
       return state;
   }

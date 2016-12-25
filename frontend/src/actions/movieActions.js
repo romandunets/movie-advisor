@@ -297,3 +297,13 @@ function loadMovieFromOMDBFailure(error) {
     payload: { error }
   }
 }
+
+
+export function addPhoto(photo) {
+  return function(dispatch) {
+    dispatch({
+      type: types.ADD_MOVIE_PHOTO,
+      payload: photo
+    });
+  }
+}

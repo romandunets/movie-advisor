@@ -11,8 +11,13 @@ class MovieForm extends Component {
     this.props.loadFromOMDB(title);
   }
 
+  afterDrop(file) {
+    this.props.addPhoto(file);
+  }
+
   render() {
     const { handleSubmit } = this.props;
+    const { photos } = this.props.initialValues;
 
     return (
       <form className="form-horizontal" onSubmit={ handleSubmit }>
@@ -55,12 +60,14 @@ class MovieForm extends Component {
           <Field name="coverImage" component={ FileDropzone } />
         </div>
         <div className="form-group">
-          <label htmlFor="coverImage">Photos</label>
-          <div className="form-group">
-            <label className="custom-file">
-              <input type="file" id="file" className="custom-file-input" />
-              <span className="custom-file-control"></span>
-            </label>
+          <label htmlFor="photos">Photos</label>
+          <div className="dropzone-block">
+            <Field name="photo_new" component={ FileDropzone } afterDrop={ this.afterDrop.bind(this) } />
+            { photos &&
+              photos.map (photo =>
+                <Field key={ photos.indexOf(photo) } name={ `photo_${photos.indexOf(photo)}` } component={ FileDropzone } photo={ photo } afterDrop={ this.afterDrop.bind(this) }/>
+              )
+            }
           </div>
         </div>
         <div className="form-group">

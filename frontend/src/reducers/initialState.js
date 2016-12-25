@@ -13,7 +13,9 @@ export default {
   },
   movies: {
     movies: [],
-    movie: {},
+    movie: {
+      photos: []
+    },
     pages: 8,
     message: '',
     error: '',

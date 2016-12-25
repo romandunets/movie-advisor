@@ -15,6 +15,10 @@ class MovieNewPage extends Component {
     this.props.actions.loadMovieFromOMDB(title);
   }
 
+  handleAddPhoto(photo) {
+    this.props.actions.addPhoto(photo);
+  }
+
   render() {
     const { message, movie, isLoading } = this.props;
 
@@ -24,7 +28,7 @@ class MovieNewPage extends Component {
           <h3 className="title text-center">Create new movie</h3>
           <MessageBox message={ message } />
           { !isLoading &&
-            <MovieForm onSubmit={ this.handleSubmit.bind(this) } loadFromOMDB={ this.handleLoadFromOMDB.bind(this) } initialValues={ movie }/>
+            <MovieForm onSubmit={ this.handleSubmit.bind(this) } loadFromOMDB={ this.handleLoadFromOMDB.bind(this) } addPhoto={ this.handleAddPhoto.bind(this) } initialValues={ movie }/>
           }
         </div>
       </div>

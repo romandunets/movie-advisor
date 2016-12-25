@@ -107,6 +107,21 @@ img {
   color:red;
 }
 
+.dropzone-block {
+  display: table;
+  max-width: 420px;
+}
+
+.dropzone-block .dropzone {
+  float: left;
+  margin: 5px;
+}
+
+.dropzone > div {
+  display: table-cell;
+  vertical-align: middle;
+}
+
 .dropzone img {
   display: block;
   margin: auto;
