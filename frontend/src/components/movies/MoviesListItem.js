@@ -22,7 +22,7 @@ class MoviesListItem extends Component {
             </div>
             <div className="col-md-6">
               <div className="float-xs-right actions">
-                { isAuthenticated &&
+                { isAuthenticated && !movie.isWatched &&
                   <Link to={`/movies/${movie.id}/watched`} role="button" className="btn btn-sm btn-secondary action">Watched</Link>
                 }
               </div>
