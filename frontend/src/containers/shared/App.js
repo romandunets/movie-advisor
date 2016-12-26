@@ -4,6 +4,7 @@ import { bindActionCreators } from 'redux';
 import { browserHistory } from 'react-router';
 
 import * as authActions from '../../actions/authActions';
+import * as movieActions from '../../actions/movieActions';
 import AppNavigation from '../../components/shared/AppNavigation';
 import AppFooter from '../../components/shared/AppFooter';
 
@@ -17,12 +18,15 @@ class App extends Component {
   handleSearch(event) {
     if (event.charCode == 13) {
       event.preventDefault();
-      var query = document.getElementById('searchField').value;
-      if (query.length > 0) {
-        browserHistory.push({ pathname: 'movies', query: { search: query }});
+      var search = document.getElementById('searchField').value;
+      if (search.length > 0) {
+        const query = { search: search };
+        this.props.actions.listMovies(query);
+        browserHistory.push({ pathname: '/movies', query});
       }
       else {
-        browserHistory.push('/');
+        this.props.actions.listMovies();
+        browserHistory.push('/movies');
       }
     }
   }
@@ -50,7 +54,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    actions: bindActionCreators(authActions, dispatch)
+    actions: bindActionCreators(authActions, dispatch),
+    actions: bindActionCreators(movieActions, dispatch)
   }
 }
 
