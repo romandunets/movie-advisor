@@ -162,6 +162,10 @@ img {
   border-top: 0;
 }
 
+.table-clickable tbody tr {
+  cursor: pointer;
+}
+
 .properties p {
   margin-bottom: 0px
 }

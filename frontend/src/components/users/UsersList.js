@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import UsersListItem from './UsersListItem'
 
 const UsersList = ({ users }) => (
-  <table className="table">
+  <table className="table table-hover table-clickable">
     <thead>
       <tr>
         <th>Username</th>
