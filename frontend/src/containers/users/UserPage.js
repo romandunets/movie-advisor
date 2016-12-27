@@ -16,7 +16,7 @@ class UserPage extends Component {
   }
 
   render() {
-    const { user, message } = this.props;
+    const { user, isLoading, message } = this.props;
 
     if (!isLoading) {
       return (
@@ -35,6 +35,7 @@ class UserPage extends Component {
 const mapStateToProps = (state) => {
   return {
     user: state.users.user,
+    isLoading: state.users.isLoading,
     message: state.users.message
   }
 }

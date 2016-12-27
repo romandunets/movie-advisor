@@ -4,11 +4,22 @@ import { connect } from 'react-redux'
 import UsersListItem from './UsersListItem'
 
 const UsersList = ({ users }) => (
-  <ul>{ users.map (user => <UsersListItem key={user.id} user={user} />) }</ul>
+  <table className="table">
+    <thead>
+      <tr>
+        <th>Username</th>
+        <th>Email</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Role</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      { users.map (user => <UsersListItem key={user.id} user={user} />) }
+    </tbody>
+  </table>
 )
 
-UsersList.propTypes = {
-  users: PropTypes.array.isRequired
-}
-
 export default UsersList;
+

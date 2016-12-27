@@ -1,10 +1,21 @@
-import React from 'react';
-import { Link } from 'react-router'
+import React, { Component } from 'react';
+import { browserHistory } from 'react-router';
 
-const UsersListItem = ({ user }) => (
-  <li>
-    <Link to={`/users/${user.id}`}>{user.username}</Link>
-  </li>
-)
+class UsersListItem extends Component {
+  render() {
+    const { user, isAuthenticated } = this.props;
+
+    return (
+      <tr onClick={(e) => browserHistory.push(`users/${user.id}`)}>
+        <td>{ user.username }</td>
+        <td>{ user.email }</td>
+        <td>{ user.firstName }</td>
+        <td>{ user.secondName }</td>
+        <td>{ user.roleName.charAt(0).toUpperCase() + user.roleName.slice(1) }</td>
+        <td>{ user.description }</td>
+      </tr>
+    );
+  }
+}
 
 export default UsersListItem;

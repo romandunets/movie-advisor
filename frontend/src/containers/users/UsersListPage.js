@@ -1,10 +1,11 @@
-import React, { Component, PropTypes } from 'react'
-import { connect } from 'react-redux'
-import { Link } from 'react-router'
-import { bindActionCreators } from 'redux'
+import React, { Component, PropTypes } from 'react';
+import { connect } from 'react-redux';
+import { Link } from 'react-router';
+import { bindActionCreators } from 'redux';
 
-import * as userActions from '../../actions/userActions'
-import UsersList from '../../components/users/UsersList'
+import * as userActions from '../../actions/userActions';
+import UsersList from '../../components/users/UsersList';
+import UsersActionBar from '../../components/users/UsersActionBar';
 
 class UsersListPage extends Component {
   componentWillMount() {
@@ -12,11 +13,13 @@ class UsersListPage extends Component {
   }
 
   render() {
-    const { users, message, error } = this.props;
+    const { users, isAuthenticated, isAdmin } = this.props;
+
     return (
       <div>
-        <h2>{ message }</h2>
-        <Link to={`/users/new`}>Create user</Link>
+        <div className="header">
+          <UsersActionBar isAuthenticated={ isAuthenticated } isAdmin={ isAdmin } />
+        </div>
         <UsersList users={ users } />
       </div>
     );
@@ -26,8 +29,8 @@ class UsersListPage extends Component {
 const mapStateToProps = (state) => {
   return {
     users: state.users.users,
-    message: state.users.message,
-    error: state.users.error
+    isAuthenticated: state.auth.isAuthenticated,
+    isAdmin: state.auth.currentUser.roleName == 'admin'
   }
 }
 

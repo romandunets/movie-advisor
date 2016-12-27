@@ -4,13 +4,21 @@
       "id": 1,
       "username": "admin",
       "password": "admin",
-      "email": "admin@email.com"
+      "email": "admin@email.com",
+      "firstName": "Alpha",
+      "secondName": "Admin",
+      "roleName": "admin",
+      "description": "This is main admin..."
     },
     {
       "id": 2,
       "username": "test",
       "password": "test",
-      "email": "test@email.com"
+      "email": "test@email.com",
+      "firstName": "Roman",
+      "secondName": "Dunets",
+      "roleName": "user",
+      "description": "This is main user..."
     }
   ],
   "movies": [

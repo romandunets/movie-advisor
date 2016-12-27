@@ -158,6 +158,10 @@ img {
   padding-right: 0px
 }
 
+.table thead th {
+  border-top: 0;
+}
+
 .properties p {
   margin-bottom: 0px
 }
@@ -191,7 +195,6 @@ img {
 .action {
   margin: 4px 0px 4px 5px;
 }
-
 
 .people {
   padding-top: 10px;

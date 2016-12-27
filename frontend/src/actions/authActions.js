@@ -40,7 +40,7 @@ export function login(credentials) {
     /*return authApi.login(credentials)
       .then(function (response) {*/
         localStorage.setItem('token', 'TOKEN');//localStorage.setItem('token', response.data.token);
-        const user = { username: credentials.username, role: 'admin' }
+        const user = { username: credentials.username, roleName: 'admin' }
         dispatch(loginSuccess(user));
         browserHistory.replace('/');
     /*  })
