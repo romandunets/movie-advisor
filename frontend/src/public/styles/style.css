@@ -217,3 +217,11 @@ img {
 ul{
   padding-left: 0px;
 }
+
+.ratingstars{
+  font-size: 22px;
+}
+
+.ratingbutton{
+  float: right;
+}
