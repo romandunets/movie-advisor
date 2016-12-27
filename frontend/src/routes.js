@@ -20,6 +20,7 @@ import WatchedMoviesListPage from './containers/movies/WatchedMoviesListPage';
 import MoviesSearchPage from './containers/movies/MoviesSearchPage';
 import MovieNewPage from './containers/movies/MovieNewPage';
 import MovieEditPage from './containers/movies/MovieEditPage';
+import MoviePageWatched from './containers/movies/MoviePageWatched';
 
 export default (store) => {
   return (
@@ -47,6 +48,7 @@ export default (store) => {
           <Route path="watched" component={WatchedMoviesListPage} />
           <Route path=":id" component={MoviePage} />
           <Route path=":id/edit" component={MovieEditPage} />
+          <Route path=":id/watched" component={MoviePageWatched} />
         </Route>
       </Route>
     </Route>
