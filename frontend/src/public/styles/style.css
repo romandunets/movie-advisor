@@ -158,6 +158,10 @@ img {
   padding-right: 0px
 }
 
+dl dt, dd {
+  height: 24px;
+}
+
 .table thead th {
   border-top: 0;
 }

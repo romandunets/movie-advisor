@@ -18,6 +18,8 @@
       "firstName": "Roman",
       "secondName": "Dunets",
       "roleName": "user",
+      "birthday": "10.10.1995",
+      "gender": "male",
       "description": "This is main user..."
     }
   ],
