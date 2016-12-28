@@ -7,6 +7,7 @@ import HomePage from './containers/home/HomePage';
 
 import SigninPage from './containers/auth/SigninPage';
 import SignupPage from './containers/auth/SignupPage';
+import ProfilePage from './containers/auth/ProfilePage';
 
 import UsersListPage from './containers/users/UsersListPage';
 import UserPage from './containers/users/UserPage';
@@ -31,7 +32,7 @@ export default (store) => {
       <Route component={App}>
         <IndexRoute component={HomePage} />
 
-        <Route path="profile" component={UserPage} />
+        <Route path="profile" component={ProfilePage} />
 
         <Route path="users" onEnter={requireAuthentication(store)}>
           <IndexRoute component={UsersListPage} />
