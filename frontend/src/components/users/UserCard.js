@@ -1,7 +1,24 @@
 import React, { Component } from 'react';
+import ReactDOM from 'react-dom';
 import { Link } from 'react-router';
 
 class UserCard extends Component {
+  componentDidMount() {
+    var button = ReactDOM.findDOMNode(this.refs.deleteUserButton);
+    if (button) {
+      button.setAttribute('data-toggle', 'modal');
+      button.setAttribute('data-target', '.delete-user-modal');
+    }
+
+    var modal = ReactDOM.findDOMNode(this.refs.deleteUserModal);
+    if (modal) {
+      modal.setAttribute('tabindex', '-1');
+      modal.setAttribute('aria-labelledby', 'Delete user');
+      modal.setAttribute('aria-hidden', 'true');
+      modal.setAttribute('data-backdrop', 'false');
+    }
+  }
+
   render() {
     const { currentUser, user, deleteUser, isAuthenticated, isAdmin } = this.props;
 
@@ -37,6 +54,25 @@ class UserCard extends Component {
         <div>
           <h6><b>Description</b></h6>
           <p>{ user.description }</p>
+        </div>
+        <div className="modal fade delete-user-modal" ref="deleteUserModal" role="dialog">
+          <div className="modal-dialog modal-sm">
+            <div className="modal-content">
+              <div className="modal-header">
+                <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 className="modal-title">Delete user</h4>
+              </div>
+              <div className="modal-body">
+                <p>Do you want to delete { user.username } account profile permanently?</p>
+              </div>
+              <div className="modal-footer">
+                <button type="button" className="btn btn-secondary float-xs-left" data-dismiss="modal">Cancel</button>
+                <button type="button" className="btn btn-danger float-xs-right" onClick={(e) => deleteUser(user.id)}>Delete</button>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     );
