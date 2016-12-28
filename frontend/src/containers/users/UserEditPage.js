@@ -1,9 +1,10 @@
-import React, { Component, PropTypes } from 'react'
-import { connect } from 'react-redux'
-import { bindActionCreators } from 'redux'
+import React, { Component, PropTypes } from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 
-import * as userActions from '../../actions/userActions'
-import UserForm from '../../components/users/UserForm'
+import * as userActions from '../../actions/userActions';
+import MessageBox from '../../components/shared/MessageBox';
+import UserForm from '../../components/users/UserForm';
 
 class UserEditPage extends Component {
   componentWillMount() {
@@ -15,22 +16,27 @@ class UserEditPage extends Component {
   }
 
   render() {
-    const { user, isLoading } = this.props;
-    const formValues = { initialValues: user }
+    const { user, message, isLoading } = this.props;
+    const initialValues = { ...user };
 
-    if (!isLoading) {
-      return (
-        <UserForm onSubmit={ this.handleSubmit.bind(this) } {...formValues} />
-      );
-    }
-
-    return null;
+    return (
+      <div className="center-container">
+        <div className="center-content">
+          <h3 className="title text-center">Edit user</h3>
+          <MessageBox message={ message } />
+          { !isLoading &&
+            <UserForm onSubmit={ this.handleSubmit.bind(this) } initialValues={ initialValues } />
+          }
+        </div>
+      </div>
+    );
   }
 }
 
 const mapStateToProps = (state) => {
   return {
     user: state.users.user,
+    message: state.users.message,
     isLoading: state.users.isLoading
   }
 }
