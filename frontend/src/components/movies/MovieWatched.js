@@ -7,20 +7,15 @@ import StarRatingComponent from 'react-star-rating-component';
 class MovieWatched extends Component {
   constructor(props){
     super(props);
-    this.rating = 3;
+    this.state = {rating: 0};
   }
 
   onStarClick(nextValue, prevValue, name) {
-    this.rating = nextValue;
-  }
-
-  saveRating(){
-    console.log("Save rating "+this.rating+" for movie "+this.props.movie.id);
+    this.setState({rating: nextValue});
   }
 
   render() {
-    const { movie, isAuthenticated } = this.props;
-
+    const { movie, rateMovie, isAuthenticated } = this.props;
     return (
       <div className="row">
         <div className="row">
@@ -81,14 +76,14 @@ class MovieWatched extends Component {
               <StarRatingComponent
                 name="rate1"
                 starCount={5}
-                value={this.rating}
+                value={this.state.rating}
                 renderStarIcon={() => <span className="ratingstars">&#9733;</span>}
                 onStarClick={this.onStarClick.bind(this)}
               />
             </div>
             <div className="col-md-6">
               <div className="float-xs-right">
-                <button type="button" ref="rateMovieButton" className="btn btn-sm btn-primary action" onClick={this.saveRating.bind(this)}>Submit</button>
+                <button type="button" ref="rateMovieButton" className="btn btn-sm btn-primary action" onClick={() => rateMovie(movie.id, this.state.rating)}>Submit</button>
               </div>
             </div>
           </div>

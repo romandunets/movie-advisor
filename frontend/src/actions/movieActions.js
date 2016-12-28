@@ -252,6 +252,73 @@ function deleteMovieFailure(error) {
   }
 }
 
+
+export function markMovieWatched(id, watched) {
+  return function(dispatch) {
+    dispatch(markMovieWatchedRequest());
+    MovieApi.markMovieWatched(id, watched)
+      .then(function (response) {
+        dispatch(markMovieWatchedSuccess(response.data));
+        //browserHistory.push(`/movies/${movie.id}`);
+      })
+      .catch(function (error) {
+        dispatch(markMovieWatchedFailure(error));
+      });
+  }
+}
+
+function markMovieWatchedRequest() {
+  return { type: types.MARK_MOVIE_WATCHED_REQUEST }
+}
+
+function markMovieWatchedSuccess(movie) {
+  return {
+    type: types.MARK_MOVIE_WATCHED_SUCCESS,
+    payload: { movie }
+  }
+}
+
+function markMovieWatchedFailure(error) {
+  return {
+    type: types.MARK_MOVIE_WATCHED_FAILURE,
+    payload: { error }
+  }
+}
+
+
+export function rateMovie(id, rating) {
+  return function(dispatch) {
+    dispatch(rateMovieRequest());
+    MovieApi.rateMovie(id, rating)
+      .then(function (response) {
+        dispatch(rateMovieSuccess(response.data));
+        //browserHistory.push(`/movies/${movie.id}`);
+      })
+      .catch(function (error) {
+        dispatch(rateMovieFailure(error));
+      });
+  }
+}
+
+function rateMovieRequest() {
+  return { type: types.RATE_MOVIE_REQUEST }
+}
+
+function rateMovieSuccess(movie) {
+  return {
+    type: types.RATE_MOVIE_SUCCESS,
+    payload: { movie }
+  }
+}
+
+function rateMovieFailure(error) {
+  return {
+    type: types.RATE_MOVIE_FAILURE,
+    payload: { error }
+  }
+}
+
+
 export function loadMovieFromOMDB(title) {
   if (title.length > 0) {
     return function(dispatch) {

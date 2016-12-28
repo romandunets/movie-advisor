@@ -51,6 +51,18 @@ const moviesReducer = (state = initialState.movies, action) => {
       return {...state, message: 'Movie successfully deleted', error: ''}
     case types.DELETE_MOVIE_FAILURE:
       return {...state, message: '', error: action.payload}
+    case types.MARK_MOVIE_WATCHED_REQUEST:
+      return  {...state, message: '', error: ''}
+    case types.MARK_MOVIE_WATCHED_SUCCESS:
+      return {...state, message: 'Movie successfully marked as watched', error: ''}
+    case types.MARK_MOVIE_WATCHED_FAILURE:
+      return {...state, message: '', error: action.payload}
+    case types.RATE_MOVIE_REQUEST:
+      return  {...state, message: '', error: ''}
+    case types.RATE_MOVIE_SUCCESS:
+      return {...state, message: 'Movie successfully rated', error: ''}
+    case types.RATE_MOVIE_FAILURE:
+      return {...state, message: '', error: action.payload}
     case types.LOAD_MOVIE_FROM_OMDB_REQUEST:
       return {...state, movie: {}, isLoading: true}
     case types.LOAD_MOVIE_FROM_OMDB_SUCCESS:
