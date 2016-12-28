@@ -158,6 +158,19 @@ img {
   padding-right: 0px
 }
 
+.simple{
+  max-height: 150px;
+}
+
+.simple-text{
+  padding-top: 10px;
+}
+
+.thumbnail-small {
+  height: 100px;
+  width: auto;
+}
+
 .table thead th {
   border-top: 0;
 }
@@ -231,4 +244,14 @@ ul{
 
 .ratingform{
   padding-top: 20px;
+}
+
+.homepage-text{
+  padding-top: 10px;
+  padding-bottom: 30px;
+}
+
+.homepage-text p{
+  padding-left: 15%;
+  padding-right: 15%;
 }
