@@ -44,6 +44,16 @@ class MovieApi extends Api {
   static listTags() {
     return this.getClient().get(`/tags`);
   }
+
+  static markMovieWatched(id, watched) {
+    //TODO update path etc depending on backend
+    return this.getClient().post(`/movies/markWatched`, {id: id, watched: watched});
+  }
+
+  static rateMovie(id, rating){
+    //TODO update path etc depending on backend
+    return this.getClient().post(`/movies/rateMovie`, {id: id, rating: rating});
+  }
 }
 
 export default MovieApi;

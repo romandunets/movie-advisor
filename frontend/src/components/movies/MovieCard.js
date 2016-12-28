@@ -1,14 +1,9 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import { Link } from 'react-router';
-import StarRatingComponent from 'react-star-rating-component';
 
 
 class MovieCard extends Component {
-  constructor(props){
-    super(props);
-    this.rating = 3;
-  }
   componentDidMount() {
     var button = ReactDOM.findDOMNode(this.refs.deleteMovieButton);
     if (button) {
@@ -23,14 +18,6 @@ class MovieCard extends Component {
       modal.setAttribute('aria-hidden', 'true');
       modal.setAttribute('data-backdrop', 'false');
     }
-  }
-
-  onStarClick(nextValue, prevValue, name) {
-    this.rating = nextValue;
-  }
-
-  saveRating(){
-    console.log("Save rating "+this.rating+" for movie "+this.props.movie.id);
   }
 
   render() {
@@ -89,23 +76,6 @@ class MovieCard extends Component {
               <p><b>Studio:</b> { movie.studio }</p>
             </div>
           </div>
-          { isAuthenticated && movie.isWatched &&
-          <div className="row">
-            <div className="col-md-8 plot">
-              <h5>Please rate the movie</h5>
-              <div>
-                <StarRatingComponent
-                  name="rate1"
-                  starCount={5}
-                  value={this.rating}
-                  renderStarIcon={() => <span className="ratingstars">&#9733;</span>}
-                  onStarClick={this.onStarClick.bind(this)}
-                />
-                <button type="button" ref="rateMovieButton" className="btn btn-sm btn-primary action ratingbutton" onClick={this.saveRating.bind(this)}>Rate</button>
-              </div>
-            </div>
-          </div>
-          }
         </div>
         <div className="modal fade delete-movie-modal" ref="deleteMovieModal" role="dialog">
           <div className="modal-dialog modal-sm">

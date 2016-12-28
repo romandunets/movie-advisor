@@ -25,6 +25,9 @@ class MoviesListItem extends Component {
                 { isAuthenticated && !movie.isWatched &&
                   <Link to={`/movies/${movie.id}/watched`} role="button" className="btn btn-sm btn-secondary action">Watched</Link>
                 }
+                { isAuthenticated && movie.isWatched &&
+                  <Link to={`/movies/${movie.id}/watched`} role="button" className="btn btn-sm btn-primary action">Watched</Link>
+                }
               </div>
               { isAuthenticated &&
                 <div className="float-xs-right">
