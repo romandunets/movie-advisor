@@ -4,12 +4,21 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server --colors --inline --port 3000",
+    "dev": "webpack-dev-server --colors --inline --port 3000",
     "build": "webpack --progress --colors",
-    "api": "json-server --watch data/db.json --port 9000"
+    "api": "json-server --watch data/db.json --port 9000",
+    "start": "node ./node_modules/webpack-dev-server/bin/webpack-dev-server.js",
+    "prod": "NODE_ENV=production node server.js",
+    "postinstall": "webpack -p"
   },
   "dependencies": {
     "axios": "^0.15.2",
+    "babel-core": "^6.13.2",
+    "babel-loader": "^6.2.5",
+    "babel-plugin-transform-object-rest-spread": "^6.16.0",
+    "babel-preset-es2015": "^6.13.2",
+    "babel-preset-react": "^6.11.1",
+    "express": "^4.14.0",
     "react": "^15.4.1",
     "react-dom": "^15.3.1",
     "react-dropzone": "^3.8.0",
@@ -18,17 +27,12 @@
     "react-star-rating-component": "^1.2.2",
     "redux": "^3.5.2",
     "redux-form": "^6.2.0",
-    "redux-thunk": "^2.1.0"
+    "redux-thunk": "^2.1.0",
+    "transfer-webpack-plugin": "^0.1.4",
+    "webpack": "^1.13.1"
   },
   "devDependencies": {
-    "babel-core": "^6.13.2",
-    "babel-loader": "^6.2.5",
-    "babel-plugin-transform-object-rest-spread": "^6.16.0",
-    "babel-preset-es2015": "^6.13.2",
-    "babel-preset-react": "^6.11.1",
     "json-server": "^0.8.22",
-    "transfer-webpack-plugin": "^0.1.4",
-    "webpack": "^1.13.1",
     "webpack-dev-server": "^1.14.1"
   }
 }
