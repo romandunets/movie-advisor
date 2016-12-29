@@ -83,7 +83,7 @@ class MovieWatched extends Component {
             </div>
             <div className="col-md-6">
               <div className="float-xs-right">
-                <button type="button" ref="rateMovieButton" className="btn btn-sm btn-primary action" onClick={() => rateMovie(movie.id, this.state.rating)}>Submit</button>
+                <button type="button" ref="rateMovieButton" className="btn btn-sm btn-primary action" onClick={() => rateMovie(this.state.rating)}>Submit</button>
               </div>
             </div>
           </div>

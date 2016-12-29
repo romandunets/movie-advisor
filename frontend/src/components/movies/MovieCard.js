@@ -21,8 +21,8 @@ class MovieCard extends Component {
   }
 
   render() {
-    const { movie, deleteMovie, isAuthenticated, isAdmin } = this.props;
-
+    const { movie, deleteMovie, isAuthenticated, isAdmin, markAsWatched, deleteMarkAsWatched  } = this.props;
+    
     return (
       <div className="row">
         <div className="thumbnail-box col-md-3">
@@ -39,7 +39,10 @@ class MovieCard extends Component {
             <div className="col-md-6">
               <div className="float-xs-right actions">
                 { isAuthenticated && !movie.isWatched &&
-                  <Link to={`/movies/${movie.id}/watched`} role="button" className="btn btn-sm btn-secondary action">Watched</Link>
+                  <button className="btn btn-sm btn-secondary action" onClick={() => markAsWatched(movie.id)}>Watched</button>
+                }
+                { isAuthenticated && movie.isWatched &&
+                  <button className="btn btn-sm btn-primary action" onClick={() => deleteMarkAsWatched(movie.id)}>Watched</button>
                 }
                 { isAuthenticated && isAdmin &&
                   <Link to={`/movies/${movie.id}/edit`} role="button" className="btn btn-sm btn-primary action">Edit</Link>

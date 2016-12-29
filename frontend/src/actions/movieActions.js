@@ -253,13 +253,13 @@ function deleteMovieFailure(error) {
 }
 
 
-export function markMovieWatched(id, watched) {
+export function markMovieWatched(userid, movieid) {
   return function(dispatch) {
     dispatch(markMovieWatchedRequest());
-    MovieApi.markMovieWatched(id, watched)
+    MovieApi.markMovieWatched(userid, movieid)
       .then(function (response) {
         dispatch(markMovieWatchedSuccess(response.data));
-        //browserHistory.push(`/movies/${movie.id}`);
+        browserHistory.push(`/movies/${movie.id}/watched`);
       })
       .catch(function (error) {
         dispatch(markMovieWatchedFailure(error));
@@ -285,11 +285,40 @@ function markMovieWatchedFailure(error) {
   }
 }
 
+export function deleteMarkMovieWatched(userid, movieid) {
+  return function(dispatch) {
+    dispatch(deleteMarkMovieWatchedRequest());
+    MovieApi.deleteMarkMovieWatched(userid, movieid)
+      .then(function (response) {
+        dispatch(deleteMarkMovieWatchedSuccess(response.data));
+        browserHistory.push(`/movies/${movie.id}/watched`);
+      })
+      .catch(function (error) {
+        dispatch(deleteMarkMovieWatchedFailure(error));
+      });
+  }
+}
 
-export function rateMovie(id, rating) {
+function deleteMarkMovieWatchedRequest() {
+  return { type: types.DELETE_MARK_MOVIE_WATCHED_REQUEST }
+}
+
+function deleteMarkMovieWatchedSuccess(movie) {
+  return { type: types.DELETE_MARK_MOVIE_WATCHED_SUCCESS }
+}
+
+function deleteMarkMovieWatchedFailure(error) {
+  return {
+    type: types.DELETE_MARK_MOVIE_WATCHED_FAILURE,
+    payload: { error }
+  }
+}
+
+
+export function rateMovie(userid, movieid, rating) {
   return function(dispatch) {
     dispatch(rateMovieRequest());
-    MovieApi.rateMovie(id, rating)
+    MovieApi.rateMovie(userid, movieid, rating)
       .then(function (response) {
         dispatch(rateMovieSuccess(response.data));
         //browserHistory.push(`/movies/${movie.id}`);

@@ -10,12 +10,12 @@ class MoviePageWatched extends Component {
     this.props.actions.getMovie(this.props.params.id);
   }
 
-  rateMovie(id, rating) {
-    this.props.actions.rateMovie(id, rating);
+  rateMovie(rating) {
+    this.props.actions.rateMovie(this.props.currentUser.id, this.props.movie.id, rating);
   }
 
   render() {
-    const { movie, isLoading, isAuthenticated } = this.props;
+    const { movie, isLoading, isAuthenticated, currentUser } = this.props;
 
     if (!isLoading) {
       return (
@@ -34,6 +34,7 @@ const mapStateToProps = (state) => {
     movie: state.movies.movie,
     isLoading: state.movies.isLoading,
     isAuthenticated: state.auth.isAuthenticated,
+    currentUser: state.auth.currentUser
   }
 }
 

@@ -22,7 +22,7 @@ class MovieApi extends Api {
   }
 
   static createMovie(movie) {
-    return this.getClient().post(`/movies`, movie);
+    return this.getClient().post(`/movies/create`, movie);
   }
 
   static updateMovie(movie) {
@@ -45,14 +45,18 @@ class MovieApi extends Api {
     return this.getClient().get(`/tags`);
   }
 
-  static markMovieWatched(id, watched) {
+  static markMovieWatched(userid, movieid) {
     //TODO update path etc depending on backend
-    return this.getClient().post(`/movies/markWatched`, {id: id, watched: watched});
+    return this.getClient().post(`/users_to_movies`, {user: userid, movie: movieid, rating: 3});
   }
 
-  static rateMovie(id, rating){
+  static deleteMarkMovieWatched(userid, movieid){
+    return this.getClient().delete(`/users_to_movies/${userid}/${movieid}`);
+  }
+
+  static rateMovie(userid, movieid, rating){
     //TODO update path etc depending on backend
-    return this.getClient().post(`/movies/rateMovie`, {id: id, rating: rating});
+    return this.getClient().put(`/users_to_movies/${userid}/${movieid}`, {user: userid, movie: movieid, rating: rating});
   }
 }
 

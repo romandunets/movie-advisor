@@ -25,6 +25,14 @@ class MoviesListPage extends Component {
     browserHistory.push({ pathname: this.props.location.pathname, query: { search, page }});
   }
 
+  markAsWatched(movieid){
+    this.props.actions.markMovieWatched(this.props.currentUser.id, movieid);
+  }
+
+  deleteMarkAsWatched(movieid){
+    this.props.actions.deleteMarkMovieWatched(this.props.currentUser.id, movieid);
+  }
+
   render() {
     const { movies, message, total, isAuthenticated, isAdmin } = this.props;
     const page = this.props.location.query.page;
@@ -36,7 +44,7 @@ class MoviesListPage extends Component {
           <Pagination page={page} total={total} onPageSelect={this.handlePageSelect.bind(this)} />
           <MoviesActionBar isAuthenticated={isAuthenticated} isAdmin={isAdmin} />
         </div>
-        <MoviesList movies={movies} isAuthenticated={isAuthenticated} />
+        <MoviesList movies={movies} isAuthenticated={isAuthenticated} markAsWatched={this.markAsWatched.bind(this)} deleteMarkAsWatched={this.deleteMarkAsWatched.bind(this)} />
         <div>
           <Pagination className="text-center" page={page} total={total} onPageSelect={this.handlePageSelect.bind(this)} />
         </div>
@@ -51,6 +59,7 @@ const mapStateToProps = (state) => {
     message: state.movies.message,
     total: state.movies.pages,
     isAuthenticated: state.auth.isAuthenticated,
+    currentUser: state.auth.currentUser,
     isAdmin: state.auth.currentUser.roleName == 'admin'
   }
 }

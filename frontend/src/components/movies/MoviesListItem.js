@@ -3,7 +3,7 @@ import { Link } from 'react-router';
 
 class MoviesListItem extends Component {
   render() {
-    const { movie, isAuthenticated } = this.props;
+    const { movie, isAuthenticated, markAsWatched, deleteMarkAsWatched } = this.props;
 
     return (
       <div className="list-item">
@@ -23,10 +23,10 @@ class MoviesListItem extends Component {
             <div className="col-md-6">
               <div className="float-xs-right actions">
                 { isAuthenticated && !movie.isWatched &&
-                  <Link to={`/movies/${movie.id}/watched`} role="button" className="btn btn-sm btn-secondary action">Watched</Link>
+                  <button className="btn btn-sm btn-secondary action" onClick={() => markAsWatched(movie.id)}>Watched</button>
                 }
                 { isAuthenticated && movie.isWatched &&
-                  <Link to={`/movies/${movie.id}/watched`} role="button" className="btn btn-sm btn-primary action">Watched</Link>
+                  <button className="btn btn-sm btn-primary action" onClick={() => deleteMarkAsWatched(movie.id)}>Watched</button>
                 }
               </div>
               { isAuthenticated &&
