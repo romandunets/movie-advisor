@@ -6,7 +6,7 @@ const moviesReducer = (state = initialState.movies, action) => {
     case types.LIST_MOVIES_REQUEST:
       return {...state, movies: []}
     case types.LIST_MOVIES_SUCCESS:
-      return {...state, movies: action.payload.movies}
+      return {...state, movies: action.payload.movies.data}
     case types.LIST_MOVIES_FAILURE:
       return {...state, error: action.payload}
     case types.LIST_RECOMMENDED_MOVIES_REQUEST:

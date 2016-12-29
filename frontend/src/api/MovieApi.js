@@ -2,7 +2,7 @@ import Api from './Api';
 
 class MovieApi extends Api {
   static listMovies(params) {
-    return this.getClient().get(`/movies`, { params });
+    return this.getClient().get(`/movie/list`, { params });
   }
 
   static listRecommendedMovies(params) {

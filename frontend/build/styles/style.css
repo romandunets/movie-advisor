@@ -1,0 +1,261 @@
+html, body, #app {
+  height: 100%;
+}
+
+body {
+  padding: 20px 0px;
+}
+
+img {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.navbar .navbar-brand {
+  padding: 0px;
+}
+
+.navbar .navbar-brand .icon {
+  width: 38px;
+  height: 38px;
+}
+
+.navbar .nav-item {
+  font-weight: bold;
+}
+
+.navbar .nav-actions .btn {
+  margin-left: 10px;
+}
+
+.navbar .navbar-nav.float-xs-right {
+  margin-left: 10px;
+}
+
+.content{
+  padding: 15px;
+}
+
+.header {
+  padding-bottom: 5px;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.header h3 {
+  display: inline-block;
+}
+
+.header .actions {
+  display: inline-block;
+  float: right;
+  margin-top: 2px;
+  padding: 3px 20px;
+  vertical-align: top;
+}
+
+.title {
+  margin-bottom: 20px;
+}
+
+.footer {
+  width: 100%;
+  height: 54px;
+  margin-bottom: 20px;
+  border-radius: .25rem;
+  line-height: 54px;
+  text-align: center;
+  font-size: 11pt;
+  background-color: #f5f5f5;
+}
+
+.footer p {
+  margin-bottom: 0px;
+}
+
+.header {
+  display: inline-block;
+  width: 100%;
+}
+
+.pagination {
+  margin: 3px 0px 0px 0px;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.form-narrow {
+  width: 300px;
+  margin: auto;
+}
+
+.form-horizontal {
+  min-width: 400px;
+}
+
+.form-inline .btn {
+  margin-left: 10px;
+}
+
+.form-group.required label:after {
+  content:" *";
+  color:red;
+}
+
+.dropzone-block {
+  display: table;
+  max-width: 420px;
+}
+
+.dropzone-block .dropzone {
+  float: left;
+  margin: 5px;
+}
+
+.dropzone > div {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.dropzone img {
+  display: block;
+  margin: auto;
+}
+
+.dropzone span {
+  display: block;
+  padding: 20px;
+}
+
+.center-container {
+  display: table;
+  height: 100%;
+  margin: auto;
+}
+
+.center-content {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.title {
+  text-align: center;
+}
+
+.list-item {
+  display: inline-block;
+  width: 100%;
+  border-bottom: 1px #dddddd solid;
+  padding-bottom: 8px;
+}
+
+.list-item .thumbnail-box {
+  padding-right: 0px
+}
+
+dl dt, dd {
+  height: 24px;
+}
+
+.simple{
+  max-height: 150px;
+}
+
+.simple-text{
+  padding-top: 10px;
+}
+
+.thumbnail-small {
+  height: 100px;
+  width: auto;
+}
+
+.table thead th {
+  border-top: 0;
+}
+
+.table-clickable tbody tr {
+  cursor: pointer;
+}
+
+.properties p {
+  margin-bottom: 0px
+}
+
+.plot {
+  padding-top: 10px;
+}
+
+.star, .match {
+  font-size: 22px;
+  padding-left: 15px;
+  padding-right: 5px;
+}
+
+.star {
+  color: #ffc107;
+}
+
+.match {
+  color: #f44336;
+}
+
+.rating {
+  font-size: 18px;
+}
+
+.actions {
+  margin-left: 20px;
+}
+
+.action {
+  margin: 4px 0px 4px 5px;
+}
+
+.people {
+  padding-top: 10px;
+}
+
+.detail-item {
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+.ratingrow{
+  padding-top: 20px;
+}
+
+.youwatchedrow{
+  padding: 15px;
+}
+
+.br-widget a{
+  font-size: 200% !important;
+}
+
+ul{
+  padding-left: 0px;
+}
+
+.ratingstars{
+  font-size: 22px;
+}
+
+.ratingform{
+  padding-top: 20px;
+}
+
+.homepage-text{
+  padding-top: 10px;
+  padding-bottom: 30px;
+}
+
+.homepage-text p{
+  padding-left: 15%;
+  padding-right: 15%;
+}

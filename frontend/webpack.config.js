@@ -31,7 +31,7 @@ const config = {
     ], path.resolve(__dirname, 'src')),
     new webpack.DefinePlugin({
       'process.env': {
-        'API_HOST': JSON.stringify('http://0.0.0.0:9000')
+        'API_HOST': JSON.stringify('https://movie-advisor-project.herokuapp.com/')
       }
     })
   ],
