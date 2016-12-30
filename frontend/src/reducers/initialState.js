@@ -18,7 +18,7 @@ export default {
     },
     genres: [],
     tags: [],
-    pages: 8,
+    pages: 1,
     message: '',
     error: '',
     isLoading: false
