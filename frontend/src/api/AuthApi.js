@@ -6,7 +6,7 @@ class AuthApi extends Api {
   }
 
   static signup(credentials) {
-    return this.getClient().post('/signup', credentials);
+    return this.getClient().post('/user/create', credentials);
   }
 }
 

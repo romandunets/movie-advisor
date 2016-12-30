@@ -7,15 +7,15 @@ import authApi from '../api/AuthApi';
 export function signup(credentials) {
   return function(dispatch) {
     dispatch(signupRequest());
-    /*return authApi.signup(credentials)
-      .then(function (response) {*/
-        localStorage.setItem('token', 'TOKEN');//localStorage.setItem('token', response.data.token);
-        dispatch(signupSuccess());
+    return authApi.signup(credentials)
+      .then(function (response) {
+        //localStorage.setItem('token', 'TOKEN');//localStorage.setItem('token', response.data.token);
+        dispatch(signupSuccess(response.data));
         browserHistory.replace('/');
-    /*  })
+      })
       .catch(function (error) {
         dispatch(signupFailure(error));
-      });*/
+      });
   }
 }
 
@@ -23,8 +23,11 @@ function signupRequest() {
   return { type: types.SIGNUP_REQUEST }
 }
 
-function signupSuccess() {
-  return { type: types.SIGNUP_SUCCESS }
+function signupSuccess(user) {
+  return {
+    type: types.SIGNUP_SUCCESS,
+    payload: user
+  }
 }
 
 function signupFailure(error) {
@@ -39,10 +42,8 @@ export function login(credentials) {
     dispatch(loginRequest());
     return authApi.login(credentials)
       .then(function (response) {
-        console.log(credentials);
-        //localStorage.setItem('token', 'TOKEN');//localStorage.setItem('token', response.data.token);
-        const user = { id: 1, username: credentials.username, roleName: 'admin' }
-        dispatch(loginSuccess(user));
+        //localStorage.setItem('token', response.data.token);
+        dispatch(loginSuccess(response.data));
         browserHistory.replace('/');
       })
       .catch(function (error) {
@@ -71,7 +72,7 @@ function loginFailure(error) {
 
 export function logout() {
   return function(dispatch) {
-    localStorage.removeItem('token');
+    //localStorage.removeItem('token');
     dispatch({ type: types.LOGOUT });
     browserHistory.replace('/signin');
   }
