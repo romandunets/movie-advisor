@@ -8,7 +8,7 @@ class MoviesSearchBar extends Component {
     return (
       <form className="form-inline float-md-left" onSubmit={ handleSubmit }>
         <div className="form-group">
-          <Field name="search" component="input" type="text" className="form-control" placeholder="Free text search"/>
+          <Field name="free_search" component="input" type="text" className="form-control" placeholder="Free text search"/>
         </div>
         <button type="submit" className="btn btn-primary">Search</button>
       </form>
