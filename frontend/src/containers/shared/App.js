@@ -54,8 +54,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    actions: bindActionCreators(authActions, dispatch),
-    actions: bindActionCreators(movieActions, dispatch)
+    actions: bindActionCreators({ ...authActions, ...movieActions }, dispatch)
   }
 }
 

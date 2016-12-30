@@ -37,16 +37,17 @@ function signupFailure(error) {
 export function login(credentials) {
   return function(dispatch) {
     dispatch(loginRequest());
-    /*return authApi.login(credentials)
-      .then(function (response) {*/
-        localStorage.setItem('token', 'TOKEN');//localStorage.setItem('token', response.data.token);
+    return authApi.login(credentials)
+      .then(function (response) {
+        console.log(credentials);
+        //localStorage.setItem('token', 'TOKEN');//localStorage.setItem('token', response.data.token);
         const user = { id: 1, username: credentials.username, roleName: 'admin' }
         dispatch(loginSuccess(user));
         browserHistory.replace('/');
-    /*  })
+      })
       .catch(function (error) {
         dispatch(loginFailure(error));
-      });*/
+      });
   }
 }
 
