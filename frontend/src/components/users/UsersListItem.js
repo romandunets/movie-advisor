@@ -11,7 +11,7 @@ class UsersListItem extends Component {
         <td>{ user.email }</td>
         <td>{ user.firstName }</td>
         <td>{ user.secondName }</td>
-        <td>{ user.roleName.charAt(0).toUpperCase() + user.roleName.slice(1) }</td>
+        <td>{ user.role.name.charAt(0).toUpperCase() + user.role.name.slice(1) }</td>
         <td>{ user.description }</td>
       </tr>
     );

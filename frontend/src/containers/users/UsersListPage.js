@@ -14,7 +14,6 @@ class UsersListPage extends Component {
 
   render() {
     const { users, isAuthenticated, isAdmin } = this.props;
-
     return (
       <div>
         <div className="header">
