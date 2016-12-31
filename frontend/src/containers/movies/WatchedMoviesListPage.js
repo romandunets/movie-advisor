@@ -11,17 +11,17 @@ import Pagination from '../../components/shared/Pagination';
 
 class WatchedMoviesListPage extends Component {
   componentWillMount() {
-    this.props.actions.listWatchedMovies({ page: this.props.location.query.page });
+    this.props.actions.listWatchedMovies(this.props.currentUser.id, { page: this.props.location.query.page });
   }
 
   handleSearch(search) {
-    this.props.actions.listWatchedMovies(search);
+    this.props.actions.listWatchedMovies(this.props.currentUser.id,search);
     browserHistory.push({ pathname: this.props.location.pathname, query: { ...search }});
   }
 
   handlePageSelect(page) {
     const search = this.props.location.query.search;
-    this.props.actions.listWatchedMovies({ search, page });
+    this.props.actions.listWatchedMovies(this.props.currentUser.id, { search, page });
     browserHistory.push({ pathname: this.props.location.pathname, query: { search, page }});
   }
 
@@ -50,6 +50,7 @@ const mapStateToProps = (state) => {
     movies: state.movies.movies,
     message: state.movies.message,
     total: state.movies.pages,
+    currentUser: state.auth.currentUser,
     isAuthenticated: state.auth.isAuthenticated,
     isAdmin: state.auth.currentUser.roleName == 'admin'
   }

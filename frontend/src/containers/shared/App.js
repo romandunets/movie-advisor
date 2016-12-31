@@ -20,7 +20,7 @@ class App extends Component {
       event.preventDefault();
       var search = document.getElementById('searchField').value;
       if (search.length > 0) {
-        const query = { search: search };
+        const query = { free_search: search };
         this.props.actions.listMovies(query);
         browserHistory.push({ pathname: '/movies', query});
       }

@@ -65,10 +65,10 @@ function listRecommendedMoviesFailure(error) {
   }
 }
 
-export function listWatchedMovies(query) {
+export function listWatchedMovies(userId, query) {
   return function(dispatch) {
     dispatch(listWatchedMoviesRequest());
-    MovieApi.listWatchedMovies(query)
+    MovieApi.listWatchedMovies(userId, query)
       .then(function (response) {
         dispatch(listWatchedMoviesSuccess(response.data));
       })
