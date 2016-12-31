@@ -41,15 +41,17 @@ export default (store) => {
           <Route path=":id/edit" component={UserEditPage} />
         </Route>
 
-        <Route path="movies" onEnter={requireAuthentication(store)}>
+        <Route path="movies">
           <IndexRoute component={MoviesListPage} />
-          <Route path="new" component={MovieNewPage} />
-          <Route path="search/:keyword" component={MoviesSearchPage} />
-          <Route path="recommended" component={RecommendedMoviesListPage} />
-          <Route path="watched" component={WatchedMoviesListPage} />
           <Route path=":id" component={MoviePage} />
-          <Route path=":id/edit" component={MovieEditPage} />
-          <Route path=":id/watched" component={MoviePageWatched} />
+          <Route onEnter={requireAuthentication(store)}>
+            <Route path="new" component={MovieNewPage} />
+            <Route path="search/:keyword" component={MoviesSearchPage} />
+            <Route path="recommended" component={RecommendedMoviesListPage} />
+            <Route path="watched" component={WatchedMoviesListPage} />
+            <Route path=":id/edit" component={MovieEditPage} />
+            <Route path=":id/watched" component={MoviePageWatched} />
+          </Route>
         </Route>
       </Route>
     </Route>

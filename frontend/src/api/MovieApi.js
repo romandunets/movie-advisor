@@ -6,31 +6,31 @@ class MovieApi extends Api {
   }
 
   static listRecommendedMovies(params) {
-    return this.getClient().get(`/movies`, { params }); '/recommended'
+    return this.getClient().get(`/movie`, { params }); '/recommended'
   }
 
   static listWatchedMovies(params) {
-    return this.getClient().get(`/movies`, { params }); '/watched'
+    return this.getClient().get(`/movie`, { params }); '/watched'
   }
 
   static searchMovies(query) {
-    return this.getClient().get(`/movies?q=${query}`);
+    return this.getClient().get(`/movie?q=${query}`);
   }
 
   static getMovie(id) {
-    return this.getClient().get(`/movies/${id}`);
+    return this.getClient().get(`/movie/${id}`);
   }
 
   static createMovie(movie) {
-    return this.getClient().post(`/movies/create`, movie);
+    return this.getClient().post(`/movie/create`, movie);
   }
 
   static updateMovie(movie) {
-    return this.getClient().put(`/movies/${movie.id}`, movie);
+    return this.getClient().put(`/movie/${movie.id}`, movie);
   }
 
   static deleteMovie(id) {
-    return this.getClient().delete(`/movies/${id}`);
+    return this.getClient().delete(`/movie/${id}`);
   }
 
   static loadFromOMDB(title) {
