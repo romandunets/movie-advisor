@@ -10,6 +10,7 @@ export function signup(credentials) {
     return authApi.signup(credentials)
       .then(function (response) {
         //localStorage.setItem('token', 'TOKEN');//localStorage.setItem('token', response.data.token);
+        localStorage.setItem('user', JSON.stringify(response.data));
         dispatch(signupSuccess(response.data));
         browserHistory.replace('/');
       })
@@ -43,6 +44,7 @@ export function login(credentials) {
     return authApi.login(credentials)
       .then(function (response) {
         //localStorage.setItem('token', response.data.token);
+        localStorage.setItem('user', JSON.stringify(response.data));
         dispatch(loginSuccess(response.data));
         browserHistory.replace('/');
       })
@@ -73,6 +75,7 @@ function loginFailure(error) {
 export function logout() {
   return function(dispatch) {
     //localStorage.removeItem('token');
+    localStorage.removeItem('user');
     dispatch({ type: types.LOGOUT });
     browserHistory.replace('/signin');
   }

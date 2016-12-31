@@ -1,7 +1,7 @@
 export default {
   auth: {
-    currentUser: {},
-    isAuthenticated: false,
+    currentUser: JSON.parse(localStorage.getItem('user')) || {},
+    isAuthenticated: localStorage.getItem('user') !== null,
     message: ''
   },
   users: {
