@@ -29,7 +29,7 @@ class MoviesListItem extends Component {
                   <button className="btn btn-sm btn-primary action" onClick={() => deleteMarkAsWatched(movie.id)}>Watched</button>
                 }
               </div>
-              { isAuthenticated &&
+              { isAuthenticated && movie.match &&
                 <div className="float-xs-right">
                   <span className="match">&#10084;</span>
                   <span className="rating">{ movie.match }%</span>

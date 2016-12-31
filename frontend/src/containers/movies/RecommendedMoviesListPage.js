@@ -11,7 +11,7 @@ import Pagination from '../../components/shared/Pagination';
 
 class RecommendedMoviesListPage extends Component {
   componentWillMount() {
-    this.props.actions.listRecommendedMovies({ page: this.props.location.query.page });
+    this.props.actions.listRecommendedMovies(this.props.currentUser.id, { page: this.props.location.query.page });
   }
 
   handleSearch(search) {
@@ -50,6 +50,7 @@ const mapStateToProps = (state) => {
     movies: state.movies.movies,
     message: state.movies.message,
     total: state.movies.pages,
+    currentUser: state.auth.currentUser,
     isAuthenticated: state.auth.isAuthenticated,
     isAdmin: state.auth.currentUser.roleName == 'admin'
   }
