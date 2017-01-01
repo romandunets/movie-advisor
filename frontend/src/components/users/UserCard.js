@@ -27,8 +27,8 @@ class UserCard extends Component {
         <div className="row">
           <div className="col-md-6">
             <h4>
-              { user.firstName } { user.secondName }
-              <span className="text-muted"> ({ user.username })</span>
+              { user.username }
+              <span className="text-muted"> ({ user.firstName } { user.secondName })</span>
             </h4>
           </div>
           <div className="col-md-6">
@@ -45,11 +45,11 @@ class UserCard extends Component {
           <dt className="col-sm-3">Email</dt>
           <dd className="col-sm-9">{ user.email }</dd>
           <dt className="col-sm-3">Role</dt>
-          <dd className="col-sm-9">{ user.roleName && user.roleName.charAt(0).toUpperCase() + user.roleName.slice(1) }</dd>
+          <dd className="col-sm-9">{ user.role && user.role.name.charAt(0).toUpperCase() + user.role.name.slice(1) }</dd>
           <dt className="col-sm-3">Birthday</dt>
           <dd className="col-sm-9">{ user.birthday }</dd>
-          <dt className="col-sm-3">Genred</dt>
-          <dd className="col-sm-9">{ user.gender }</dd>
+          <dt className="col-sm-3">Gender</dt>
+          <dd className="col-sm-9">{ user.gender ? 'Male' : 'Female' }</dd>
         </dl>
         <div>
           <h6><b>Description</b></h6>

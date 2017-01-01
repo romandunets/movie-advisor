@@ -34,10 +34,10 @@ function listMoviesFailure(error) {
   }
 }
 
-export function listRecommendedMovies(query) {
+export function listRecommendedMovies(userId, query) {
   return function(dispatch) {
     dispatch(listRecommendedMoviesRequest());
-    MovieApi.listRecommendedMovies(query)
+    MovieApi.listRecommendedMovies(userId, query)
       .then(function (response) {
         dispatch(listRecommendedMoviesSuccess(response.data));
       })

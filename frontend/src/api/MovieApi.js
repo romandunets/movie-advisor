@@ -1,16 +1,20 @@
 import Api from './Api';
 
+const baseParams = {
+  per_page: 5
+}
+
 class MovieApi extends Api {
   static listMovies(params) {
-    return this.getClient().get(`/movie/list`, { params });
+    return this.getClient().get(`/movie/list`, { params: {...baseParams, ...params} });
   }
 
   static listRecommendedMovies(userId, params) {
-    return this.getClient().get(`/movie/recommend/${userId}`, { params });
+    return this.getClient().get(`/movie/recommend/${userId}`, { params: {...baseParams, ...params} });
   }
 
   static listWatchedMovies(userId, params) {
-    return this.getClient().get(`/movie/list`, { params: {...params, user_id: userId} });
+    return this.getClient().get(`/movie/list`, { params: {...baseParams, ...params, user_id: userId} });
   }
 
   static searchMovies(query) {

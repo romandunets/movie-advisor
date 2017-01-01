@@ -41,10 +41,10 @@ class UserForm extends Component {
         <div className="form-group">
           <label htmlFor="gender">Gender</label>
           <div className="radio">
-            <label><Field name="gender" component="input" type="radio" value="male" /> Male</label>
+            <label><Field name="gender" component="input" type="radio" value="true" /> Male</label>
           </div>
           <div className="radio">
-            <label><Field name="gender" component="input" type="radio" value="female" /> Female</label>
+            <label><Field name="gender" component="input" type="radio" value="false" /> Female</label>
           </div>
         </div>
         <div className="form-group">
