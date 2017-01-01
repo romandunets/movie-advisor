@@ -1,30 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
-	xmlns:util="http://www.springframework.org/schema/util" xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
 	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd
   http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
-  http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.2.xsd
   http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd">
 
 	<context:component-scan base-package="movieAdvisor" />
 	<mvc:annotation-driven />
 
-<!--
-	<bean class="java.net.URI" id="dbUrl">
-		<constructor-arg value="#{systemEnvironment['DATABASE_URL']}"/>
-	</bean>
--->
 	<bean id="dataSource"
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
-		<property name="url" value="jdbc:mysql://localhost:3306/employee_db" />
-			<property name="password" value="root" />
-			<property name="username" value="root" />
+		<property name="url" value="jdbc:mysql://localhost:3306/movie_advisor1" />
+        <property name="password" value="root" />
+        <property name="username" value="root" />
+		<!--
+		<property name="url" value="jdbc:mysql://eu-cdbr-west-01.cleardb.com/heroku_b4b1c23fd428f3a" />
+        <property name="username" value="bb4383d278f010" />
+        <property name="password" value="5baaaa41"/>
+		-->
 
-<!--		<property name="url" value="jdbc:mysql://eu-cdbr-west-01.cleardb.com/heroku_b4b1c23fd428f3a" />
-		<property name="username" value="bb4383d278f010" />
-		<property name="password" value="5baaaa41"/> -->
+	</bean>
+
+	<bean id="encoder"
+				class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder">
+		<constructor-arg name="strength" value="11" />
 	</bean>
 
 	<bean id="sessionFactory"
@@ -32,17 +33,17 @@
 		<property name="dataSource" ref="dataSource" />
 		<property name="annotatedClasses">
 			<list>
-				<value>movieAdvisor.model.User</value>
-				<value>movieAdvisor.model.Role</value>
-				<value>movieAdvisor.model.FollowerToFollowed</value>
-				<value>movieAdvisor.model.Genre</value>
-				<value>movieAdvisor.model.Tag</value>
-				<value>movieAdvisor.model.Movie</value>
-				<value>movieAdvisor.model.MoviesToGenres</value>
-				<value>movieAdvisor.model.MovieImages</value>
-				<value>movieAdvisor.model.UsersToMovies</value>
-				<value>movieAdvisor.model.MoviesToTags</value>
-				<value>movieAdvisor.model.Comment</value>
+				<value>movieAdvisor.user.User</value>
+				<value>movieAdvisor.role.Role</value>
+				<value>movieAdvisor.manyToMany.followerToFollowed.FollowerToFollowed</value>
+				<value>movieAdvisor.genres.Genre</value>
+				<value>movieAdvisor.tag.Tag</value>
+				<value>movieAdvisor.movie.Movie</value>
+				<value>movieAdvisor.manyToMany.moviesToGenres.MoviesToGenres</value>
+				<value>movieAdvisor.manyToMany.movieImages.MovieImages</value>
+				<value>movieAdvisor.manyToMany.usersToMovies.UsersToMovies</value>
+				<value>movieAdvisor.manyToMany.moviesToTags.MoviesToTags</value>
+				<value>movieAdvisor.comment.Comment</value>
 			</list>
 		</property>
 		<property name="hibernateProperties">
@@ -50,6 +51,7 @@
 				<prop key="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</prop>
 				<prop key="hibernate.show_sql">true</prop>
 				<prop key="hibernate.max_fetch_depth">1</prop>
+				<prop key="hibernate.hbm2ddl.auto">create</prop>
 			</props>
 		</property>
 	</bean>
@@ -62,37 +64,37 @@
 	<bean id="persistenceExceptionTranslationPostProcessor"
 		class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor" />
 
-	<bean id="dataDao" class="movieAdvisor.dao.UserDaoImpl"></bean>
-	<bean id="dataServices" class="movieAdvisor.services.UserServicesImpl"></bean>
+	<bean id="dataDao" class="movieAdvisor.user.UserDaoImpl"></bean>
+	<bean id="dataServices" class="movieAdvisor.user.UserServicesImpl"></bean>
 
-	<bean id="roleDao" class="movieAdvisor.dao.RoleDaoImpl"></bean>
-	<bean id="roleServices" class="movieAdvisor.services.RoleServicesImpl"></bean>
+	<bean id="roleDao" class="movieAdvisor.role.RoleDaoImpl"></bean>
+	<bean id="roleServices" class="movieAdvisor.role.RoleServicesImpl"></bean>
 
-	<bean id="followerToFollowed" class="movieAdvisor.dao.FollowerToFollowedDaoImpl"></bean>
-	<bean id="followerToFollowedServices" class="movieAdvisor.services.FollowerToFollowedServicesImpl"></bean>
+	<bean id="followerToFollowed" class="movieAdvisor.manyToMany.followerToFollowed.FollowerToFollowedDaoImpl"></bean>
+	<bean id="followerToFollowedServices" class="movieAdvisor.manyToMany.followerToFollowed.FollowerToFollowedServicesImpl"></bean>
 
-	<bean id="genre" class="movieAdvisor.dao.GenreDaoImpl"></bean>
-	<bean id="genreServices" class="movieAdvisor.services.GenreServicesImpl"></bean>
+	<bean id="user" class="movieAdvisor.genres.GenreDaoImpl"></bean>
+	<bean id="genreServices" class="movieAdvisor.genres.GenreServicesImpl"></bean>
 
-	<bean id="tag" class="movieAdvisor.dao.TagDaoImpl"></bean>
-	<bean id="tagServices" class="movieAdvisor.services.TagServicesImpl"></bean>
+	<bean id="tag" class="movieAdvisor.tag.TagDaoImpl"></bean>
+	<bean id="tagServices" class="movieAdvisor.tag.TagServicesImpl"></bean>
 
-	<bean id="movieDao" class="movieAdvisor.dao.MovieDaoImpl"></bean>
-	<bean id="movieServices" class="movieAdvisor.services.MovieServicesImpl"></bean>
+	<bean id="movieDao" class="movieAdvisor.movie.MovieDaoImpl"></bean>
+	<bean id="movieServices" class="movieAdvisor.movie.MovieServicesImpl"></bean>
 
-	<bean id="moviesToGenresDao" class="movieAdvisor.dao.MoviesToGenresDaoImpl"></bean>
-	<bean id="moviesToGenresServices" class="movieAdvisor.services.MoviesToGenresServicesImpl"></bean>
+	<bean id="moviesToGenresDao" class="movieAdvisor.manyToMany.moviesToGenres.MoviesToGenresDaoImpl"></bean>
+	<bean id="moviesToGenresServices" class="movieAdvisor.manyToMany.moviesToGenres.MoviesToGenresServicesImpl"></bean>
 
-	<bean id="movieImagesDao" class="movieAdvisor.dao.MovieImagesDaoImpl"></bean>
-	<bean id="movieImagesServices" class="movieAdvisor.services.MovieImagesServicesImpl"></bean>
+	<bean id="movieImagesDao" class="movieAdvisor.manyToMany.movieImages.MovieImagesDaoImpl"></bean>
+	<bean id="movieImagesServices" class="movieAdvisor.manyToMany.movieImages.MovieImagesServicesImpl"></bean>
 
-	<bean id="usersToMoviesDao" class="movieAdvisor.dao.UsersToMoviesDaoImpl"></bean>
-	<bean id="usersToMoviesServices" class="movieAdvisor.services.UsersToMoviesServicesImpl"></bean>
+	<bean id="usersToMoviesDao" class="movieAdvisor.manyToMany.usersToMovies.UsersToMoviesDaoImpl"></bean>
+	<bean id="usersToMoviesServices" class="movieAdvisor.manyToMany.usersToMovies.UsersToMoviesServicesImpl"></bean>
 
-	<bean id="moviesToTagsDao" class="movieAdvisor.dao.MoviesToTagsDaoImpl"></bean>
-	<bean id="moviesToTagsServices" class="movieAdvisor.services.MoviesToTagsServicesImpl"></bean>
+	<bean id="moviesToTagsDao" class="movieAdvisor.manyToMany.moviesToTags.MoviesToTagsDaoImpl"></bean>
+	<bean id="moviesToTagsServices" class="movieAdvisor.manyToMany.moviesToTags.MoviesToTagsServicesImpl"></bean>
 
-	<bean id="commentDao" class="movieAdvisor.dao.CommentDaoImpl"></bean>
-	<bean id="commentServices" class="movieAdvisor.services.CommentServicesImpl"></bean>
+	<bean id="commentDao" class="movieAdvisor.comment.CommentDaoImpl"></bean>
+	<bean id="commentServices" class="movieAdvisor.comment.CommentServicesImpl"></bean>
 
 </beans>

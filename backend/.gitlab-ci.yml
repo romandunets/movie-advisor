@@ -1,0 +1,26 @@
+before_script:
+  - apt-get update
+  - apt-get install -y openjfx
+
+image: maven:3-jdk-8
+
+stages:
+  - build
+  - deploy
+
+Build_job:
+  stage: build
+  script:
+    - mvn clean package -B
+  only:
+   - master
+
+Deploy_job:
+  stage: deploy
+  script:
+  - apt-get install -yq
+  - apt-get install -y ruby ruby-dev
+  - gem install dpl
+#  - dpl --provider=heroku  --app=movie-advisor-project   --api-key=$HEROKU_PRODUCTION_API_KEY
+  only:
+  - master
