@@ -39,10 +39,7 @@ class MovieCard extends Component {
             <div className="col-md-6">
               <div className="float-xs-right actions">
                 { isAuthenticated && !movie.isWatched &&
-                  <button className="btn btn-sm btn-secondary action" onClick={() => markAsWatched(movie.id)}>Watched</button>
-                }
-                { isAuthenticated && movie.isWatched &&
-                  <button className="btn btn-sm btn-primary action" onClick={() => deleteMarkAsWatched(movie.id)}>Watched</button>
+                  <Link className="btn btn-sm btn-secondary action" to={`/movies/${movie.id}/watched`}>Watched</Link>
                 }
                 { isAuthenticated && isAdmin &&
                   <Link to={`/movies/${movie.id}/edit`} role="button" className="btn btn-sm btn-primary action">Edit</Link>

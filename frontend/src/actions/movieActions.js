@@ -321,7 +321,7 @@ export function rateMovie(userid, movieid, rating) {
     MovieApi.rateMovie(userid, movieid, rating)
       .then(function (response) {
         dispatch(rateMovieSuccess(response.data));
-        //browserHistory.push(`/movies/${movie.id}`);
+        browserHistory.push(`/movies/${movie.id}`);
       })
       .catch(function (error) {
         dispatch(rateMovieFailure(error));

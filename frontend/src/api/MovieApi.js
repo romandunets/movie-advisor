@@ -60,7 +60,7 @@ class MovieApi extends Api {
 
   static rateMovie(userid, movieid, rating){
     //TODO update path etc depending on backend
-    return this.getClient().put(`/users_to_movies/${userid}/${movieid}`, {user: userid, movie: movieid, rating: rating});
+    return this.getClient().post(`/users_to_movies`, {user: userid, movie: movieid, rating: rating});
   }
 }
 

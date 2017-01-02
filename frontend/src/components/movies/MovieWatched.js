@@ -19,11 +19,6 @@ class MovieWatched extends Component {
     return (
       <div className="row">
         <div className="row">
-          <div className="col-md-12">
-            <h3>You watched this movie:</h3>
-          </div>
-        </div>
-        <div className="row">
           <div className="thumbnail-box col-md-3">
             <img src={ movie.coverImage } className="img-fluid"/>
           </div>
@@ -64,31 +59,27 @@ class MovieWatched extends Component {
                 <p><b>Studio:</b> { movie.studio }</p>
               </div>
             </div>
-          </div>
-        </div>
-        { isAuthenticated && movie.isWatched &&
-        <div className="row ratingrow">
-          <div className="col-md-4">
-            <h3>Please rate it:</h3>
-          </div>
-          <div className="col-md-8">
-            <div className="col-md-6">
-              <StarRatingComponent
-                name="rate1"
-                starCount={5}
-                value={this.state.rating}
-                renderStarIcon={() => <span className="ratingstars">&#9733;</span>}
-                onStarClick={this.onStarClick.bind(this)}
-              />
-            </div>
-            <div className="col-md-6">
-              <div className="float-xs-right">
-                <button type="button" ref="rateMovieButton" className="btn btn-sm btn-primary action" onClick={() => rateMovie(this.state.rating)}>Submit</button>
+            { isAuthenticated &&
+              <div className="row ratingrow">
+                <div className="col-md-12">
+                  <h5>Please rate this movie:</h5>
+                </div>
+                <div className="col-md-12">
+                  <StarRatingComponent
+                      name="rate1"
+                      starCount={5}
+                      value={this.state.rating}
+                      renderStarIcon={() => <span className="ratingstars">&#9733;</span>}
+                      onStarClick={this.onStarClick.bind(this)}
+                    />
+                </div>
+                <div className="col-md-12">
+                  <button type="button" ref="rateMovieButton" className="btn btn-primary action row" onClick={() => rateMovie(this.state.rating)}>Submit</button>
+                </div>
               </div>
-            </div>
+            }
           </div>
         </div>
-        }
       </div>
     );
   }
