@@ -40,7 +40,6 @@ class MovieNewPage extends Component {
   render() {
     const { message, movie, genres, tags, isLoading } = this.props;
     const initialValues = { ...movie, availableGenres: genres, availableTags: tags };
-    console.log(isLoading);
 
     return (
       <div className="center-container">

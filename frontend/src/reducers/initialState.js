@@ -14,7 +14,9 @@ export default {
   movies: {
     movies: [],
     movie: {
-      photos: []
+      photos: [],
+      genres: [],
+      tags: []
     },
     genres: [],
     tags: [],
