@@ -43,7 +43,7 @@ const mapStateToProps = (state) => {
     isLoading: state.movies.isLoading,
     isAuthenticated: state.auth.isAuthenticated,
     currentUser: state.auth.currentUser,
-    isAdmin: state.auth.currentUser.roleName == 'admin'
+    isAdmin: state.auth.currentUser.role.name == 'admin'
   }
 }
 

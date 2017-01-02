@@ -37,7 +37,7 @@ const mapStateToProps = (state) => {
     isLoading: state.users.isLoading,
     message: state.users.message,
     isAuthenticated: state.auth.isAuthenticated,
-    isAdmin: state.auth.currentUser.roleName == 'admin'
+    isAdmin: state.auth.currentUser.role.name == 'admin'
   }
 }
 

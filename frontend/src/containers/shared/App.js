@@ -48,7 +48,7 @@ const mapStateToProps = (state) => {
   return {
     currentUser: state.auth.currentUser,
     isAuthenticated: state.auth.isAuthenticated,
-    isAdmin: state.auth.currentUser.roleName == 'admin'
+    isAdmin: state.auth.currentUser.role.name == 'admin'
   }
 }
 
