@@ -42,11 +42,11 @@ class MovieApi extends Api {
   }
 
   static listGenres() {
-    return this.getClient().get(`/genres`);
+    return this.getClient().get(`/genre/`);
   }
 
   static listTags() {
-    return this.getClient().get(`/tags`);
+    return this.getClient().get(`/tag/`);
   }
 
   static markMovieWatched(userid, movieid) {

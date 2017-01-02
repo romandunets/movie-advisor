@@ -34,7 +34,6 @@ class WatchedMoviesListPage extends Component {
         <div className="header">
           <MoviesSearchBar onSubmit={ this.handleSearch.bind(this) } />
           <Pagination page={page} total={total} onPageSelect={this.handlePageSelect.bind(this)} />
-          <MoviesActionBar isAuthenticated={isAuthenticated} isAdmin={isAdmin} />
         </div>
         <MoviesList movies={movies} isAuthenticated={isAuthenticated} />
         <div>

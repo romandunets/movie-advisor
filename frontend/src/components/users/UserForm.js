@@ -31,8 +31,8 @@ class UserForm extends Component {
           <Field name="firstName" component="input" type="text" className="form-control"/>
         </div>
         <div className="form-group">
-          <label htmlFor="firstName">Second name</label>
-          <Field name="secondName" component="input" type="text" className="form-control"/>
+          <label htmlFor="lastName">Last name</label>
+          <Field name="lastName" component="input" type="text" className="form-control"/>
         </div>
         <div className="form-group">
           <label htmlFor="birthday">Birthday</label>
