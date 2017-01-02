@@ -315,13 +315,13 @@ function deleteMarkMovieWatchedFailure(error) {
 }
 
 
-export function rateMovie(userid, movieid, rating) {
+export function rateMovie(userId, movieId, rating) {
   return function(dispatch) {
     dispatch(rateMovieRequest());
-    MovieApi.rateMovie(userid, movieid, rating)
+    MovieApi.rateMovie(userId, movieId, rating)
       .then(function (response) {
         dispatch(rateMovieSuccess(response.data));
-        browserHistory.push(`/movies/${movie.id}`);
+        browserHistory.push(`/movies/${movieId}`);
       })
       .catch(function (error) {
         dispatch(rateMovieFailure(error));
