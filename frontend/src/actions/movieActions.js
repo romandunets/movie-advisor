@@ -127,10 +127,10 @@ function searchMoviesFailure(error) {
   }
 }
 
-export function getMovie(id) {
+export function getMovie(id, userId) {
   return function(dispatch) {
     dispatch(getMovieRequest());
-    MovieApi.getMovie(id)
+    MovieApi.getMovie(id, userId)
       .then(function (response) {
         dispatch(getMovieSuccess(response.data));
       })
