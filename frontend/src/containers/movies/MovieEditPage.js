@@ -8,7 +8,7 @@ import MovieForm from '../../components/movies/MovieForm';
 
 class MovieEditPage extends Component {
   componentWillMount() {
-    this.props.actions.getMovie(this.props.params.id);
+    this.props.actions.getMovie(this.props.params.id, this.props.currentUser.id);
     this.props.actions.listGenres();
     this.props.actions.listTags();
   }
@@ -49,7 +49,8 @@ const mapStateToProps = (state) => {
     genres: state.movies.genres,
     tags: state.movies.tags,
     isLoading: state.movies.isLoading,
-    message: state.movies.message
+    message: state.movies.message,
+    currentUser: state.auth.currentUser
   }
 }
 
