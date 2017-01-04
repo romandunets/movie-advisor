@@ -21,11 +21,11 @@ class App extends Component {
       var search = document.getElementById('searchField').value;
       if (search.length > 0) {
         const query = { free_search: search };
-        this.props.actions.listMovies(query);
+        this.props.actions.listMovies(this.props.currentUser.id, query);
         browserHistory.push({ pathname: '/movies', query});
       }
       else {
-        this.props.actions.listMovies();
+        this.props.actions.listMovies(this.props.currentUser.id);
         browserHistory.push('/movies');
       }
     }
