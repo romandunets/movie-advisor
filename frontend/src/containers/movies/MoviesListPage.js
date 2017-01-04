@@ -15,13 +15,13 @@ class MoviesListPage extends Component {
   }
 
   handleSearch(search) {
-    this.props.actions.listMovies(search);
+    this.props.actions.listMovies(this.props.currentUser.id, search);
     browserHistory.push({ pathname: this.props.location.pathname, query: { ...search }});
   }
 
   handlePageSelect(page) {
     const search = this.props.location.query.search;
-    this.props.actions.listMovies({ search, page });
+    this.props.actions.listMovies(this.props.currentUser.id, { search, page });
     browserHistory.push({ pathname: this.props.location.pathname, query: { search, page }});
   }
 
