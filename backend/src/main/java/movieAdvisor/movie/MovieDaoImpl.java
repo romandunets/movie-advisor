@@ -14,6 +14,7 @@ import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.math.BigInteger;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -150,7 +151,7 @@ public class MovieDaoImpl implements MovieDao{
         Query query = session.createQuery(sqlQuery).setParameter("id", new Movie(movie.getId()));
         Double overallRate = (Double) query.list().get(0);
         if (overallRate != null) {
-            movie.setRate(Float.parseFloat(String.valueOf(overallRate)));
+            movie.setRate(Float.parseFloat(new DecimalFormat("#.#").format(overallRate)));
         } else {
             movie.setRate(new Float(0));
         }
