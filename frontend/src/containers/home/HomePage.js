@@ -21,7 +21,11 @@ class HomePage extends Component {
             We analyze your ratings of movies to recommend only relevant movies to you. 
             The results will improve, if you rate more movies. 
             You can also follow friends with similar taste and get even better recommendations.</p>
-            <p className="text-center"><b><Link to="/signup">Sign up</Link></b> for free or <b><Link to="/signin">Login</Link></b> if you already have an account.</p>
+            { !isAuthenticated &&
+              <p className="text-center">
+                <b><Link to="/signup">Sign up</Link></b> for free or <b><Link to="/signin">Login</Link></b> if you already have an account.
+              </p>
+            }
           </div>
           <h4 className="title">Top movies</h4> 
           <MoviesListSimple movies={movies} isAuthenticated={isAuthenticated} />
