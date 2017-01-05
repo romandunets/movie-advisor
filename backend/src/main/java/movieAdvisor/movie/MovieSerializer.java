@@ -33,6 +33,10 @@ public class MovieSerializer extends JsonSerializer<Movie> {
             jsonGenerator.writeNumberField("rating", movie.getRate());
         if (movie.getMatch() != null)
             jsonGenerator.writeNumberField("match", movie.getMatch());
+        if (movie.getWatched() != null)
+            jsonGenerator.writeBooleanField("isWatched", movie.getWatched());
+        if (movie.getUserRate() != null)
+            jsonGenerator.writeNumberField("userRating", movie.getUserRate());
 
         if (movie.getMovieGenres() != null) {
             jsonGenerator.writeArrayFieldStart("genres");

@@ -16,8 +16,8 @@ public class MovieServicesImpl implements MovieServices{
         return movieDao.addEntity(movie);
     }
 
-    public Movie getEntityById(long id) throws Exception {
-        return movieDao.getEntityById(id);
+    public Movie getEntityById(Long movieId, Long userId) throws Exception {
+        return movieDao.getEntityById(movieId, userId);
     }
 
     public MoviesListPaging getEntityList(MovieSearchDTO movieSearchDTO) throws Exception {
@@ -32,7 +32,7 @@ public class MovieServicesImpl implements MovieServices{
         return movieDao.deleteEntity(id);
     }
 
-    public boolean updateEntity(Movie movie) throws Exception {
+    public Movie updateEntity(Movie movie) throws Exception {
         return movieDao.updateEntity(movie);
     }
 }
