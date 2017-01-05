@@ -7,15 +7,16 @@ import authApi from '../api/AuthApi';
 export function signup(credentials) {
   return function(dispatch) {
     dispatch(signupRequest());
-    /*return authApi.signup(credentials)
-      .then(function (response) {*/
-        localStorage.setItem('token', 'TOKEN');//localStorage.setItem('token', response.data.token);
-        dispatch(signupSuccess());
+    return authApi.signup(credentials)
+      .then(function (response) {
+        //localStorage.setItem('token', 'TOKEN');//localStorage.setItem('token', response.data.token);
+        localStorage.setItem('user', JSON.stringify(response.data));
+        dispatch(signupSuccess(response.data));
         browserHistory.replace('/');
-    /*  })
+      })
       .catch(function (error) {
         dispatch(signupFailure(error));
-      });*/
+      });
   }
 }
 
@@ -23,8 +24,11 @@ function signupRequest() {
   return { type: types.SIGNUP_REQUEST }
 }
 
-function signupSuccess() {
-  return { type: types.SIGNUP_SUCCESS }
+function signupSuccess(user) {
+  return {
+    type: types.SIGNUP_SUCCESS,
+    payload: user
+  }
 }
 
 function signupFailure(error) {
@@ -37,16 +41,16 @@ function signupFailure(error) {
 export function login(credentials) {
   return function(dispatch) {
     dispatch(loginRequest());
-    /*return authApi.login(credentials)
-      .then(function (response) {*/
-        localStorage.setItem('token', 'TOKEN');//localStorage.setItem('token', response.data.token);
-        const user = { id: 1, username: credentials.username, roleName: 'admin' }
-        dispatch(loginSuccess(user));
+    return authApi.login(credentials)
+      .then(function (response) {
+        //localStorage.setItem('token', response.data.token);
+        localStorage.setItem('user', JSON.stringify(response.data));
+        dispatch(loginSuccess(response.data));
         browserHistory.replace('/');
-    /*  })
+      })
       .catch(function (error) {
         dispatch(loginFailure(error));
-      });*/
+      });
   }
 }
 
@@ -70,7 +74,8 @@ function loginFailure(error) {
 
 export function logout() {
   return function(dispatch) {
-    localStorage.removeItem('token');
+    //localStorage.removeItem('token');
+    localStorage.removeItem('user');
     dispatch({ type: types.LOGOUT });
     browserHistory.replace('/signin');
   }

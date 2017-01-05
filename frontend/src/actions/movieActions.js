@@ -34,10 +34,10 @@ function listMoviesFailure(error) {
   }
 }
 
-export function listRecommendedMovies(query) {
+export function listRecommendedMovies(userId, query) {
   return function(dispatch) {
     dispatch(listRecommendedMoviesRequest());
-    MovieApi.listRecommendedMovies(query)
+    MovieApi.listRecommendedMovies(userId, query)
       .then(function (response) {
         dispatch(listRecommendedMoviesSuccess(response.data));
       })
@@ -65,10 +65,10 @@ function listRecommendedMoviesFailure(error) {
   }
 }
 
-export function listWatchedMovies(query) {
+export function listWatchedMovies(userId, query) {
   return function(dispatch) {
     dispatch(listWatchedMoviesRequest());
-    MovieApi.listWatchedMovies(query)
+    MovieApi.listWatchedMovies(userId, query)
       .then(function (response) {
         dispatch(listWatchedMoviesSuccess(response.data));
       })
@@ -315,13 +315,13 @@ function deleteMarkMovieWatchedFailure(error) {
 }
 
 
-export function rateMovie(userid, movieid, rating) {
+export function rateMovie(userId, movieId, rating) {
   return function(dispatch) {
     dispatch(rateMovieRequest());
-    MovieApi.rateMovie(userid, movieid, rating)
+    MovieApi.rateMovie(userId, movieId, rating)
       .then(function (response) {
         dispatch(rateMovieSuccess(response.data));
-        //browserHistory.push(`/movies/${movie.id}`);
+        browserHistory.push(`/movies/${movieId}`);
       })
       .catch(function (error) {
         dispatch(rateMovieFailure(error));

@@ -41,15 +41,17 @@ export default (store) => {
           <Route path=":id/edit" component={UserEditPage} />
         </Route>
 
-        <Route path="movies" onEnter={requireAuthentication(store)}>
+        <Route path="movies">
           <IndexRoute component={MoviesListPage} />
-          <Route path="new" component={MovieNewPage} />
-          <Route path="search/:keyword" component={MoviesSearchPage} />
-          <Route path="recommended" component={RecommendedMoviesListPage} />
-          <Route path="watched" component={WatchedMoviesListPage} />
+          <Route onEnter={requireAuthentication(store)}>
+            <Route path="new" component={MovieNewPage} />
+            <Route path="search/:keyword" component={MoviesSearchPage} />
+            <Route path="recommended" component={RecommendedMoviesListPage} />
+            <Route path="watched" component={WatchedMoviesListPage} />
+            <Route path=":id/edit" component={MovieEditPage} />
+            <Route path=":id/watched" component={MoviePageWatched} />
+          </Route>
           <Route path=":id" component={MoviePage} />
-          <Route path=":id/edit" component={MovieEditPage} />
-          <Route path=":id/watched" component={MoviePageWatched} />
         </Route>
       </Route>
     </Route>
@@ -59,7 +61,7 @@ export default (store) => {
 const requireAuthentication = (store) => {
   return (nextState, replaceState) => {
     const state = store.getState();
-    if (!state.auth.isAuthenticated && localStorage.getItem("token") === null) {
+    if (!state.auth.isAuthenticated && localStorage.getItem("id") === null) {
       replaceState({ pathname: '/signin', nextPathname: nextState.location.pathname });
     }
   }

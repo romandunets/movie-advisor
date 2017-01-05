@@ -1,36 +1,40 @@
 import Api from './Api';
 
+const baseParams = {
+  per_page: 5
+}
+
 class MovieApi extends Api {
   static listMovies(params) {
-    return this.getClient().get(`/movie/list`, { params });
+    return this.getClient().get(`/movie/list`, { params: {...baseParams, ...params} });
   }
 
-  static listRecommendedMovies(params) {
-    return this.getClient().get(`/movies`, { params }); '/recommended'
+  static listRecommendedMovies(userId, params) {
+    return this.getClient().get(`/movie/recommend/${userId}`, { params: {...baseParams, ...params} });
   }
 
-  static listWatchedMovies(params) {
-    return this.getClient().get(`/movies`, { params }); '/watched'
+  static listWatchedMovies(userId, params) {
+    return this.getClient().get(`/movie/list`, { params: {...baseParams, ...params, user_id: userId} });
   }
 
   static searchMovies(query) {
-    return this.getClient().get(`/movies?q=${query}`);
+    return this.getClient().get(`/movie?q=${query}`);
   }
 
   static getMovie(id) {
-    return this.getClient().get(`/movies/${id}`);
+    return this.getClient().get(`/movie/${id}`);
   }
 
   static createMovie(movie) {
-    return this.getClient().post(`/movies/create`, movie);
+    return this.getClient().post(`/movie/create`, movie);
   }
 
   static updateMovie(movie) {
-    return this.getClient().put(`/movies/${movie.id}`, movie);
+    return this.getClient().put(`/movie/${movie.id}`, movie);
   }
 
   static deleteMovie(id) {
-    return this.getClient().delete(`/movies/${id}`);
+    return this.getClient().delete(`/movie/${id}`);
   }
 
   static loadFromOMDB(title) {
@@ -38,11 +42,11 @@ class MovieApi extends Api {
   }
 
   static listGenres() {
-    return this.getClient().get(`/genres`);
+    return this.getClient().get(`/genre/`);
   }
 
   static listTags() {
-    return this.getClient().get(`/tags`);
+    return this.getClient().get(`/tag/`);
   }
 
   static markMovieWatched(userid, movieid) {
@@ -56,7 +60,7 @@ class MovieApi extends Api {
 
   static rateMovie(userid, movieid, rating){
     //TODO update path etc depending on backend
-    return this.getClient().put(`/users_to_movies/${userid}/${movieid}`, {user: userid, movie: movieid, rating: rating});
+    return this.getClient().post(`/users_to_movies/`, {user: userid, movie: movieid, rating: rating});
   }
 }
 

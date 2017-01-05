@@ -31,8 +31,8 @@ class UserForm extends Component {
           <Field name="firstName" component="input" type="text" className="form-control"/>
         </div>
         <div className="form-group">
-          <label htmlFor="firstName">Second name</label>
-          <Field name="secondName" component="input" type="text" className="form-control"/>
+          <label htmlFor="lastName">Last name</label>
+          <Field name="lastName" component="input" type="text" className="form-control"/>
         </div>
         <div className="form-group">
           <label htmlFor="birthday">Birthday</label>
@@ -41,10 +41,10 @@ class UserForm extends Component {
         <div className="form-group">
           <label htmlFor="gender">Gender</label>
           <div className="radio">
-            <label><Field name="gender" component="input" type="radio" value="male" /> Male</label>
+            <label><Field name="gender" component="input" type="radio" value="true" /> Male</label>
           </div>
           <div className="radio">
-            <label><Field name="gender" component="input" type="radio" value="female" /> Female</label>
+            <label><Field name="gender" component="input" type="radio" value="false" /> Female</label>
           </div>
         </div>
         <div className="form-group">

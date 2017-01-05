@@ -58,9 +58,9 @@ const mapStateToProps = (state) => {
     movies: state.movies.movies,
     message: state.movies.message,
     total: state.movies.pages,
-    isAuthenticated: state.auth.isAuthenticated,
     currentUser: state.auth.currentUser,
-    isAdmin: state.auth.currentUser.roleName == 'admin'
+    isAuthenticated: state.auth.isAuthenticated,
+    isAdmin: state.auth.currentUser.role.name == 'admin'
   }
 }
 

@@ -14,7 +14,6 @@ class UsersListPage extends Component {
 
   render() {
     const { users, isAuthenticated, isAdmin } = this.props;
-
     return (
       <div>
         <div className="header">
@@ -30,7 +29,7 @@ const mapStateToProps = (state) => {
   return {
     users: state.users.users,
     isAuthenticated: state.auth.isAuthenticated,
-    isAdmin: state.auth.currentUser.roleName == 'admin'
+    isAdmin: state.auth.currentUser.role.name == 'admin'
   }
 }
 

@@ -20,7 +20,7 @@ class App extends Component {
       event.preventDefault();
       var search = document.getElementById('searchField').value;
       if (search.length > 0) {
-        const query = { search: search };
+        const query = { free_search: search };
         this.props.actions.listMovies(query);
         browserHistory.push({ pathname: '/movies', query});
       }
@@ -48,14 +48,13 @@ const mapStateToProps = (state) => {
   return {
     currentUser: state.auth.currentUser,
     isAuthenticated: state.auth.isAuthenticated,
-    isAdmin: state.auth.currentUser.roleName == 'admin'
+    isAdmin: state.auth.currentUser.role.name == 'admin'
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    actions: bindActionCreators(authActions, dispatch),
-    actions: bindActionCreators(movieActions, dispatch)
+    actions: bindActionCreators({ ...authActions, ...movieActions }, dispatch)
   }
 }
 

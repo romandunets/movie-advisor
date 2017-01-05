@@ -13,7 +13,7 @@ class MovieNewPage extends Component {
   }
 
   handleSubmit(data) {
-    const { photos } = this.props.movie;
+    /*const { photos } = this.props.movie;
     var body = new FormData();
 
     Object.keys(data).forEach(key => {
@@ -24,9 +24,9 @@ class MovieNewPage extends Component {
 
     for (var i = 0; i < photos.length; i++) {
       body.append("photos", photos[i]);
-    }
+    }*/
 
-    this.props.actions.createMovie(body);
+    this.props.actions.createMovie(data);
   }
 
   handleLoadFromOMDB(title) {

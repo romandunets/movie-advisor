@@ -1,7 +1,7 @@
 export default {
   auth: {
-    currentUser: {},
-    isAuthenticated: false,
+    currentUser: JSON.parse(localStorage.getItem('user')) || {},
+    isAuthenticated: localStorage.getItem('user') !== null,
     message: ''
   },
   users: {
@@ -14,11 +14,13 @@ export default {
   movies: {
     movies: [],
     movie: {
-      photos: []
+      photos: [],
+      genres: [],
+      tags: []
     },
     genres: [],
     tags: [],
-    pages: 8,
+    pages: 1,
     message: '',
     error: '',
     isLoading: false

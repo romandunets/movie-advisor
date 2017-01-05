@@ -9,6 +9,9 @@ class LoginForm extends Component {
     return (
       <form className="form-narrow" onSubmit={ handleSubmit }>
         <div className="form-group">
+          To test this app as an admin please login using the following credentials: m_admin as username and Aa123456 as password
+        </div>
+        <div className="form-group">
           <Field name="username" component="input" type="text" placeholder="Username" required="required" className="form-control" />
         </div>
         <div className="form-group">
