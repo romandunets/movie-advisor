@@ -49,7 +49,7 @@ public class MovieRestController {
     @RequestMapping(value = "/list", method = RequestMethod.GET)
     public @ResponseBody
     MoviesListPaging getMovieList(@RequestParam(value="per_page", defaultValue = "50") Integer moviesPerPage,
-                             @RequestParam(value="page", defaultValue = "0") Integer pageNumber,
+                             @RequestParam(value="page", defaultValue = "1") Integer pageNumber,
                              @RequestParam(value="order_precedence", defaultValue = "desc") String orderType,
                              @RequestParam(required = false, value="order_by") List<String> sortBy,
                              @RequestParam(required = false, value="year") Integer year,

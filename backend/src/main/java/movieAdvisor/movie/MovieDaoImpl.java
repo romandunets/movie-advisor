@@ -120,7 +120,8 @@ public class MovieDaoImpl implements MovieDao{
             criteria.add(Restrictions.in("id", moviesForGenreIds));
         }
 
-        Integer numOfPages = criteria.list().size()/movieSearch.moviesPerPage + 1;
+        Integer numOfPages = criteria.list().size()/movieSearch.moviesPerPage;
+        numOfPages += (criteria.list().size() % movieSearch.moviesPerPage == 0) ? 0 : 1;
 
         criteria.setFirstResult(movieSearch.moviesPerPage*(movieSearch.pageNumber-1));
         criteria.setMaxResults(movieSearch.moviesPerPage);
@@ -146,8 +147,7 @@ public class MovieDaoImpl implements MovieDao{
 
     private void setOverallMovieRate(Movie movie) {
         String sqlQuery = "select avg (p.rating) from UsersToMovies p where p.pk.movie=:id";
-        Long movieId = movie.getId();
-        Query query = session.createQuery(sqlQuery).setParameter("id", new Movie(movieId));
+        Query query = session.createQuery(sqlQuery).setParameter("id", new Movie(movie.getId()));
         Double overallRate = (Double) query.list().get(0);
         if (overallRate != null) {
             movie.setRate(Float.parseFloat(String.valueOf(overallRate)));
@@ -195,6 +195,19 @@ public class MovieDaoImpl implements MovieDao{
                 "GROUP BY `movie_id`;")
                 .setParameter("u_id", userId).list();
 
+        if (objList.size() == 0) {
+            objList = session.createSQLQuery(
+                    "SELECT `movie_id`, COUNT(*) " +
+                            "FROM `users_to_movies` " +
+                            "WHERE `users_to_movies`.`movie_id` NOT IN ( " +
+                            "  SELECT `movie_id` " +
+                            "  FROM `users_to_movies` " +
+                            "  WHERE `user_id` = :u_id " +
+                            ") " +
+                            "GROUP BY `movie_id`;")
+                    .setParameter("u_id", userId).list();
+        }
+
         List<Movie> recommendedMovies = new ArrayList<Movie>();
         Long maxValue = new Long(0);
         for (Object obj : objList) {
@@ -202,7 +215,8 @@ public class MovieDaoImpl implements MovieDao{
             Movie movie = (Movie) session.load(Movie.class, ((BigInteger)(tuple[0])).longValue());
             if (maxValue.equals(new Long(0)))
                 maxValue = ((BigInteger)(tuple[1])).longValue();
-            movie.setMatch((((BigInteger)(tuple[1])).floatValue()/maxValue)*100);
+            Float match = (((BigInteger)(tuple[1])).floatValue()/maxValue)*100;
+            movie.setMatch(Math.round(match));
             assignGenresToMovie(movie);
             assignTagsToMovie(movie);
             setOverallMovieRate(movie);

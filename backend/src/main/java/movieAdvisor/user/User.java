@@ -42,8 +42,7 @@ public class User extends AbstractTimestampEntity implements Serializable {
 	public User (long id, Date birthday, String description,
 				 String email, String firstName,
 				 Boolean gender, String password,
-				 String lastName, String username,
-				 Role role) {
+				 String lastName, String username) {
 		this.id = id;
 		this.birthday = birthday;
 		this.description = description;
@@ -53,8 +52,7 @@ public class User extends AbstractTimestampEntity implements Serializable {
 		this.gender = gender;
 		this.password = password;
 		this.username = username;
-		this.role = role;
-		this.salt = "Bad salt";
+		this.salt = "Dummy salt :)";
 	}
 
 	@Id

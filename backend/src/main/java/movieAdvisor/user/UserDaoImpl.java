@@ -2,7 +2,7 @@ package movieAdvisor.user;
 
 import java.util.List;
 
-import movieAdvisor.movie.Movie;
+import movieAdvisor.role.Role;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -25,6 +25,11 @@ public class UserDaoImpl implements UserDao {
 		user.setSalt("default salt");
 		BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 		user.setPassword(passwordEncoder.encode(user.getPassword()));
+		List<Role> roleList = session.createQuery("from Role role where role.name=:role_name").
+				setParameter("role_name", "user").list();
+		if (roleList.size() != 1)
+			throw new Exception("Failed to find user role. Ask administrator");
+		user.setRole(roleList.get(0));
 		session.save(user);
 		tx.commit();
 		session.close();
@@ -84,4 +89,30 @@ public class UserDaoImpl implements UserDao {
 			return null;
 	}
 
+	public User updateEntity(Long id, User user) {
+		session = sessionFactory.openSession();
+		tx = session.beginTransaction();
+
+		User dbUser = (User) session.load(User.class, id);
+		if (dbUser == null)
+			return null;
+
+		dbUser.setBirthday(user.getBirthday());
+		if (user.getPassword() != "" && user.getPassword() != null) {
+			BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+			dbUser.setPassword(passwordEncoder.encode(user.getPassword()));
+		}
+
+		dbUser.setDescription(user.getDescription());
+		dbUser.setEmail(user.getEmail());
+		dbUser.setFirstName(user.getFirstName());
+		dbUser.setGender(user.getGender());
+		dbUser.setSecondName(user.getSecondName());
+		dbUser.setUsername(user.getUsername());
+
+		session.update(dbUser);
+		tx.commit();
+		session.close();
+		return dbUser;
+	}
 }
