@@ -26,21 +26,33 @@ class WatchedMoviesListPage extends Component {
   }
 
   render() {
-    const { movies, message, total, isAuthenticated, isAdmin } = this.props;
+    const { movies, message, total, isLoading, isAuthenticated, isAdmin } = this.props;
     const page = this.props.location.query.page;
 
-    return (
-      <div>
-        <div className="header">
-          <MoviesSearchBar onSubmit={ this.handleSearch.bind(this) } />
-          <Pagination page={page} total={total} onPageSelect={this.handlePageSelect.bind(this)} />
-        </div>
-        <MoviesList movies={movies} isAuthenticated={isAuthenticated} />
-        <div>
-          <Pagination className="text-center" page={page} total={total} onPageSelect={this.handlePageSelect.bind(this)} />
-        </div>
-      </div>
-    );
+    if (!isLoading) {
+      if (movies.length > 0) {
+        return (
+          <div>
+            <div className="header">
+              <MoviesSearchBar onSubmit={ this.handleSearch.bind(this) } />
+              <Pagination page={page} total={total} onPageSelect={this.handlePageSelect.bind(this)} />
+            </div>
+            <MoviesList movies={movies} isAuthenticated={isAuthenticated} />
+            <div>
+              <Pagination className="text-center" page={page} total={total} onPageSelect={this.handlePageSelect.bind(this)} />
+            </div>
+          </div>
+        );
+      }
+      else {
+        return (
+          <div>
+            <h3 className="title">You haven't watched any movies yet.</h3>
+            <p className="text-md-center">Please check recommended movies for you <Link to={`/movies/recommended`}>here</Link>.</p>
+          </div>
+        );
+      }
+    }
   }
 }
 
@@ -49,6 +61,7 @@ const mapStateToProps = (state) => {
     movies: state.movies.movies,
     message: state.movies.message,
     total: state.movies.pages,
+    isLoading: state.movies.isLoading,
     currentUser: state.auth.currentUser,
     isAuthenticated: state.auth.isAuthenticated,
     isAdmin: state.auth.currentUser.role.name == 'admin'
