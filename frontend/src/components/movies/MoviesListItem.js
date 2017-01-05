@@ -25,9 +25,6 @@ class MoviesListItem extends Component {
                 { isAuthenticated && !movie.isWatched &&
                   <Link className="btn btn-sm btn-secondary action" to={`/movies/${movie.id}/watched`}>Watched</Link>
                 }
-                { isAuthenticated && movie.isWatched &&
-                  <button className="btn btn-sm btn-primary action" onClick={() => deleteMarkAsWatched(movie.id)}>Watched</button>
-                }
               </div>
               { isAuthenticated && movie.match &&
                 <div className="float-xs-right">
