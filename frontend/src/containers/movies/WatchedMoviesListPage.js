@@ -53,6 +53,8 @@ class WatchedMoviesListPage extends Component {
         );
       }
     }
+
+    return null;
   }
 }
 
