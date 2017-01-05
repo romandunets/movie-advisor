@@ -2,6 +2,7 @@ package movieAdvisor.movie;
 
 import movieAdvisor.genres.Genre;
 import movieAdvisor.manyToMany.moviesToGenres.MoviesToGenres;
+import movieAdvisor.manyToMany.moviesToGenres.MoviesToGenresDao;
 import movieAdvisor.manyToMany.moviesToTags.MoviesToTags;
 import movieAdvisor.manyToMany.usersToMovies.UsersToMovies;
 import movieAdvisor.tag.Tag;
@@ -16,13 +17,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import java.math.BigInteger;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 /**
  * Created by eaonmov on 11/15/16.
  */
-public class MovieDaoImpl implements MovieDao{
+public class MovieDaoImpl implements MovieDao {
     @Autowired
     SessionFactory sessionFactory;
     Session session;
@@ -55,14 +55,21 @@ public class MovieDaoImpl implements MovieDao{
 
     public Movie getEntityById(Long movieId, Long userId) throws Exception {
         session = sessionFactory.openSession();
-        Movie movie = (Movie) session.load(Movie.class, new Long(movieId));
+        tx = session.beginTransaction();
+        Movie movie;
+        movie = (Movie) session.load(Movie.class, new Long(movieId));
         assignGenresToMovie(movie);
         assignTagsToMovie(movie);
         setOverallMovieRate(movie);
         setUserRate(movie, userId);
-        tx = session.getTransaction();
-        session.beginTransaction();
+        for (Movie movieWithMatch : getRecommendedMovieListWithMatch(userId)) {
+            if (movie.getId() == movieWithMatch.getId()) {
+                movie.setMatch(movieWithMatch.getMatch());
+                break;
+            }
+        }
         tx.commit();
+        session.close();
         return movie;
     }
 
@@ -71,9 +78,8 @@ public class MovieDaoImpl implements MovieDao{
         tx = session.beginTransaction();
 
         Criteria criteria = session.createCriteria(Movie.class);
-
         if (movieSearch.sortBy != null)
-            for (String orderCriteria: movieSearch.sortBy)
+            for (String orderCriteria : movieSearch.sortBy)
                 criteria.addOrder(
                         (movieSearch.orderType.equals("desc")) ? Order.desc(orderCriteria) : Order.asc(orderCriteria)
                 );
@@ -86,10 +92,10 @@ public class MovieDaoImpl implements MovieDao{
 
         if (movieSearch.freeSearch != null) {
             Disjunction disCriteria = Restrictions.disjunction();
-            disCriteria.add(Restrictions.like("title", "%"+movieSearch.freeSearch+"%"));
-            disCriteria.add(Restrictions.like("description", "%"+movieSearch.freeSearch+"%"));
-            disCriteria.add(Restrictions.like("producer", "%"+movieSearch.freeSearch+"%"));
-            disCriteria.add(Restrictions.like("studio", "%"+movieSearch.freeSearch+"%"));
+            disCriteria.add(Restrictions.like("title", "%" + movieSearch.freeSearch + "%"));
+            disCriteria.add(Restrictions.like("description", "%" + movieSearch.freeSearch + "%"));
+            disCriteria.add(Restrictions.like("producer", "%" + movieSearch.freeSearch + "%"));
+            disCriteria.add(Restrictions.like("studio", "%" + movieSearch.freeSearch + "%"));
             criteria.add(disCriteria);
         }
 
@@ -97,13 +103,13 @@ public class MovieDaoImpl implements MovieDao{
             Criteria userIdCriteria = session.createCriteria(UsersToMovies.class);
             userIdCriteria.add(Restrictions.eq("pk.user", new User(movieSearch.userId)));
             userIdCriteria.setProjection(Projections.property("pk.movie"));
-            List<Movie> moviesForUser = (List<Movie>)userIdCriteria.list();
+            List<Movie> moviesForUser = (List<Movie>) userIdCriteria.list();
 
             if (moviesForUser == null || moviesForUser.size() == 0)
-                return new MoviesListPaging(0,0,0, new ArrayList<Movie>());
+                return new MoviesListPaging(0, 0, 0, new ArrayList<Movie>());
 
             List<Long> moviesForUserIds = new ArrayList<Long>();
-            for(Movie movie : moviesForUser) moviesForUserIds.add(movie.getId());
+            for (Movie movie : moviesForUser) moviesForUserIds.add(movie.getId());
             criteria.add(Restrictions.in("id", moviesForUserIds));
         }
 
@@ -112,13 +118,13 @@ public class MovieDaoImpl implements MovieDao{
             movieIdsCriteria.add(Restrictions.eq("pk.genre", movieSearch.genre_id));
             movieIdsCriteria.setProjection(Projections.property("pk.movie"));
 
-            List<Movie> moviesForGenre = (List<Movie>)movieIdsCriteria.list();
+            List<Movie> moviesForGenre = (List<Movie>) movieIdsCriteria.list();
 
             if (moviesForGenre == null || moviesForGenre.size() == 0)
-                return new MoviesListPaging(0,0,0, new ArrayList<Movie>());
+                return new MoviesListPaging(0, 0, 0, new ArrayList<Movie>());
 
             List<Long> moviesForGenreIds = new ArrayList<Long>();
-            for(Movie movie : moviesForGenre) moviesForGenreIds.add(movie.getId());
+            for (Movie movie : moviesForGenre) moviesForGenreIds.add(movie.getId());
             criteria.add(Restrictions.in("id", moviesForGenreIds));
         }
 
@@ -127,9 +133,9 @@ public class MovieDaoImpl implements MovieDao{
         if (movieSearch.duration != null)
             criteria.add(Restrictions.like("duration", movieSearch.duration));
 
-        Integer numOfPages = criteria.list().size()/movieSearch.moviesPerPage;
+        Integer numOfPages = criteria.list().size() / movieSearch.moviesPerPage;
         numOfPages += (criteria.list().size() % movieSearch.moviesPerPage == 0) ? 0 : 1;
-        criteria.setFirstResult(movieSearch.moviesPerPage*(movieSearch.pageNumber-1));
+        criteria.setFirstResult(movieSearch.moviesPerPage * (movieSearch.pageNumber - 1));
         criteria.setMaxResults(movieSearch.moviesPerPage);
 
         List<Movie> movieList = criteria.list();
@@ -140,15 +146,40 @@ public class MovieDaoImpl implements MovieDao{
             setUserRate(movie, movieSearch.userId);
         }
 
+        List<Movie> recommendedMovies = getRecommendedMovieListWithMatch(movieSearch.userId);
+        setMoviesMatch(movieList, recommendedMovies);
+
         tx.commit();
         session.close();
-        return new MoviesListPaging(movieSearch.moviesPerPage, movieSearch.pageNumber, numOfPages ,movieList);
+        return new MoviesListPaging(movieSearch.moviesPerPage, movieSearch.pageNumber, numOfPages, movieList);
     }
 
     public List<Movie> getRecommendedMovies(Long userId) throws Exception {
         session = sessionFactory.openSession();
         tx = session.beginTransaction();
+        List<Movie> recommendedMovies = getRecommendedMovieListWithMatch(userId);
+        for (Movie movie : recommendedMovies) {
+            assignGenresToMovie(movie);
+            assignTagsToMovie(movie);
+            setOverallMovieRate(movie);
+            setUserRate(movie, userId);
+        }
+        tx.commit();
+        session.close();
+        return recommendedMovies;
+    }
 
+    private void setMoviesMatch(List<Movie> moviesList, List<Movie> recommendedMovies) {
+        for (Movie movie : moviesList) {
+            for (Movie curRecMovie : recommendedMovies) {
+                if (movie.getId() == curRecMovie.getId()) {
+                    movie.setMatch(curRecMovie.getMatch());
+                }
+            }
+        }
+    }
+
+    private List<Movie> getRecommendedMovieListWithMatch(Long userId) {
         List<Object> objList = session.createSQLQuery("SELECT `movie_id`, COUNT(*) " +
                 "FROM `users_to_movies` " +
                 "INNER JOIN ( " +
@@ -184,25 +215,17 @@ public class MovieDaoImpl implements MovieDao{
                             "GROUP BY `movie_id`;")
                     .setParameter("u_id", userId).list();
         }
-
         List<Movie> recommendedMovies = new ArrayList<Movie>();
         Long maxValue = new Long(0);
         for (Object obj : objList) {
-            Object[] tuple  = (Object[]) obj;
-            Movie movie = (Movie) session.load(Movie.class, ((BigInteger)(tuple[0])).longValue());
+            Object[] tuple = (Object[]) obj;
+            Movie movie = (Movie) session.load(Movie.class, ((BigInteger) (tuple[0])).longValue());
             if (maxValue.equals(new Long(0)))
-                maxValue = ((BigInteger)(tuple[1])).longValue();
-            Float match = (((BigInteger)(tuple[1])).floatValue()/maxValue)*100;
+                maxValue = ((BigInteger) (tuple[1])).longValue();
+            Float match = (((BigInteger) (tuple[1])).floatValue() / maxValue) * 100;
             movie.setMatch(Math.round(match));
-            assignGenresToMovie(movie);
-            assignTagsToMovie(movie);
-            setOverallMovieRate(movie);
-            setUserRate(movie, userId);
             recommendedMovies.add(movie);
         }
-
-        tx.commit();
-        session.close();
         return recommendedMovies;
     }
 
@@ -238,10 +261,6 @@ public class MovieDaoImpl implements MovieDao{
         }
     }
 
-    private void setMatch(Movie movie, Long userId) {
-
-    }
-
     private void setOverallMovieRate(Movie movie) {
         String sqlQuery = "select avg (p.rating) from UsersToMovies p where p.pk.movie=:id";
         Query query = session.createQuery(sqlQuery).setParameter("id", new Movie(movie.getId()));
@@ -256,12 +275,14 @@ public class MovieDaoImpl implements MovieDao{
     private void assignGenresToMovie(Movie movie) {
         Query query = session.createQuery("from MoviesToGenres p where p.pk.movie=:id");
         query.setParameter("id", movie);
-        movie.setMovieGenres(query.list());
+        List<MoviesToGenres> genreList = query.list();
+        movie.setMovieGenres(genreList);
     }
 
     private void assignTagsToMovie(Movie movie) {
         Query query = session.createQuery("from MoviesToTags p where p.pk.movie=:id");
         query.setParameter("id", movie);
-        movie.setMoviesTags(query.list());
+        List<MoviesToTags> tagsList = query.list();
+        movie.setMoviesTags(tagsList);
     }
 }

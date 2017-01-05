@@ -28,7 +28,6 @@ public class MovieRestController {
             movieServices.addEntity(movie);
             return new Status(1, "Movie added");
         } catch (Exception e) {
-            // e.printStackTrace();
             return new Status(0, e.toString());
         }
     }
@@ -59,7 +58,7 @@ public class MovieRestController {
                              @RequestParam(required = false, value="free_search") String freeSearch,
                              @RequestParam(required = false, value="description") String description,
                              @RequestParam(required = false, value="duration") Integer duration,
-                             @RequestParam(value="user_id") Long userId) {
+                             @RequestParam(value="user_id", defaultValue = "0") Long userId) {
 
         MoviesListPaging movieList = null;
         MovieSearchDTO movieSearchDTO = new MovieSearchDTO(pageNumber, moviesPerPage,
@@ -85,12 +84,12 @@ public class MovieRestController {
                                   @RequestParam(required = false, value="free_search") String freeSearch,
                                   @RequestParam(required = false, value="description") String description,
                                   @RequestParam(required = false, value="duration") Integer duration,
-                                  @RequestParam(value="user_id") Long userId) {
+                                  @RequestParam(value="user_id", defaultValue = "0") Long userId) {
 
         MoviesListPaging movieList = null;
         MovieSearchDTO movieSearchDTO = new MovieSearchDTO(pageNumber, moviesPerPage,
-                duration, year, genre, sortBy,
-                orderType, description, title, freeSearch, userId, true);
+                                                            duration, year, genre, sortBy,
+                                                            orderType, description, title, freeSearch, userId, true);
         try {
             movieList = movieServices.getEntityList(movieSearchDTO);
         } catch (Exception e) {
@@ -117,7 +116,7 @@ public class MovieRestController {
 
         try {
             movieServices.deleteEntity(id);
-            return new Status(1, "Movie deleted Successfully !");
+            return new Status(1, "Movie deleted");
         } catch (Exception e) {
             return new Status(0, e.toString());
         }
@@ -129,7 +128,7 @@ public class MovieRestController {
         try {
             movie.setId(id);
             movieServices.updateEntity(movie);
-            return new Status(1, "Movie updated Successfully !");
+            return new Status(1, "Movie updated");
         } catch (Exception e) {
             return new Status(0, e.toString());
         }
