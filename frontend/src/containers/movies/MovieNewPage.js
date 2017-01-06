@@ -26,7 +26,26 @@ class MovieNewPage extends Component {
       body.append("photos", photos[i]);
     }*/
 
-    this.props.actions.createMovie(data);
+    const movie = {
+      title: data.title,
+      year: data.year,
+      studio: data.studio,
+      producer: data.producer,
+      duration: data.duration,
+      ageRestriction: data.ageRestriction,
+      coverImage: data.coverImage,
+      description: data.description
+    }
+
+    if (data.genres.length > 0) {
+      movie.genres = Object.keys(data.genres).join(",");
+    }
+
+    if (data.tags.length > 0) {
+      movie.tags = Object.keys(data.tags).join(",");
+    }
+
+    this.props.actions.createMovie(movie);
   }
 
   handleLoadFromOMDB(title) {

@@ -29,7 +29,7 @@ class MovieApi extends Api {
   }
 
   static createMovie(movie) {
-    return this.getClient().post(`/movie/create`, movie);
+    return this.getClient().post(`/movie/`, movie);
   }
 
   static updateMovie(movie) {
