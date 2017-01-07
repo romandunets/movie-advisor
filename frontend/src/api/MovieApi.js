@@ -32,8 +32,8 @@ class MovieApi extends Api {
     return this.getClient().post(`/movie/`, movie);
   }
 
-  static updateMovie(movie) {
-    return this.getClient().put(`/movie/${movie.id}`, movie);
+  static updateMovie(id, movie) {
+    return this.getClient().put(`/movie/${id}`, movie);
   }
 
   static deleteMovie(id) {

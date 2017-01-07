@@ -190,13 +190,13 @@ function createMovieFailure(error) {
   }
 }
 
-export function updateMovie(movie) {
+export function updateMovie(id, movie) {
   return function(dispatch) {
     dispatch(updateMovieRequest());
-    MovieApi.updateMovie(movie)
+    MovieApi.updateMovie(id, movie)
       .then(function (response) {
         dispatch(updateMovieSuccess(response.data));
-        browserHistory.push(`/movies/${movie.id}`);
+        browserHistory.push(`/movies/${id}`);
       })
       .catch(function (error) {
         dispatch(updateMovieFailure(error));

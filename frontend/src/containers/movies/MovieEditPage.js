@@ -13,8 +13,27 @@ class MovieEditPage extends Component {
     this.props.actions.listTags();
   }
 
-  handleSubmit(movie) {
-    this.props.actions.updateMovie(movie);
+  handleSubmit(data) {
+    const movie = {
+      title: data.title,
+      year: data.year,
+      studio: data.studio,
+      producer: data.producer,
+      duration: data.duration,
+      ageRestriction: data.ageRestriction,
+      coverImage: data.coverImage,
+      description: data.description
+    }
+
+    if (data.genres.length > 0) {
+      movie.genres = Object.keys(data.genres).join(",");
+    }
+
+    if (data.tags.length > 0) {
+      movie.tags = Object.keys(data.tags).join(",");
+    }
+
+    this.props.actions.updateMovie(this.props.params.id, movie);
   }
 
   handleLoadFromOMDB(title) {

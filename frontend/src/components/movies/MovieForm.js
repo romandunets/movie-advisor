@@ -95,7 +95,7 @@ class MovieForm extends Component {
           <label htmlFor="photos">Photos</label>
           <div className="dropzone-block">
             {
-              photos.map ((photo, index) =>
+              photos && photos.map ((photo, index) =>
                 <Field key={ `photo_${index}` } name={ `photo_${index}` } component={ ImageDropzone } photo={ photo } />
               )
             }
