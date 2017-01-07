@@ -26,7 +26,7 @@ class MoviesListItem extends Component {
                   <Link className="btn btn-sm btn-secondary action" to={`/movies/${movie.id}/watched`}>Watched</Link>
                 }
               </div>
-              { isAuthenticated && movie.match &&
+              { isAuthenticated && !movie.isWatched &&
                 <div className="float-xs-right">
                   <span className="match">&#10084;</span>
                   <span className="rating">{ movie.match }%</span>
