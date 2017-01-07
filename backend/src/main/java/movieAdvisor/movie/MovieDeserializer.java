@@ -35,6 +35,9 @@ public class MovieDeserializer extends JsonDeserializer<Movie> {
             movie.setAgeRestriction(node.get("ageRestriction").asInt());
         if (node.has("duration"))
             movie.setDuration(node.get("duration").asInt());
+        if (node.has("producer"))
+            movie.setProducer(node.get("producer").asText());
+
 
         if (node.has("genres")) {
             Set<Integer> genres = new HashSet<Integer>(0);
