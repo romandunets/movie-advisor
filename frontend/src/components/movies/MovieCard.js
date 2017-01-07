@@ -48,7 +48,7 @@ class MovieCard extends Component {
                   <button type="button" ref="deleteMovieButton" className="btn btn-sm btn-danger action">Delete</button>
                 }
               </div>
-              { isAuthenticated &&
+              { isAuthenticated && !movie.isWatched &&
                 <div className="float-xs-right">
                   <span className="match">&#10084;</span>
                   <span className="rating">{ movie.match }%</span>

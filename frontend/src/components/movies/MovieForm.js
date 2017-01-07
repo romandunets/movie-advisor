@@ -57,7 +57,7 @@ class MovieForm extends Component {
         </div>
         <div className="form-group">
           <label htmlFor="genres">Genres</label>
-          <div>
+          <div className="narrow-form-group">
             {
               availableGenres.map ((genre, index) =>
                 <label key={`${index}`} className="custom-control custom-checkbox">
@@ -71,7 +71,7 @@ class MovieForm extends Component {
         </div>
         <div className="form-group">
           <label htmlFor="genres">Tags</label>
-          <div>
+          <div className="narrow-form-group">
             {
               availableTags.map ((tag, index) =>
                 <label key={`${index}`} className="custom-control custom-checkbox">

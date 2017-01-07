@@ -7,7 +7,7 @@ import MovieWatched from '../../components/movies/MovieWatched';
 
 class MoviePageWatched extends Component {
   componentWillMount() {
-    this.props.actions.getMovie(this.props.params.id);
+    this.props.actions.getMovie(this.props.params.id, this.props.currentUser.id);
   }
 
   rateMovie(rating) {

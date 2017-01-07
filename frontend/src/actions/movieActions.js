@@ -3,10 +3,10 @@ import { browserHistory } from 'react-router';
 import * as types from '../actions/actionTypes';
 import MovieApi from '../api/MovieApi';
 
-export function listMovies(query) {
+export function listMovies(userId, query) {
   return function(dispatch) {
     dispatch(listMoviesRequest());
-    MovieApi.listMovies(query)
+    MovieApi.listMovies(userId,query)
       .then(function (response) {
         dispatch(listMoviesSuccess(response.data));
       })
@@ -127,10 +127,10 @@ function searchMoviesFailure(error) {
   }
 }
 
-export function getMovie(id) {
+export function getMovie(id, userId) {
   return function(dispatch) {
     dispatch(getMovieRequest());
-    MovieApi.getMovie(id)
+    MovieApi.getMovie(id, userId)
       .then(function (response) {
         dispatch(getMovieSuccess(response.data));
       })

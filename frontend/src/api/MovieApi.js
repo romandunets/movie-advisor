@@ -5,24 +5,27 @@ const baseParams = {
 }
 
 class MovieApi extends Api {
-  static listMovies(params) {
-    return this.getClient().get(`/movie/list`, { params: {...baseParams, ...params} });
+  static listMovies(userId, parameters) {
+    const params = { ...baseParams, ...parameters, user_id: userId };
+    return this.getClient().get(`/movie/list`, { params });
   }
 
-  static listRecommendedMovies(userId, params) {
-    return this.getClient().get(`/movie/recommend/${userId}`, { params: {...baseParams, ...params} });
+  static listRecommendedMovies(userId, parameters) {
+    const params = { ...baseParams, ...parameters };
+    return this.getClient().get(`/movie/recommend/${userId}`, { params });
   }
 
-  static listWatchedMovies(userId, params) {
-    return this.getClient().get(`/movie/list`, { params: {...baseParams, ...params, user_id: userId} });
+  static listWatchedMovies(userId, parameters) {
+    const params = { ...baseParams, ...parameters, user_id: userId };
+    return this.getClient().get(`/movie/watched`, { params });
   }
 
   static searchMovies(query) {
     return this.getClient().get(`/movie?q=${query}`);
   }
 
-  static getMovie(id) {
-    return this.getClient().get(`/movie/${id}`);
+  static getMovie(id, userId) {
+    return this.getClient().get(`/movie/${id}`, { params: {...baseParams, user_id: userId} });
   }
 
   static createMovie(movie) {
