@@ -31,14 +31,8 @@ class RecommendedMoviesListPage extends Component {
 
     return (
       <div>
-        <div className="header">
-          <MoviesSearchBar onSubmit={ this.handleSearch.bind(this) } />
-          <Pagination page={page} total={total} onPageSelect={this.handlePageSelect.bind(this)} />
-        </div>
+        <div className="header"></div>
         <MoviesList movies={movies} isAuthenticated={isAuthenticated} />
-        <div>
-          <Pagination className="text-center" page={page} total={total} onPageSelect={this.handlePageSelect.bind(this)} />
-        </div>
       </div>
     );
   }
