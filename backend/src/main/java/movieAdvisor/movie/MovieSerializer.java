@@ -29,14 +29,26 @@ public class MovieSerializer extends JsonSerializer<Movie> {
         jsonGenerator.writeNumberField("ageRestriction", movie.getAgeRestriction());
         jsonGenerator.writeNumberField("duration", movie.getDuration());
         jsonGenerator.writeNumberField("year", movie.getYear());
+        
         if (movie.getRate() != null)
             jsonGenerator.writeNumberField("rating", movie.getRate());
+        else
+            jsonGenerator.writeNumberField("rating", 0);
+
         if (movie.getMatch() != null)
             jsonGenerator.writeNumberField("match", movie.getMatch());
+        else
+            jsonGenerator.writeNumberField("match", 0);
+
         if (movie.getWatched() != null)
             jsonGenerator.writeBooleanField("isWatched", movie.getWatched());
+        else
+            jsonGenerator.writeBooleanField("isWatched", false);
+
         if (movie.getUserRate() != null)
             jsonGenerator.writeNumberField("userRating", movie.getUserRate());
+        else
+            jsonGenerator.writeNumberField("userRating", 0);
 
         if (movie.getMovieGenres() != null) {
             jsonGenerator.writeArrayFieldStart("genres");
