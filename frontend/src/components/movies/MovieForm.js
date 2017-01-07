@@ -37,8 +37,8 @@ class MovieForm extends Component {
           <Field name="studio" component="input" type="text" required="required" className="form-control"/>
         </div>
         <div className="form-group required">
-          <label htmlFor="director">Director</label>
-          <Field name="director" component="input" type="text" required="required" className="form-control"/>
+          <label htmlFor="producer">Director</label>
+          <Field name="producer" component="input" type="text" required="required" className="form-control"/>
         </div>
         <div className="form-group required">
           <label htmlFor="duration">Duration (min)</label>
@@ -47,13 +47,17 @@ class MovieForm extends Component {
         <div className="form-group required">
           <label htmlFor="ageRestriction">Age restriction</label>
           <Field name="ageRestriction" component="select" required="required" className="form-control">
-            <option value="N/A">N/A</option>
-            <option value="PG">G</option>
-            <option value="PG">PG</option>
-            <option value="PG-13">PG-13</option>
-            <option value="R">R</option>
-            <option value="NC-17">NC-17</option>
+            <option value="">N/A</option>
+            <option value="0">G</option>
+            <option value="0">PG</option>
+            <option value="13">PG-13</option>
+            <option value="17">R</option>
+            <option value="18">NC-17</option>
           </Field>
+        </div>
+        <div className="form-group required">
+          <label htmlFor="coverImage">Cover image url</label>
+          <Field name="coverImage" component="input" type="text" required="required" className="form-control"/>
         </div>
         <div className="form-group">
           <label htmlFor="genres">Genres</label>
@@ -83,7 +87,7 @@ class MovieForm extends Component {
             }
           </div>
         </div>
-        <div className="form-group required">
+        <div className="form-group">
           <label htmlFor="coverImage">Poster</label>
           <Field name="coverImage" component={ ImageDropzone } />
         </div>

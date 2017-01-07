@@ -72,7 +72,7 @@ class MovieCard extends Component {
           </div>
           <div className="row">
             <div className="col-md-12 properties">
-              <p><b>Director:</b> { movie.director }</p>
+              <p><b>Director:</b> { movie.producer }</p>
               <p><b>Studio:</b> { movie.studio }</p>
             </div>
           </div>
