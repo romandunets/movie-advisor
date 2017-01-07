@@ -42,7 +42,9 @@ public class Movie  extends AbstractTimestampEntity implements Serializable {
     private Set<Integer> tags = new HashSet<Integer>(0);
 
     private Float rate;
-    private Float match;
+    private Integer match;
+    private Boolean isWatched;
+    private Float userRate;
 
     public Movie(long id) {
         this.id = id;
@@ -84,11 +86,27 @@ public class Movie  extends AbstractTimestampEntity implements Serializable {
     }
 
     @Transient
-    public Float getMatch() {
+    public Integer getMatch() {
         return match;
     }
-    public void setMatch(Float match) {
+    public void setMatch(Integer match) {
         this.match = match;
+    }
+
+    @Transient
+    public Float getUserRate() {
+        return userRate;
+    }
+    public void setUserRate(Float userRate) {
+        this.userRate = userRate;
+    }
+
+    @Transient
+    public Boolean getWatched() {
+        return isWatched;
+    }
+    public void setWatched(Boolean watched) {
+        isWatched = watched;
     }
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "pk.movie", cascade = CascadeType.ALL)

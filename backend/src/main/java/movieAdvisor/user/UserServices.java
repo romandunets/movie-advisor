@@ -8,4 +8,5 @@ public interface UserServices {
 	List<User> getEntityList() throws Exception;
 	boolean deleteEntity(long id) throws Exception;
 	User getEntityByLoginPassword(String login, String password) throws Exception;
+	User updateEntity(Long id, User user) throws Exception;
 }

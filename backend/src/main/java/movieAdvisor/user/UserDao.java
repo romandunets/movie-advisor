@@ -8,4 +8,5 @@ public interface UserDao {
 	List<User> getEntityList() throws Exception;
 	boolean deleteEntity(long id) throws Exception;
 	User getEntityByLoginPassword(String login, String password);
+	User updateEntity(Long id, User user);
 }

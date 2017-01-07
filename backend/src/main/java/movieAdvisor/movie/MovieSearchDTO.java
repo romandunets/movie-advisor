@@ -17,12 +17,13 @@ public class MovieSearchDTO {
     final String title;
     final String freeSearch;
     final Long userId;
+    final Boolean userIdRestriction;
 
     public MovieSearchDTO(Integer pageNumber, Integer moviesPerPage,
                           Integer duration, Integer year,
                           Integer genre_id, List<String> sortBy,
                           String orderType, String description, String title,
-                          String freeSearch, Long userId) {
+                          String freeSearch, Long userId, Boolean userIdRestriction) {
         this.pageNumber = pageNumber;
         this.moviesPerPage = moviesPerPage;
         this.duration = duration;
@@ -34,5 +35,6 @@ public class MovieSearchDTO {
         this.title = title;
         this.freeSearch = freeSearch;
         this.userId = userId;
+        this.userIdRestriction = userIdRestriction;
     }
 }

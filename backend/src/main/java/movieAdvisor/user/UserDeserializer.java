@@ -43,13 +43,9 @@ public class UserDeserializer extends JsonDeserializer<User> {
             birthday = new Date();
         }
 
-        int role_id = node.has("role") ? node.get("role").asInt() : 0;
-        Role role = new Role();
-        role.setId(role_id);
-
         return new User(id, birthday, description,
                         email,  firstName,
                         gender, password, lastName,
-                        username, role);
+                        username);
     }
 }

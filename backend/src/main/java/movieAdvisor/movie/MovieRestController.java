@@ -19,7 +19,7 @@ import java.util.*;
 public class MovieRestController {
 
     @Autowired
-    MovieServicesImpl movieServices;
+    MovieServices movieServices;
 
     @RequestMapping(value = "/", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
     public @ResponseBody
@@ -28,16 +28,16 @@ public class MovieRestController {
             movieServices.addEntity(movie);
             return new Status(1, "Movie added");
         } catch (Exception e) {
-            // e.printStackTrace();
             return new Status(0, e.toString());
         }
     }
 
     @RequestMapping(value = "/{movie_id}", method = RequestMethod.GET)
     public @ResponseBody
-    Movie getMovieById(@PathVariable("movie_id") Long movieId) {
+    Movie getMovieById(@PathVariable("movie_id") Long movieId,
+                       @RequestParam(value="user_id", defaultValue = "0") Long userId) {
         try {
-            Movie movie = movieServices.getEntityById(movieId);
+            Movie movie = movieServices.getEntityById(movieId, userId);
             return movie;
         } catch (Exception e) {
             e.printStackTrace();
@@ -49,7 +49,7 @@ public class MovieRestController {
     @RequestMapping(value = "/list", method = RequestMethod.GET)
     public @ResponseBody
     MoviesListPaging getMovieList(@RequestParam(value="per_page", defaultValue = "50") Integer moviesPerPage,
-                             @RequestParam(value="page", defaultValue = "0") Integer pageNumber,
+                             @RequestParam(value="page", defaultValue = "1") Integer pageNumber,
                              @RequestParam(value="order_precedence", defaultValue = "desc") String orderType,
                              @RequestParam(required = false, value="order_by") List<String> sortBy,
                              @RequestParam(required = false, value="year") Integer year,
@@ -58,12 +58,38 @@ public class MovieRestController {
                              @RequestParam(required = false, value="free_search") String freeSearch,
                              @RequestParam(required = false, value="description") String description,
                              @RequestParam(required = false, value="duration") Integer duration,
-                             @RequestParam(required = false, value="user_id") Long userId) {
+                             @RequestParam(value="user_id", defaultValue = "0") Long userId) {
 
         MoviesListPaging movieList = null;
         MovieSearchDTO movieSearchDTO = new MovieSearchDTO(pageNumber, moviesPerPage,
                                                             duration, year, genre, sortBy,
-                                                            orderType, description, title, freeSearch, userId);
+                                                            orderType, description, title, freeSearch, userId, false);
+        try {
+            movieList = movieServices.getEntityList(movieSearchDTO);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return movieList;
+    }
+
+    @RequestMapping(value = "/watched", method = RequestMethod.GET)
+    public @ResponseBody
+    MoviesListPaging getWatchedMovieList(@RequestParam(value="per_page", defaultValue = "50") Integer moviesPerPage,
+                                  @RequestParam(value="page", defaultValue = "1") Integer pageNumber,
+                                  @RequestParam(value="order_precedence", defaultValue = "desc") String orderType,
+                                  @RequestParam(required = false, value="order_by") List<String> sortBy,
+                                  @RequestParam(required = false, value="year") Integer year,
+                                  @RequestParam(required = false, value="genre") Integer genre,
+                                  @RequestParam(required = false, value="title") String title,
+                                  @RequestParam(required = false, value="free_search") String freeSearch,
+                                  @RequestParam(required = false, value="description") String description,
+                                  @RequestParam(required = false, value="duration") Integer duration,
+                                  @RequestParam(value="user_id", defaultValue = "0") Long userId) {
+
+        MoviesListPaging movieList = null;
+        MovieSearchDTO movieSearchDTO = new MovieSearchDTO(pageNumber, moviesPerPage,
+                                                            duration, year, genre, sortBy,
+                                                            orderType, description, title, freeSearch, userId, true);
         try {
             movieList = movieServices.getEntityList(movieSearchDTO);
         } catch (Exception e) {
@@ -74,10 +100,10 @@ public class MovieRestController {
 
     @RequestMapping(value = "/recommend/{user_id}", method = RequestMethod.GET)
     public @ResponseBody
-    List<Movie> getRecommendedMovies(@PathVariable("user_id") Long id) {
+    List<Movie> getRecommendedMovies(@PathVariable("user_id") Long userId) {
         List<Movie> movieList = null;
         try {
-            movieList = movieServices.getRecommendedMovies(id);
+            movieList = movieServices.getRecommendedMovies(userId);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -90,7 +116,7 @@ public class MovieRestController {
 
         try {
             movieServices.deleteEntity(id);
-            return new Status(1, "Movie deleted Successfully !");
+            return new Status(1, "Movie deleted");
         } catch (Exception e) {
             return new Status(0, e.toString());
         }
@@ -102,7 +128,7 @@ public class MovieRestController {
         try {
             movie.setId(id);
             movieServices.updateEntity(movie);
-            return new Status(1, "Movie updated Successfully !");
+            return new Status(1, "Movie updated");
         } catch (Exception e) {
             return new Status(0, e.toString());
         }

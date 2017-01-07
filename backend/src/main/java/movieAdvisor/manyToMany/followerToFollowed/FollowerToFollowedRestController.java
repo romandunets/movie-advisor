@@ -78,7 +78,7 @@ public class FollowerToFollowedRestController {
     Status deleteFtf(@PathVariable("follower_id") long fr_id, @PathVariable("followed_id") long fd_id) {
         try {
             ftfServices.deleteEntity(fr_id, fd_id);
-            return new Status(1, "User deleted Successfully !");
+            return new Status(1, "ftf deleted Successfully !");
         } catch (Exception e) {
             return new Status(0, e.toString());
         }

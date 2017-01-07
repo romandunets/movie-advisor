@@ -12,14 +12,14 @@
 	<bean id="dataSource"
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
+		<!--
 		<property name="url" value="jdbc:mysql://localhost:3306/movie_advisor1" />
         <property name="password" value="root" />
         <property name="username" value="root" />
-		<!--
+		-->
 		<property name="url" value="jdbc:mysql://eu-cdbr-west-01.cleardb.com/heroku_b4b1c23fd428f3a" />
         <property name="username" value="bb4383d278f010" />
         <property name="password" value="5baaaa41"/>
-		-->
 
 	</bean>
 
@@ -51,7 +51,7 @@
 				<prop key="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</prop>
 				<prop key="hibernate.show_sql">true</prop>
 				<prop key="hibernate.max_fetch_depth">1</prop>
-				<prop key="hibernate.hbm2ddl.auto">create</prop>
+				<prop key="hibernate.hbm2ddl.auto">validate</prop>
 			</props>
 		</property>
 	</bean>

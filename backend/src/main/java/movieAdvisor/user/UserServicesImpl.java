@@ -29,4 +29,8 @@ public class UserServicesImpl implements UserServices {
 		return userDao.getEntityByLoginPassword(login, password);
 	}
 
+	public User updateEntity(Long id, User user) throws Exception {
+		return userDao.updateEntity(id, user);
+	}
+
 }

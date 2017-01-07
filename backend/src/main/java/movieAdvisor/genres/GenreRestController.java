@@ -24,7 +24,7 @@ public class GenreRestController {
     Status addGenre(@RequestBody Genre genre) {
         try {
             genreServices.addEntity(genre);
-            return new Status(1, "Genre added successfully");
+            return new Status(1, "Genre added");
         } catch (Exception e) {
             // e.printStackTrace();
             return new Status(0, e.toString());
