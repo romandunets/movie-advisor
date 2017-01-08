@@ -62,7 +62,7 @@ class MovieCard extends Component {
           </div>
           <div className="row">
             <div className="col-md-12">
-              { movie.ageRestriction } | { movie.duration } min | { movie.genres && movie.genres.map(g => g.name).join(', ') }
+              { movie.ageRestriction }+ | { movie.duration } min | { movie.genres && movie.genres.map(g => g.name).join(', ') }
             </div>
           </div>
           <div className="row">
