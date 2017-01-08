@@ -60,7 +60,7 @@ const mapStateToProps = (state) => {
     total: state.movies.pages,
     currentUser: state.auth.currentUser,
     isAuthenticated: state.auth.isAuthenticated,
-    isAdmin: state.auth.currentUser.role.name == 'admin'
+    isAdmin: state.auth.isAdmin
   }
 }
 

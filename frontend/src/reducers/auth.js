@@ -12,11 +12,13 @@ function authReducer(state = initialState.auth, action) {
     case types.LOGIN_REQUEST:
       return {...state, message: '', isAuthenticated: false}
     case types.LOGIN_SUCCESS:
-      return {...state, message: '', isAuthenticated: true, currentUser: action.payload}
+      const currentUser = action.payload;
+      const isAdmin = currentUser && currentUser.role.name == 'admin';
+      return {...state, message: '', isAuthenticated: true, currentUser, isAdmin}
     case types.LOGIN_FAILURE:
       return {...state, message: action.payload, isAuthenticated: false}
     case types.LOGOUT:
-      return {...state, message: 'You successfully logged out!', isAuthenticated: false}
+      return {...state, message: 'You successfully logged out!', isAuthenticated: false, isAdmin: false}
     default:
       return state;
   }
