@@ -36,7 +36,6 @@ class MoviesListPage extends Component {
   render() {
     const { movies, message, total, isAuthenticated, isAdmin } = this.props;
     const { free_search, page } = this.props.location.query;
-    console.log(free_search);
 
     return (
       <div>
