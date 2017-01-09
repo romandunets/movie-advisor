@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link, IndexLink } from 'react-router';
 
-const AppNavigation = ({ isAuthenticated, isAdmin, username, handleLogout, handleSearch  }) => (
+const AppNavigation = ({ isAuthenticated, isAdmin, username, free_search, handleLogout, handleSearch  }) => (
   <nav className="navbar navbar-light bg-faded">
     <Link className="navbar-brand" to="/">
       <img src="/images/icon.png" className="icon" alt="Movie Advisor" />
@@ -44,7 +44,7 @@ const AppNavigation = ({ isAuthenticated, isAdmin, username, handleLogout, handl
       </ul>
     }
     <form className="form-inline float-xs-right">
-      <input className="form-control" type="text" placeholder="Search" id="searchField" onKeyPress={handleSearch}/>
+      <input className="form-control" type="text" placeholder="Search" id="searchField" value={ free_search } onKeyPress={handleSearch}/>
     </form>
   </nav>
 )

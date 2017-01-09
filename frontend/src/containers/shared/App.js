@@ -34,9 +34,11 @@ class App extends Component {
   render() {
     const { isAuthenticated, isAdmin } = this.props;
     const username = this.props.currentUser.username;
+    const { free_search } = this.props.location.query;
+
     return (
       <div className="container">
-        <AppNavigation username={username} isAuthenticated={isAuthenticated} isAdmin={isAdmin} handleLogout={this.handleLogout.bind(this)} handleSearch={this.handleSearch.bind(this)} />
+        <AppNavigation username={username} free_search={free_search} isAuthenticated={isAuthenticated} isAdmin={isAdmin} handleLogout={this.handleLogout.bind(this)} handleSearch={this.handleSearch.bind(this)} />
         <div className="content">{ this.props.children }</div>
         <AppFooter />
       </div>
