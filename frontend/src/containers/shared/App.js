@@ -9,11 +9,6 @@ import AppNavigation from '../../components/shared/AppNavigation';
 import AppFooter from '../../components/shared/AppFooter';
 
 class App extends Component {
-  handleLogout(event) {
-    event.preventDefault();
-    this.props.actions.logout();
-  }
-
   // TODO: REFACTORING
   handleSearch(event) {
     if (event.charCode == 13) {
@@ -31,14 +26,18 @@ class App extends Component {
     }
   }
 
+  handleLogout(event) {
+    event.preventDefault();
+    this.props.actions.logout();
+  }
+
   render() {
-    const { isAuthenticated, isAdmin } = this.props;
-    const username = this.props.currentUser.username;
+    const { currentUser, isAuthenticated, isAdmin } = this.props;
     const { free_search } = this.props.location.query;
 
     return (
       <div className="container">
-        <AppNavigation username={username} free_search={free_search} isAuthenticated={isAuthenticated} isAdmin={isAdmin} handleLogout={this.handleLogout.bind(this)} handleSearch={this.handleSearch.bind(this)} />
+        <AppNavigation username={currentUser.username} free_search={free_search} isAuthenticated={isAuthenticated} isAdmin={isAdmin} handleSearch={this.handleSearch.bind(this)} handleLogout={this.handleLogout.bind(this)} />
         <div className="content">{ this.props.children }</div>
         <AppFooter />
       </div>
