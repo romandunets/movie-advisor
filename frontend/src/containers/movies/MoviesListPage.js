@@ -34,28 +34,37 @@ class MoviesListPage extends Component {
   }
 
   render() {
-    const { movies, message, total, isAuthenticated, isAdmin } = this.props;
+    const { movies, message, total, isAuthenticated, isAdmin, isLoading } = this.props;
     const { free_search, page } = this.props.location.query;
 
-    return (
-      <div>
-        <div className="header">
-          <MoviesSearchBar onSubmit={ this.handleSearch.bind(this) } initialValues={{ free_search }} />
-          <Pagination page={page} total={total} onPageSelect={this.handlePageSelect.bind(this)} />
-          <MoviesActionBar isAuthenticated={isAuthenticated} isAdmin={isAdmin} />
+    if (isLoading) {
+      return (
+        <div className="center-content">
+          <h3 className="title">Loading...</h3>
         </div>
-        <MoviesList movies={movies} isAuthenticated={isAuthenticated} markAsWatched={this.markAsWatched.bind(this)} deleteMarkAsWatched={this.deleteMarkAsWatched.bind(this)} />
+      );
+    } else {
+      return (
         <div>
-          <Pagination className="text-center" page={page} total={total} onPageSelect={this.handlePageSelect.bind(this)} />
+          <div className="header">
+            <MoviesSearchBar onSubmit={ this.handleSearch.bind(this) } initialValues={{ free_search }} />
+            <Pagination page={page} total={total} onPageSelect={this.handlePageSelect.bind(this)} />
+            <MoviesActionBar isAuthenticated={isAuthenticated} isAdmin={isAdmin} />
+          </div>
+          <MoviesList movies={movies} isAuthenticated={isAuthenticated} markAsWatched={this.markAsWatched.bind(this)} deleteMarkAsWatched={this.deleteMarkAsWatched.bind(this)} />
+          <div>
+            <Pagination className="text-center" page={page} total={total} onPageSelect={this.handlePageSelect.bind(this)} />
+          </div>
         </div>
-      </div>
-    );
+      );
+    }
   }
 }
 
 const mapStateToProps = (state) => {
   return {
     movies: state.movies.movies,
+    isLoading: state.movies.isLoading,
     message: state.movies.message,
     total: state.movies.pages,
     currentUser: state.auth.currentUser,

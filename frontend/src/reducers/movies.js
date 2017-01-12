@@ -4,11 +4,11 @@ import initialState from './initialState';
 const moviesReducer = (state = initialState.movies, action) => {
   switch(action.type) {
     case types.LIST_MOVIES_REQUEST:
-      return {...state, movies: []}
+      return {...state, movies: [], isLoading: true}
     case types.LIST_MOVIES_SUCCESS:
-      return {...state, movies: action.payload.movies.data, pages: action.payload.movies.meta.numOfPages}
+      return {...state, movies: action.payload.movies.data, pages: action.payload.movies.meta.numOfPages, isLoading: false}
     case types.LIST_MOVIES_FAILURE:
-      return {...state, error: action.payload}
+      return {...state, error: action.payload, isLoading: false}
     case types.LIST_RECOMMENDED_MOVIES_REQUEST:
       return {...state, movies: []}
     case types.LIST_RECOMMENDED_MOVIES_SUCCESS:
