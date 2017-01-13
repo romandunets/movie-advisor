@@ -26,21 +26,30 @@ class RecommendedMoviesListPage extends Component {
   }
 
   render() {
-    const { movies, message, total, isAuthenticated, isAdmin } = this.props;
+    const { movies, isLoading, message, total, isAuthenticated, isAdmin } = this.props;
     const page = this.props.location.query.page;
 
-    return (
-      <div>
-        <div className="header"></div>
-        <MoviesList movies={movies} isAuthenticated={isAuthenticated} />
-      </div>
-    );
+    if (isLoading) {
+      return (
+        <div className="center-content">
+          <h3 className="title">Loading...</h3>
+        </div>
+      );
+    } else {
+      return (
+        <div>
+          <div className="header"></div>
+          <MoviesList movies={movies} isAuthenticated={isAuthenticated} />
+        </div>
+      );
+    }
   }
 }
 
 const mapStateToProps = (state) => {
   return {
     movies: state.movies.movies,
+    isLoading: state.movies.isLoading,
     message: state.movies.message,
     total: state.movies.pages,
     currentUser: state.auth.currentUser,

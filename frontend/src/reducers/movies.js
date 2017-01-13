@@ -10,11 +10,11 @@ const moviesReducer = (state = initialState.movies, action) => {
     case types.LIST_MOVIES_FAILURE:
       return {...state, error: action.payload, isLoading: false}
     case types.LIST_RECOMMENDED_MOVIES_REQUEST:
-      return {...state, movies: []}
+      return {...state, movies: [], isLoading: true}
     case types.LIST_RECOMMENDED_MOVIES_SUCCESS:
-      return {...state, movies: action.payload.movies}
+      return {...state, movies: action.payload.movies, isLoading: false}
     case types.LIST_RECOMMENDED_MOVIES_FAILURE:
-      return {...state, error: action.payload}
+      return {...state, error: action.payload, isLoading: false}
     case types.LIST_WATCHED_MOVIES_REQUEST:
       return {...state, movies: [], isLoading: true}
     case types.LIST_WATCHED_MOVIES_SUCCESS:
