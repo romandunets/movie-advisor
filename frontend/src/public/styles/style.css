@@ -235,6 +235,10 @@ dl dt, dd {
   margin-left: 20px;
 }
 
+.actions .btn {
+  width: 80px;
+}
+
 .action {
   margin: 4px 0px 4px 5px;
 }
