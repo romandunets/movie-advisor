@@ -29,7 +29,13 @@ class WatchedMoviesListPage extends Component {
     const { movies, message, total, isLoading, isAuthenticated, isAdmin } = this.props;
     const page = this.props.location.query.page;
 
-    if (!isLoading) {
+    if (isLoading) {
+      return (
+        <div className="center-content">
+          <h3 className="title">Loading...</h3>
+        </div>
+      );
+    } else {
       if (movies.length > 0) {
         return (
           <div>
@@ -53,8 +59,6 @@ class WatchedMoviesListPage extends Component {
         );
       }
     }
-
-    return null;
   }
 }
 
