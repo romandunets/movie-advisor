@@ -13,21 +13,31 @@ class UsersListPage extends Component {
   }
 
   render() {
-    const { users, isAuthenticated, isAdmin } = this.props;
-    return (
-      <div>
-        <div className="header">
-          <UsersActionBar isAuthenticated={ isAuthenticated } isAdmin={ isAdmin } />
+    const { users, isLoading, isAuthenticated, isAdmin } = this.props;
+
+    if (isLoading) {
+      return (
+        <div className="center-content">
+          <h3 className="title">Loading...</h3>
         </div>
-        <UsersList users={ users } />
-      </div>
-    );
+      );
+    } else {
+      return (
+        <div>
+          <div className="header">
+            <UsersActionBar isAuthenticated={ isAuthenticated } isAdmin={ isAdmin } />
+          </div>
+          <UsersList users={ users } />
+        </div>
+      );
+    }
   }
 }
 
 const mapStateToProps = (state) => {
   return {
     users: state.users.users,
+    isLoading: state.users.isLoading,
     isAuthenticated: state.auth.isAuthenticated,
     isAdmin: state.auth.isAdmin
   }
