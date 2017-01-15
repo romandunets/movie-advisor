@@ -5,7 +5,6 @@ class AppNavigation extends Component {
   render() {
     const { isAuthenticated, isAdmin, username, free_search, pathname, handleLogout, handleSearch } = this.props;
     const isMoviesPage = (pathname == '/movies');
-    console.log(pathname);
 
     return (
       <nav className="navbar navbar-light bg-faded">
