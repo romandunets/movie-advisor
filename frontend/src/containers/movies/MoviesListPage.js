@@ -39,7 +39,7 @@ class MoviesListPage extends Component {
     const { free_search, page } = this.props.location.query;
 
     if (isLoading) {
-      return return <ProgressBar />;
+      return <ProgressBar />;
     } else {
       return (
         <div>

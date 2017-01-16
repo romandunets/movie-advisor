@@ -4,6 +4,7 @@ import { browserHistory, Link } from 'react-router';
 import { bindActionCreators } from 'redux';
 
 import * as movieActions from '../../actions/movieActions';
+import ProgressBar from '../../components/shared/ProgressBar';
 import MoviesList from '../../components/movies/MoviesList';
 import MoviesSearchBar from '../../components/movies/MoviesSearchBar';
 import MoviesActionBar from '../../components/movies/MoviesActionBar';
@@ -30,11 +31,7 @@ class RecommendedMoviesListPage extends Component {
     const page = this.props.location.query.page;
 
     if (isLoading) {
-      return (
-        <div className="center-content">
-          <h3 className="title">Loading...</h3>
-        </div>
-      );
+      return <ProgressBar />;
     } else {
       return (
         <div>
