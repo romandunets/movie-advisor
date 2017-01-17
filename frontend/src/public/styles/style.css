@@ -41,6 +41,10 @@ img {
   margin-left: 10px;
 }
 
+.message-box {
+  margin: 10px 0px;
+}
+
 .content {
   height: 100%;
 }

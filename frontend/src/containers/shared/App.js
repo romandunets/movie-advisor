@@ -5,6 +5,7 @@ import { browserHistory } from 'react-router';
 
 import * as authActions from '../../actions/authActions';
 import * as movieActions from '../../actions/movieActions';
+import MessageBox from '../../components/shared/MessageBox';
 import AppNavigation from '../../components/shared/AppNavigation';
 import AppFooter from '../../components/shared/AppFooter';
 
@@ -32,12 +33,13 @@ class App extends Component {
   }
 
   render() {
-    const { currentUser, isAuthenticated, isAdmin } = this.props;
+    const { message, currentUser, isAuthenticated, isAdmin } = this.props;
     const { query, pathname } = this.props.location;
 
     return (
       <div className="container">
         <AppNavigation username={currentUser.username} free_search={query.free_search} pathname={pathname} isAuthenticated={isAuthenticated} isAdmin={isAdmin} handleSearch={this.handleSearch.bind(this)} handleLogout={this.handleLogout.bind(this)} />
+        <MessageBox message={message} />
         <div className="content">{ this.props.children }</div>
         <AppFooter />
       </div>
@@ -47,6 +49,7 @@ class App extends Component {
 
 const mapStateToProps = (state) => {
   return {
+    message: state.users.message || state.movies.message || state.auth.message,
     currentUser: state.auth.currentUser,
     isAuthenticated: state.auth.isAuthenticated,
     isAdmin: state.auth.isAdmin
