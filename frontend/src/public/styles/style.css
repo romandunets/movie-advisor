@@ -240,7 +240,7 @@ dl dt, dd {
 }
 
 .actions .btn {
-  width: 80px;
+  min-width: 80px;
 }
 
 .action {
