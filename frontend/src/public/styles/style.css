@@ -181,7 +181,12 @@ img {
 }
 
 .list-item .thumbnail-box {
-  padding-right: 0px
+  float: left;
+  width: 100px;
+}
+
+.list-item .content-box {
+  overflow: hidden;
 }
 
 dl dt, dd {
@@ -190,6 +195,7 @@ dl dt, dd {
 
 .simple{
   max-height: 150px;
+  max-width: 100px;
 }
 
 .simple-text{
