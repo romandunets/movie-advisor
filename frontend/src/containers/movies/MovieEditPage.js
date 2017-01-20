@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
 import * as movieActions from '../../actions/movieActions';
-import MessageBox from '../../components/shared/MessageBox';
 import MovieForm from '../../components/movies/MovieForm';
 
 class MovieEditPage extends Component {
@@ -52,7 +51,6 @@ class MovieEditPage extends Component {
       <div className="center-container">
         <div className="center-content">
           <h3 className="title text-center">Edit movie</h3>
-          <MessageBox message={ message } />
           { !isLoading &&
             <MovieForm onSubmit={ this.handleSubmit.bind(this) } loadFromOMDB={ this.handleLoadFromOMDB.bind(this) } addPhoto={ this.handleAddPhoto.bind(this) } initialValues={ initialValues } />
           }

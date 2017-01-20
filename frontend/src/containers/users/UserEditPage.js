@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
 import * as userActions from '../../actions/userActions';
-import MessageBox from '../../components/shared/MessageBox';
 import UserForm from '../../components/users/UserForm';
 
 class UserEditPage extends Component {

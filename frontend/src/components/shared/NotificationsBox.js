@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 
-class MessageBox extends Component {
+class NotificationsBox extends Component {
   render() {
     const { notifications } = this.props;
-    console.log(notifications);
 
     return (
       <div className="message-box">
@@ -20,4 +19,4 @@ class MessageBox extends Component {
   }
 }
 
-export default MessageBox;
+export default NotificationsBox;

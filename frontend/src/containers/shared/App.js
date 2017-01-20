@@ -5,7 +5,7 @@ import { browserHistory } from 'react-router';
 
 import * as authActions from '../../actions/authActions';
 import * as movieActions from '../../actions/movieActions';
-import MessageBox from '../../components/shared/MessageBox';
+import NotificationsBox from '../../components/shared/NotificationsBox';
 import AppNavigation from '../../components/shared/AppNavigation';
 import AppFooter from '../../components/shared/AppFooter';
 
@@ -39,7 +39,7 @@ class App extends Component {
     return (
       <div className="container">
         <AppNavigation username={currentUser.username} free_search={query.free_search} pathname={pathname} isAuthenticated={isAuthenticated} isAdmin={isAdmin} handleSearch={this.handleSearch.bind(this)} handleLogout={this.handleLogout.bind(this)} />
-        <MessageBox notifications={notifications} />
+        <NotificationsBox notifications={notifications} />
         <div className="content">{ this.props.children }</div>
         <AppFooter />
       </div>

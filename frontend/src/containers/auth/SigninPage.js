@@ -4,7 +4,6 @@ import { Link } from 'react-router';
 import { bindActionCreators } from 'redux';
 
 import * as authActions from '../../actions/authActions';
-import MessageBox from '../../components/shared/MessageBox';
 import LoginForm from '../../components/auth/LoginForm';
 
 class SigninPage extends Component {
@@ -18,7 +17,6 @@ class SigninPage extends Component {
       <div className="center-container">
         <div className="center-content">
           <h3 className="title text-center">Sign in to Movie Advisor</h3>
-          <MessageBox message={message} />
           <LoginForm onSubmit={this.handleSubmit.bind(this)} />
         </div>
       </div>
