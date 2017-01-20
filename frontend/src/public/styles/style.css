@@ -180,7 +180,7 @@ img {
   padding: 8px;
 }
 
-.list-item .thumbnail-box {
+.list-embedded .list-item .thumbnail-box {
   float: left;
   width: 100px;
 }

@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import MoviesListItemSimple from './MoviesListItemSimple'
 
 const MoviesList = ({ movies, isAuthenticated }) => (
-  <div>
+  <div className="list-embedded">
     { movies.map (movie => <MoviesListItemSimple key={movie.id} movie={movie} isAuthenticated={isAuthenticated} />) }
   </div>
 )
