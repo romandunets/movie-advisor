@@ -4,11 +4,17 @@ import initialState from './initialState';
 const notificationsReducer = (state = initialState.notifications, action) => {
   switch(action.type) {
     case types.SEND_NOTIFICATION_INFO:
-      const notifications = state.notifications.concat([action.payload]);
-      return {...state, notifications}
+      return {...state, notifications: appendNotification(state, action, 'INFO')}
+    case types.SEND_NOTIFICATION_ERROR:
+      return {...state,  notifications: appendNotification(state, action, 'ERROR')}
     default:
       return state;
   }
+}
+
+function appendNotification(state, action, type) {
+  const notification = { message: action.payload, type };
+  return state.notifications.concat([notification]);
 }
 
 export default notificationsReducer;

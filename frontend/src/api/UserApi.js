@@ -18,7 +18,7 @@ class UserApi extends Api {
   }
 
   static deleteUser(id) {
-    return this.getClient().delete(`/user/${id}`);
+    return this.getClient().delete(`/usesdr/${id}`);
   }
 }
 

@@ -177,6 +177,11 @@ img {
   display: inline-block;
   width: 100%;
   border-bottom: 1px #dddddd solid;
+  padding-bottom: 8px;
+}
+
+.list-embedded .list-item {
+  float: left;
   padding: 8px;
 }
 
