@@ -157,7 +157,7 @@ function deleteUserSuccess() {
 
 function deleteUserFailure(error) {
   return function(dispatch) {
-    dispatch(notificationActions.error('User successfully deleted'));
+    dispatch(notificationActions.error('Deleting user failed'));
     dispatch({
       type: types.DELETE_USER_FAILURE,
       payload: { error }

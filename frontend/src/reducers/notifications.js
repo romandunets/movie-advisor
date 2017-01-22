@@ -13,7 +13,7 @@ const notificationsReducer = (state = initialState.notifications, action) => {
 }
 
 function appendNotification(state, action, type) {
-  const notification = { message: action.payload, type };
+  const notification = { message: action.payload.message, type };
   return state.notifications.concat([notification]);
 }
 
