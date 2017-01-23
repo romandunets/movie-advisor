@@ -85,16 +85,19 @@ function createUserRequest() {
 }
 
 function createUserSuccess(user) {
-  return {
-    type: types.CREATE_USER_SUCCESS,
-    payload: { user }
+  return function(dispatch) {
+    dispatch(notificationActions.info('User successfully created'));
+    dispatch({
+      type: types.CREATE_USER_SUCCESS,
+      payload: { user }
+    });
   }
 }
 
 function createUserFailure(error) {
-  return {
-    type: types.CREATE_USER_FAILURE,
-    payload: { error }
+  return function(dispatch) {
+    dispatch(notificationActions.error('Creating user failed'));
+    dispatch({ type: types.CREATE_USER_FAILURE });
   }
 }
 
