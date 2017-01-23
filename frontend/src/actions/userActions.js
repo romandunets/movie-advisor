@@ -117,16 +117,19 @@ function updateUserRequest() {
 }
 
 function updateUserSuccess(user) {
-  return {
-    type: types.UPDATE_USER_SUCCESS,
-    payload: { user }
+  return function(dispatch) {
+    dispatch(notificationActions.info('User successfully updated'));
+    dispatch({
+      type: types.UPDATE_USER_SUCCESS,
+      payload: { user }
+    });
   }
 }
 
 function updateUserFailure(error) {
-  return {
-    type: types.UPDATE_USER_FAILURE,
-    payload: { error }
+  return function(dispatch) {
+    dispatch(notificationActions.error('Updating user failed'));
+    dispatch({ type: types.UPDATE_USER_FAILURE });
   }
 }
 
