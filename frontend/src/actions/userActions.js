@@ -139,7 +139,7 @@ export function deleteUser(id) {
         browserHistory.push(`/users`);
       })
       .catch(function (error) {
-        dispatch(deleteUserFailure(error));
+        dispatch(deleteUserFailure());
       });
   }
 }

@@ -1,7 +1,7 @@
-import React, { Component, PropTypes } from 'react'
-import { connect } from 'react-redux'
+import React, { Component, PropTypes } from 'react';
+import { connect } from 'react-redux';
 
-import MoviesListItem from './MoviesListItem'
+import MoviesListItem from './MoviesListItem';
 
 const MoviesList = ({ movies, isAuthenticated, markAsWatched, deleteMarkAsWatched }) => (
   <div>

@@ -5,7 +5,7 @@ import { browserHistory } from 'react-router';
 
 import * as authActions from '../../actions/authActions';
 import * as movieActions from '../../actions/movieActions';
-import NotificationsBox from '../../components/shared/NotificationsBox';
+import NotificationsBox from '../../components/shared/NotificationsBox/NotificationsBox';
 import AppNavigation from '../../components/shared/AppNavigation';
 import AppFooter from '../../components/shared/AppFooter';
 
