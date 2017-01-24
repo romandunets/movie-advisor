@@ -60,9 +60,9 @@ function getUserSuccess(user) {
 }
 
 function getUserFailure(error) {
-  return {
-    type: types.GET_USER_FAILURE,
-    payload: { error }
+  return function(dispatch) {
+    dispatch(notificationActions.error('Getting user failed'));
+    dispatch({ type: types.GET_USER_FAILURE });
   }
 }
 
