@@ -29,9 +29,9 @@ function listUsersSuccess(users) {
 }
 
 function listUsersFailure(error) {
-  return {
-    type: types.LIST_USERS_FAILURE,
-    payload: { error }
+  return function(dispatch) {
+    dispatch(notificationActions.error('Getting users failed'));
+    dispatch({ type: types.LIST_USERS_FAILURE });
   }
 }
 
