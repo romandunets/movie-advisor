@@ -11,8 +11,6 @@ export default {
   users: {
     users: [],
     user: {},
-    message: '',
-    error: '',
     isLoading: false
   },
   movies: {
