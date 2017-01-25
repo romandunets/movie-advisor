@@ -121,9 +121,9 @@ function searchMoviesSuccess(movies) {
 }
 
 function searchMoviesFailure(error) {
-  return {
-    type: types.SEARCH_MOVIES_FAILURE,
-    payload: { error }
+  return function(dispatch) {
+    dispatch({ type: types.SEARCH_MOVIES_FAILURE });
+    dispatch(notificationActions.error('Searching movies failed'));
   }
 }
 
