@@ -90,9 +90,9 @@ function listWatchedMoviesSuccess(movies) {
 }
 
 function listWatchedMoviesFailure(error) {
-  return {
-    type: types.LIST_WATCHED_MOVIES_FAILURE,
-    payload: { error }
+  return function(dispatch) {
+    dispatch({ type: types.LIST_WATCHED_MOVIES_FAILURE });
+    dispatch(notificationActions.error('Getting watched movies failed'));
   }
 }
 
