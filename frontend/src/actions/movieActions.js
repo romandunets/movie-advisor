@@ -1,6 +1,7 @@
 import { browserHistory } from 'react-router';
 
 import * as types from '../actions/actionTypes';
+import * as notificationActions from './notificationActions';
 import MovieApi from '../api/MovieApi';
 
 export function listMovies(userId, query) {
@@ -177,16 +178,19 @@ function createMovieRequest() {
 }
 
 function createMovieSuccess(movie) {
-  return {
-    type: types.CREATE_MOVIE_SUCCESS,
-    payload: { movie }
+  return function(dispatch) {
+    dispatch({
+      type: types.CREATE_MOVIE_SUCCESS,
+      payload: { movie }
+    });
+    dispatch(notificationActions.info('Movie successfully created'));
   }
 }
 
 function createMovieFailure(error) {
-  return {
-    type: types.CREATE_MOVIE_FAILURE,
-    payload: { error }
+  return function(dispatch) {
+    dispatch({ type: types.CREATE_MOVIE_FAILURE });
+    dispatch(notificationActions.error('Creating movie failed'));
   }
 }
 
