@@ -10,8 +10,8 @@ export function listMovies(userId, query) {
       .then(function (response) {
         dispatch(listMoviesSuccess(response.data));
       })
-      .catch(function (error) {
-        dispatch(listMoviesFailure(error));
+      .catch(function () {
+        dispatch(listMoviesFailure());
       });
   }
 }
@@ -27,7 +27,7 @@ function listMoviesSuccess(movies) {
   }
 }
 
-function listMoviesFailure(error) {
+function listMoviesFailure() {
   return function(dispatch) {
     dispatch({ type: types.LIST_MOVIES_FAILURE });
     dispatch(notificationActions.error('Getting movies failed'));
@@ -41,8 +41,8 @@ export function listRecommendedMovies(userId, query) {
       .then(function (response) {
         dispatch(listRecommendedMoviesSuccess(response.data));
       })
-      .catch(function (error) {
-        dispatch(listRecommendedMoviesFailure(error));
+      .catch(function () {
+        dispatch(listRecommendedMoviesFailure());
       });
   }
 }
@@ -58,7 +58,7 @@ function listRecommendedMoviesSuccess(movies) {
   }
 }
 
-function listRecommendedMoviesFailure(error) {
+function listRecommendedMoviesFailure() {
   return function(dispatch) {
     dispatch({ type: types.LIST_RECOMMENDED_MOVIES_FAILURE });
     dispatch(notificationActions.error('Getting recommended movies failed'));
@@ -72,8 +72,8 @@ export function listWatchedMovies(userId, query) {
       .then(function (response) {
         dispatch(listWatchedMoviesSuccess(response.data));
       })
-      .catch(function (error) {
-        dispatch(listWatchedMoviesFailure(error));
+      .catch(function () {
+        dispatch(listWatchedMoviesFailure());
       });
   }
 }
@@ -89,7 +89,7 @@ function listWatchedMoviesSuccess(movies) {
   }
 }
 
-function listWatchedMoviesFailure(error) {
+function listWatchedMoviesFailure() {
   return function(dispatch) {
     dispatch({ type: types.LIST_WATCHED_MOVIES_FAILURE });
     dispatch(notificationActions.error('Getting watched movies failed'));
@@ -120,7 +120,7 @@ function searchMoviesSuccess(movies) {
   }
 }
 
-function searchMoviesFailure(error) {
+function searchMoviesFailure() {
   return function(dispatch) {
     dispatch({ type: types.SEARCH_MOVIES_FAILURE });
     dispatch(notificationActions.error('Searching movies failed'));
@@ -134,8 +134,8 @@ export function getMovie(id, userId) {
       .then(function (response) {
         dispatch(getMovieSuccess(response.data));
       })
-      .catch(function (error) {
-        dispatch(getMovieFailure(error));
+      .catch(function () {
+        dispatch(getMovieFailure());
       })
   }
 }
@@ -151,10 +151,10 @@ function getMovieSuccess(movie) {
   }
 }
 
-function getMovieFailure(error) {
-  return {
-    type: types.GET_MOVIE_FAILURE,
-    payload: { error }
+function getMovieFailure() {
+  return function(dispatch) {
+    dispatch({ type: types.GET_MOVIE_FAILURE });
+    dispatch(notificationActions.error('Getting movie failed'));
   }
 }
 
