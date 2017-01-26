@@ -213,16 +213,19 @@ function updateMovieRequest() {
 }
 
 function updateMovieSuccess(movie) {
-  return {
-    type: types.UPDATE_MOVIE_SUCCESS,
-    payload: { movie }
+  return function(dispatch) {
+    dispatch({
+      type: types.UPDATE_MOVIE_SUCCESS,
+      payload: { movie }
+    });
+    dispatch(notificationActions.info('Movie successfully updated'));
   }
 }
 
 function updateMovieFailure(error) {
-  return {
-    type: types.UPDATE_MOVIE_FAILURE,
-    payload: { error }
+  return function(dispatch) {
+    dispatch({ type: types.UPDATE_MOVIE_FAILURE });
+    dispatch(notificationActions.error('Updating movie failed'));
   }
 }
 
