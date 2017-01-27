@@ -104,8 +104,8 @@ export function searchMovies(keyword) {
       .then(function (response) {
         dispatch(searchMoviesSuccess(response.data));
       })
-      .catch(function (error) {
-        dispatch(searchMoviesFailure(error));
+      .catch(function () {
+        dispatch(searchMoviesFailure());
       });
   }
 }
@@ -167,8 +167,8 @@ export function createMovie(movie) {
         dispatch(createMovieSuccess(response.data));
         browserHistory.push(`/movies`);
       })
-      .catch(function (error) {
-        dispatch(createMovieFailure(error));
+      .catch(function () {
+        dispatch(createMovieFailure());
       });
   }
 }
@@ -187,7 +187,7 @@ function createMovieSuccess(movie) {
   }
 }
 
-function createMovieFailure(error) {
+function createMovieFailure() {
   return function(dispatch) {
     dispatch({ type: types.CREATE_MOVIE_FAILURE });
     dispatch(notificationActions.error('Creating movie failed'));
@@ -202,8 +202,8 @@ export function updateMovie(id, movie) {
         dispatch(updateMovieSuccess(response.data));
         browserHistory.push(`/movies/${id}`);
       })
-      .catch(function (error) {
-        dispatch(updateMovieFailure(error));
+      .catch(function () {
+        dispatch(updateMovieFailure());
       });
   }
 }
@@ -222,7 +222,7 @@ function updateMovieSuccess(movie) {
   }
 }
 
-function updateMovieFailure(error) {
+function updateMovieFailure() {
   return function(dispatch) {
     dispatch({ type: types.UPDATE_MOVIE_FAILURE });
     dispatch(notificationActions.error('Updating movie failed'));
@@ -238,8 +238,8 @@ export function deleteMovie(id) {
         dispatch(deleteMovieSuccess(response.data));
         browserHistory.push(`/movies`);
       })
-      .catch(function (error) {
-        dispatch(deleteMoviesFailure(error));
+      .catch(function () {
+        dispatch(deleteMoviesFailure());
       });
   }
 }
@@ -255,14 +255,14 @@ function deleteMovieSuccess() {
   }
 }
 
-function deleteMovieFailure(error) {
+function deleteMovieFailure() {
   return function(dispatch) {
     dispatch({ type: types.DELETE_MOVIE_FAILURE });
     dispatch(notificationActions.error('Deleting movie failed'));
   }
 }
 
-
+// TODO: rename or delete?
 export function markMovieWatched(userid, movieid) {
   return function(dispatch) {
     dispatch(markMovieWatchedRequest());
@@ -271,8 +271,8 @@ export function markMovieWatched(userid, movieid) {
         dispatch(markMovieWatchedSuccess(response.data));
         browserHistory.push(`/movies/${movie.id}/watched`);
       })
-      .catch(function (error) {
-        dispatch(markMovieWatchedFailure(error));
+      .catch(function () {
+        dispatch(markMovieWatchedFailure());
       });
   }
 }
@@ -282,16 +282,19 @@ function markMovieWatchedRequest() {
 }
 
 function markMovieWatchedSuccess(movie) {
-  return {
-    type: types.MARK_MOVIE_WATCHED_SUCCESS,
-    payload: { movie }
+  return function(dispatch) {
+    dispatch({
+      type: types.MARK_MOVIE_WATCHED_SUCCESS,
+      payload: { movie }
+    });
+    dispatch(notificationActions.info(`You have successfully rated ${movie.name} movie`));
   }
 }
 
-function markMovieWatchedFailure(error) {
-  return {
-    type: types.MARK_MOVIE_WATCHED_FAILURE,
-    payload: { error }
+function markMovieWatchedFailure() {
+  return function(dispatch) {
+    dispatch({ type: types.MARK_MOVIE_WATCHED_FAILURE });
+    dispatch(notificationActions.error(`Rating ${movie.name} movie failed`));
   }
 }
 
@@ -303,8 +306,8 @@ export function deleteMarkMovieWatched(userid, movieid) {
         dispatch(deleteMarkMovieWatchedSuccess(response.data));
         browserHistory.push(`/movies/${movie.id}/watched`);
       })
-      .catch(function (error) {
-        dispatch(deleteMarkMovieWatchedFailure(error));
+      .catch(function () {
+        dispatch(deleteMarkMovieWatchedFailure());
       });
   }
 }
@@ -323,7 +326,6 @@ function deleteMarkMovieWatchedFailure(error) {
     payload: { error }
   }
 }
-
 
 export function rateMovie(userId, movieId, rating) {
   return function(dispatch) {
