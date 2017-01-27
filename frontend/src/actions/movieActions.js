@@ -249,13 +249,16 @@ function deleteMovieRequest() {
 }
 
 function deleteMovieSuccess() {
-  return { type: types.DELETE_MOVIE_SUCCESS }
+  return function(dispatch) {
+    dispatch({ type: types.DELETE_MOVIE_SUCCESS });
+    dispatch(notificationActions.info('Movie successfully deleted'));
+  }
 }
 
 function deleteMovieFailure(error) {
-  return {
-    type: types.DELETE_MOVIE_FAILURE,
-    payload: { error }
+  return function(dispatch) {
+    dispatch({ type: types.DELETE_MOVIE_FAILURE });
+    dispatch(notificationActions.error('Deleting movie failed'));
   }
 }
 
