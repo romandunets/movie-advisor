@@ -21,7 +21,7 @@ class MovieCard extends Component {
   }
 
   render() {
-    const { movie, deleteMovie, isAuthenticated, isAdmin, markAsWatched, deleteMarkAsWatched  } = this.props;
+    const { movie, deleteMovie, isAuthenticated, isAdmin } = this.props;
     
     return (
       <div className="row">

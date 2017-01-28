@@ -52,15 +52,6 @@ class MovieApi extends Api {
     return this.getClient().get(`/tag/`);
   }
 
-  static markMovieWatched(userid, movieid) {
-    //TODO update path etc depending on backend
-    return this.getClient().post(`/users_to_movies`, {user: userid, movie: movieid, rating: 3});
-  }
-
-  static deleteMarkMovieWatched(userid, movieid){
-    return this.getClient().delete(`/users_to_movies/${userid}/${movieid}`);
-  }
-
   static rateMovie(userid, movieid, rating){
     //TODO update path etc depending on backend
     return this.getClient().post(`/users_to_movies/`, {user: userid, movie: movieid, rating: rating});
