@@ -293,7 +293,7 @@ function rateMovieSuccess(movie) {
 function rateMovieFailure() {
   return function(dispatch) {
     dispatch({ type: types.RATE_MOVIE_FAILURE });
-    dispatch(notificationActions.error(`Rating ${ movie.name } movie failed`));
+    dispatch(notificationActions.error('Rating the movie failed'));
   }
 }
 
@@ -303,15 +303,15 @@ export function loadMovieFromOMDB(title) {
       dispatch(loadMovieFromOMDBRequest());
       MovieApi.loadFromOMDB(title)
         .then(function (response) {
-          if (response.data.Response != "False") {
+          if (response.data.Response != 'False') {
             dispatch(loadMovieFromOMDBSuccess(response.data));
           }
           else {
-            dispatch(loadMovieFromOMDBFailure("Movie not found"));
+            dispatch(loadMovieFromOMDBFailure());
           }
         })
-        .catch(function (error) {
-          dispatch(loadMovieFromOMDBFailure(error));
+        .catch(function () {
+          dispatch(loadMovieFromOMDBFailure());
         });
     }
   }
@@ -322,9 +322,8 @@ function loadMovieFromOMDBRequest() {
 }
 
 function loadMovieFromOMDBSuccess(data) {
-  return {
-    type: types.LOAD_MOVIE_FROM_OMDB_SUCCESS,
-    payload: {
+  return function(dispatch) {
+    const payload = {
       title: data.Title,
       year: data.Year,
       director: data.Director,
@@ -333,14 +332,17 @@ function loadMovieFromOMDBSuccess(data) {
       coverImage: data.Poster,
       photos: [],
       description: data.Plot
-    }
+    };
+
+    dispatch({ type: types.LOAD_MOVIE_FROM_OMDB_SUCCESS, payload: payload });
+    dispatch(notificationActions.info(`You successfully rated ${ movie.title } movie`));
   }
 }
 
-function loadMovieFromOMDBFailure(error) {
-  return {
-    type: types.LOAD_MOVIE_FROM_OMDB_FAILURE,
-    payload: { error }
+function loadMovieFromOMDBFailure() {
+  return function(dispatch) {
+    dispatch({ type: types.LOAD_MOVIE_FROM_OMDB_FAILURE });
+    dispatch(notificationActions.error('Movie was not found by the given title'));
   }
 }
 
