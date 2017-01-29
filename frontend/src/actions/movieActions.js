@@ -270,8 +270,8 @@ export function rateMovie(userId, movieId, rating) {
         dispatch(rateMovieSuccess(response.data));
         browserHistory.push(`/movies/${movieId}`);
       })
-      .catch(function (error) {
-        dispatch(rateMovieFailure(error));
+      .catch(function () {
+        dispatch(rateMovieFailure());
       });
   }
 }
@@ -281,19 +281,21 @@ function rateMovieRequest() {
 }
 
 function rateMovieSuccess(movie) {
-  return {
-    type: types.RATE_MOVIE_SUCCESS,
-    payload: { movie }
+  return function(dispatch) {
+    dispatch({
+      type: types.RATE_MOVIE_SUCCESS,
+      payload: { movie }
+    });
+    dispatch(notificationActions.info(`You successfully rated ${ movie.title } movie`));
   }
 }
 
-function rateMovieFailure(error) {
-  return {
-    type: types.RATE_MOVIE_FAILURE,
-    payload: { error }
+function rateMovieFailure() {
+  return function(dispatch) {
+    dispatch({ type: types.RATE_MOVIE_FAILURE });
+    dispatch(notificationActions.error(`Rating ${ movie.name } movie failed`));
   }
 }
-
 
 export function loadMovieFromOMDB(title) {
   if (title.length > 0) {
