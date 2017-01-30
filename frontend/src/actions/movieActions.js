@@ -327,15 +327,18 @@ function loadMovieFromOMDBSuccess(data) {
       title: data.Title,
       year: data.Year,
       director: data.Director,
-      duration: data.Runtime.replace(" min", ""),
+      duration: data.Runtime.replace(' min', ''),
       ageRestriction: data.Rated,
       coverImage: data.Poster,
       photos: [],
       description: data.Plot
     };
 
-    dispatch({ type: types.LOAD_MOVIE_FROM_OMDB_SUCCESS, payload: payload });
-    dispatch(notificationActions.info(`You successfully rated ${ movie.title } movie`));
+    dispatch({
+      type: types.LOAD_MOVIE_FROM_OMDB_SUCCESS,
+      payload: payload
+    });
+    dispatch(notificationActions.info(`You successfully uploaded ${ movie.title } movie data from OMDB`));
   }
 }
 
@@ -363,8 +366,8 @@ export function listGenres() {
       .then(function (response) {
         dispatch(listGenresSuccess(response.data));
       })
-      .catch(function (error) {
-        dispatch(listGenresFailure(error));
+      .catch(function() {
+        dispatch(listGenresFailure());
       });
   }
 }
@@ -380,10 +383,10 @@ function listGenresSuccess(genres) {
   }
 }
 
-function listGenresFailure(error) {
-  return {
-    type: types.LIST_GENRES_FAILURE,
-    payload: { error }
+function listGenresFailure() {
+  return function(dispatch) {
+    dispatch({ type: types.LIST_GENRES_FAILURE });
+    dispatch(notificationActions.error('Loading movie genres failed'));
   }
 }
 
