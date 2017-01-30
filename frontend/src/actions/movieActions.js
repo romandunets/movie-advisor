@@ -397,8 +397,8 @@ export function listTags() {
       .then(function (response) {
         dispatch(listTagsSuccess(response.data));
       })
-      .catch(function (error) {
-        dispatch(listTagsFailure(error));
+      .catch(function () {
+        dispatch(listTagsFailure());
       });
   }
 }
@@ -414,10 +414,10 @@ function listTagsSuccess(tags) {
   }
 }
 
-function listTagsFailure(error) {
-  return {
-    type: types.LIST_TAGS_FAILURE,
-    payload: { error }
+function listTagsFailure() {
+  return function(dispatch) {
+    dispatch({ type: types.LIST_TAGS_FAILURE });
+    dispatch(notificationActions.error('Loading movie tags failed'));
   }
 }
 
