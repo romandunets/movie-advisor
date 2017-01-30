@@ -18,7 +18,10 @@ export function listMovies(userId, query) {
 }
 
 function listMoviesRequest() {
-  return { type: types.LIST_MOVIES_REQUEST }
+  return function(dispatch) {
+    dispatch({ type: types.LIST_MOVIES_REQUEST });
+    dispatch(notificationActions.clear());
+  }
 }
 
 function listMoviesSuccess(movies) {
