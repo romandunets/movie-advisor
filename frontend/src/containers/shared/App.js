@@ -49,7 +49,6 @@ class App extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    message: state.users.message || state.movies.message || state.auth.message,
     currentUser: state.auth.currentUser,
     notifications: state.notifications.notifications,
     isAuthenticated: state.auth.isAuthenticated,

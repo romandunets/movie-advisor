@@ -17,10 +17,9 @@ class MoviesSearchPage extends Component {
   }
 
   render() {
-    const { movies, message, isAuthenticated, search } = this.props;
+    const { movies, isAuthenticated, search } = this.props;
     return (
       <div>
-        <h4>{message}</h4>
         <h3>Search results for {search.keyword}</h3>
         <MoviesList movies={movies} isAuthenticated={isAuthenticated} />
       </div>
@@ -31,7 +30,6 @@ class MoviesSearchPage extends Component {
 const mapStateToProps = (state) => {
   return {
     movies: state.movies.movies,
-    message: state.movies.message,
     isAuthenticated: state.auth.isAuthenticated
   }
 }

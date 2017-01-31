@@ -44,7 +44,7 @@ class MovieEditPage extends Component {
   }
 
   render() {
-    const { message, movie, genres, tags, isLoading } = this.props;
+    const { movie, genres, tags, isLoading } = this.props;
     const initialValues = { ...movie, availableGenres: genres, availableTags: tags };
 
     return (
@@ -66,7 +66,6 @@ const mapStateToProps = (state) => {
     genres: state.movies.genres,
     tags: state.movies.tags,
     isLoading: state.movies.isLoading,
-    message: state.movies.message,
     currentUser: state.auth.currentUser
   }
 }

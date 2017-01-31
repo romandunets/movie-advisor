@@ -27,12 +27,13 @@ class MoviesListPage extends Component {
   }
 
   render() {
-    const { movies, message, total, isAuthenticated, isAdmin, isLoading } = this.props;
+    const { movies, total, isAuthenticated, isAdmin, isLoading } = this.props;
     const { free_search, page } = this.props.location.query;
 
     if (isLoading) {
       return <ProgressBar />;
-    } else {
+    }
+    else {
       return (
         <div>
           <div className="header">
@@ -54,7 +55,6 @@ const mapStateToProps = (state) => {
   return {
     movies: state.movies.movies,
     isLoading: state.movies.isLoading,
-    message: state.movies.message,
     total: state.movies.pages,
     currentUser: state.auth.currentUser,
     isAuthenticated: state.auth.isAuthenticated,

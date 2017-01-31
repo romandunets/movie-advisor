@@ -23,8 +23,6 @@ export default {
     genres: [],
     tags: [],
     pages: 1,
-    message: '',
-    error: '',
     isLoading: false
   }
 }

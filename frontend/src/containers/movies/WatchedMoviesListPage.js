@@ -27,7 +27,7 @@ class WatchedMoviesListPage extends Component {
   }
 
   render() {
-    const { movies, message, total, isLoading, isAuthenticated, isAdmin } = this.props;
+    const { movies, total, isLoading, isAuthenticated, isAdmin } = this.props;
     const page = this.props.location.query.page;
 
     if (isLoading) {
@@ -62,7 +62,6 @@ class WatchedMoviesListPage extends Component {
 const mapStateToProps = (state) => {
   return {
     movies: state.movies.movies,
-    message: state.movies.message,
     total: state.movies.pages,
     isLoading: state.movies.isLoading,
     currentUser: state.auth.currentUser,
