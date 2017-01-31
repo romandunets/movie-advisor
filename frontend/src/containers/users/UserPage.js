@@ -35,7 +35,6 @@ const mapStateToProps = (state) => {
     currentUser: state.auth.currentUser,
     user: state.users.user,
     isLoading: state.users.isLoading,
-    message: state.users.message,
     isAuthenticated: state.auth.isAuthenticated,
     isAdmin: state.auth.isAdmin
   }

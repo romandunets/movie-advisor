@@ -11,7 +11,6 @@ class UserNewPage extends Component {
   }
 
   render() {
-    const { message } = this.props;
     return (
       <div className="center-container">
         <div className="center-content">
@@ -23,16 +22,10 @@ class UserNewPage extends Component {
   }
 }
 
-const mapStateToProps = (state) => {
-  return {
-    message: state.users.message
-  }
-}
-
 const mapDispatchToProps = (dispatch) => {
   return {
     actions: bindActionCreators(userActions, dispatch)
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(UserNewPage);
+export default connect(null, mapDispatchToProps)(UserNewPage);

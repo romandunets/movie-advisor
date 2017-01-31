@@ -15,7 +15,7 @@ class UserEditPage extends Component {
   }
 
   render() {
-    const { user, message, isLoading } = this.props;
+    const { user, isLoading } = this.props;
     const initialValues = { ...user };
 
     return (
@@ -34,7 +34,6 @@ class UserEditPage extends Component {
 const mapStateToProps = (state) => {
   return {
     user: state.users.user,
-    message: state.users.message,
     isLoading: state.users.isLoading
   }
 }

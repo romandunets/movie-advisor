@@ -11,7 +11,7 @@ class HomePage extends Component {
   }
 
   render() {
-    const { movies, message, total, isAuthenticated, isAdmin } = this.props;
+    const { movies, total, isAuthenticated, isAdmin } = this.props;
     return (
       <div className="center-container">
         <div className="center-content">
