@@ -14,8 +14,8 @@ export function signup(credentials) {
         dispatch(signupSuccess(response.data));
         browserHistory.replace('/');
       })
-      .catch(function (error) {
-        dispatch(signupFailure(error));
+      .catch(function() {
+        dispatch(signupFailure());
       });
   }
 }
@@ -31,10 +31,10 @@ function signupSuccess(user) {
   }
 }
 
-function signupFailure(error) {
-  return {
-    type: types.SIGNUP_FAILURE,
-    payload: error
+function signupFailure() {
+  return function(dispatch) {
+    dispatch({ type: types.SIGNUP_FAILURE });
+    dispatch(notificationActions.error('Login failed'));
   }
 }
 
