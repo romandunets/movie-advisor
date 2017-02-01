@@ -13,6 +13,7 @@ class SignupPage extends Component {
 
   render() {
     const { notifications } = this.props;
+
     return (
       <div className="center-container">
         <div className="center-content">
@@ -27,7 +28,7 @@ class SignupPage extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    notifications: state.notifications.notifications,
+    notifications: state.notifications.notifications
   }
 }
 

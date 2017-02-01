@@ -4,6 +4,7 @@ import { Link } from 'react-router';
 import { bindActionCreators } from 'redux';
 
 import * as authActions from '../../actions/authActions';
+import NotificationsBox from '../../components/shared/NotificationsBox/NotificationsBox';
 import LoginForm from '../../components/auth/LoginForm';
 
 class SigninPage extends Component {
@@ -12,11 +13,13 @@ class SigninPage extends Component {
   }
 
   render() {
-    const { message } = this.props;
+    const { notifications } = this.props;
+
     return (
       <div className="center-container">
         <div className="center-content">
           <h3 className="title text-center">Sign in to Movie Advisor</h3>
+          <NotificationsBox notifications={notifications} />
           <LoginForm onSubmit={this.handleSubmit.bind(this)} />
         </div>
       </div>
@@ -26,7 +29,7 @@ class SigninPage extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    message: state.auth.message
+    notifications: state.notifications.notifications
   }
 }
 
