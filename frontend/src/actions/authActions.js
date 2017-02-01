@@ -2,6 +2,7 @@ import axios from 'axios';
 import { browserHistory } from 'react-router';
 
 import * as types from './actionTypes';
+import * as notificationActions from './notificationActions';
 import authApi from '../api/AuthApi';
 
 export function signup(credentials) {
@@ -34,7 +35,7 @@ function signupSuccess(user) {
 function signupFailure() {
   return function(dispatch) {
     dispatch({ type: types.SIGNUP_FAILURE });
-    dispatch(notificationActions.error('Login failed'));
+    dispatch(notificationActions.error('Signup failed'));
   }
 }
 
@@ -48,8 +49,8 @@ export function login(credentials) {
         dispatch(loginSuccess(response.data));
         browserHistory.replace('/');
       })
-      .catch(function (error) {
-        dispatch(loginFailure(error));
+      .catch(function() {
+        dispatch(loginFailure());
       });
   }
 }
@@ -65,10 +66,10 @@ function loginSuccess(user) {
   }
 }
 
-function loginFailure(error) {
-  return {
-    type: types.LOGIN_FAILURE,
-    payload: error
+function loginFailure() {
+  return function(dispatch) {
+    dispatch({ type: types.error });
+    dispatch(notificationActions.error('Login failed'));
   }
 }
 
