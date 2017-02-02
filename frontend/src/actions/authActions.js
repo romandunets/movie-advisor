@@ -81,6 +81,7 @@ export function logout() {
     //localStorage.removeItem('token');
     localStorage.removeItem('user');
     dispatch({ type: types.LOGOUT });
+    dispatch(notificationActions.info('You successfully logged out'));
     browserHistory.replace('/signin');
   }
 }
