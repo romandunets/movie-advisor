@@ -26,9 +26,12 @@ function signupRequest() {
 }
 
 function signupSuccess(user) {
-  return {
-    type: types.SIGNUP_SUCCESS,
-    payload: user
+  return function(dispatch) {
+    dispatch({
+      type: types.SIGNUP_SUCCESS,
+      payload: user
+    });
+    dispatch(notificationActions.info('You successfully registered'));
   }
 }
 
@@ -68,7 +71,7 @@ function loginSuccess(user) {
 
 function loginFailure() {
   return function(dispatch) {
-    dispatch({ type: types.error });
+    dispatch({ type: types.LOGIN_FAILURE });
     dispatch(notificationActions.error('Login failed'));
   }
 }
