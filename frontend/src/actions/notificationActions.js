@@ -16,9 +16,9 @@ export function error(message) {
   };
 }
 
-export function close(message) {
+export function close(id) {
   return {
     type: types.CLOSE_NOTIFICATION,
-    payload: { message }
+    payload: { id }
   };
 }

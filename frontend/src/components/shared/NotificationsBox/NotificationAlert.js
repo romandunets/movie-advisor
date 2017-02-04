@@ -11,12 +11,12 @@ class NotificationAlert extends Component {
   }
 
   render() {
-    const { notification } = this.props;
+    const { notification, closeNotification } = this.props;
     const className = this.getClassName(notification.type);
 
     return (
       <div className={ `alert ${className} alert-dismissible fade in` } role="alert">
-        <button type="button" className="close" data-dismiss="alert" aria-label="Close">
+        <button type="button" className="close" data-dismiss="alert" aria-label="Close" onClick={(e) => closeNotification(notification.id)}>
           <span aria-hidden="true">&times;</span>
         </button>
         <span>{ notification.message }</span>
