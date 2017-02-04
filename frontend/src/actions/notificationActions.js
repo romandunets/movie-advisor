@@ -15,3 +15,10 @@ export function error(message) {
     payload: { message }
   };
 }
+
+export function close(message) {
+  return {
+    type: types.CLOSE_NOTIFICATION,
+    payload: { message }
+  };
+}
