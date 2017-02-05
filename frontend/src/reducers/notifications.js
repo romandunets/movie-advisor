@@ -17,11 +17,17 @@ const notificationsReducer = (state = initialState.notifications, action) => {
 function appendNotification(state, action, type) {
   const id = new Date().getTime()
   const notification = { id, message: action.payload.message, type };
-  return state.notifications.concat([notification]);
+  if (!containsNotification(state, notification)) {
+    return state.notifications.concat([notification]);
+  }
 }
 
 function removeNotification(state, action) {
   return state.notifications.filter((n) => n.id != action.payload.id);
+}
+
+function containsNotification(state, notification) {
+  return state.notifications.findIndex(e => { return e.message == notification.message }) > -1;
 }
 
 export default notificationsReducer;
