@@ -22,3 +22,10 @@ export function close(id) {
     payload: { id }
   };
 }
+
+export function clear() {
+  return {
+    type: types.CLEAR_NOTIFICATIONS
+  };
+}
+
