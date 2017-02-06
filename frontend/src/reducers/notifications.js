@@ -9,6 +9,8 @@ const notificationsReducer = (state = initialState.notifications, action) => {
       return {...state, notifications: appendNotification(state, action, 'ERROR')}
     case types.CLOSE_NOTIFICATION:
       return {...state, notifications: removeNotification(state, action)}
+    case types.CLEAR_NOTIFICATIONS:
+      return {...state, notifications: []}
     default:
       return state;
   }
