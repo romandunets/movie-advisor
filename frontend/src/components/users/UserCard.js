@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import { Link } from 'react-router';
+import moment from 'moment';
 
 class UserCard extends Component {
   componentDidMount() {
@@ -21,10 +22,10 @@ class UserCard extends Component {
 
   getDate(user) {
     if (user !== undefined && user.birthday !== undefined) {
-      const date = new Date(user.birthday);
-      return date.getDate() + '.' + (date.getMonth() + 1) + '.' + date.getFullYear();
+      return moment(user.birthday).format('DD.MM.YYYY');
+    } else {
+      return '';
     }
-    return '';
   }
 
   render() {
