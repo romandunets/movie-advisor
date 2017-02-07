@@ -19,8 +19,17 @@ class UserCard extends Component {
     }
   }
 
+  getDate(user) {
+    if (user !== undefined && user.birthday !== undefined) {
+      const date = new Date(user.birthday);
+      return date.getDate() + '.' + (date.getMonth() + 1) + '.' + date.getFullYear();
+    }
+    return '';
+  }
+
   render() {
     const { currentUser, user, deleteUser, isAuthenticated, isAdmin } = this.props;
+    const birthday = this.getDate(user);
 
     return (
       <div>
@@ -47,7 +56,7 @@ class UserCard extends Component {
           <dt className="col-sm-3">Role</dt>
           <dd className="col-sm-9">{ user.role && user.role.name.charAt(0).toUpperCase() + user.role.name.slice(1) }</dd>
           <dt className="col-sm-3">Birthday</dt>
-          <dd className="col-sm-9">{ user.birthday }</dd>
+          <dd className="col-sm-9">{ birthday }</dd>
           <dt className="col-sm-3">Gender</dt>
           <dd className="col-sm-9">{ user.gender ? 'Male' : 'Female' }</dd>
         </dl>
