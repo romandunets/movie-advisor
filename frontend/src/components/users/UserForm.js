@@ -35,7 +35,7 @@ class UserForm extends Component {
           <Field name="lastName" component="input" type="text" className="form-control"/>
         </div>
         <div className="form-group">
-          <label htmlFor="birthday">Birthday</label>
+          <label htmlFor="birthday">Date of birth</label>
           <Field name="birthday" component="input" type="date" className="form-control"/>
         </div>
         <div className="form-group">

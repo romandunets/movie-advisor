@@ -56,7 +56,7 @@ class UserCard extends Component {
           <dd className="col-sm-9">{ user.email }</dd>
           <dt className="col-sm-3">Role</dt>
           <dd className="col-sm-9">{ user.role && user.role.name.charAt(0).toUpperCase() + user.role.name.slice(1) }</dd>
-          <dt className="col-sm-3">Birthday</dt>
+          <dt className="col-sm-3">Date of birth</dt>
           <dd className="col-sm-9">{ birthday }</dd>
           <dt className="col-sm-3">Gender</dt>
           <dd className="col-sm-9">{ user.gender ? 'Male' : 'Female' }</dd>
