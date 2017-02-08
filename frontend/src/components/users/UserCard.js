@@ -21,19 +21,19 @@ class UserCard extends Component {
   }
 
   getFullName(user) {
+    var fullName = '';
     if (user.firstName !== null || user.secondName !== null) {
-      return `(${ [user.firstName, user.secondName].join(' ') })`;
-    } else {
-      return '';
+      fullName = `(${ [user.firstName, user.secondName].join(' ') })`;
     }
+    return fullName;
   }
 
   getDateOfBirth(user) {
+    var dateOfBirth = '';
     if (user !== undefined && user.birthday !== undefined) {
-      return moment(user.birthday).format('DD.MM.YYYY');
-    } else {
-      return '';
+      dateOfBirth = moment(user.birthday).format('DD.MM.YYYY');
     }
+    return dateOfBirth;
   }
 
   render() {
