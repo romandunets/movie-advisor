@@ -20,7 +20,15 @@ class UserCard extends Component {
     }
   }
 
-  getDate(user) {
+  getFullName(user) {
+    if (user.firstName !== null || user.secondName !== null) {
+      return `(${ [user.firstName, user.secondName].join(' ') })`;
+    } else {
+      return '';
+    }
+  }
+
+  getDateOfBirth(user) {
     if (user !== undefined && user.birthday !== undefined) {
       return moment(user.birthday).format('DD.MM.YYYY');
     } else {
@@ -30,7 +38,8 @@ class UserCard extends Component {
 
   render() {
     const { currentUser, user, deleteUser, isAuthenticated, isAdmin } = this.props;
-    const birthday = this.getDate(user);
+    const fullName = this.getFullName(user);
+    const birthday = this.getDateOfBirth(user);
 
     return (
       <div>
@@ -38,7 +47,7 @@ class UserCard extends Component {
           <div className="col-md-6">
             <h4>
               { user.username }
-              <span className="text-muted"> ({ user.firstName } { user.secondName })</span>
+              <span className="text-muted"> { fullName }</span>
             </h4>
           </div>
           <div className="col-md-6">
