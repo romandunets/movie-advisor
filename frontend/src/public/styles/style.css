@@ -158,10 +158,10 @@ img {
   padding: 20px;
 }
 
-.center-container {
+div.center-container {
   display: table;
   height: 100%;
-  margin: auto;
+  margin: 15px auto;
 }
 
 .center-content {
