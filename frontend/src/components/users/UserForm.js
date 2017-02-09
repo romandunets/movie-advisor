@@ -8,6 +8,7 @@ import { Link } from 'react-router';
 class UserForm extends Component {
   render() {
     const { handleSubmit } = this.props;
+    const isNew = this.props.initialValues === undefined;
     return (
       <form className="form-horizontal" onSubmit={ handleSubmit }>
         <div className="form-group required">
@@ -18,14 +19,18 @@ class UserForm extends Component {
           <label htmlFor="email">Email</label>
           <Field name="email" component="input" type="email" required="required" className="form-control"/>
         </div>
-        <div className="form-group required">
-          <label htmlFor="password">Password</label>
-          <Field name="password" component="input" type="password" required="required" className="form-control"/>
-        </div>
-        <div className="form-group required">
-          <label htmlFor="passwordConfirmation">Password confirmation</label>
-          <Field name="passwordConfirmation" component="input" type="password" required="required" className="form-control"/>
-        </div>
+        { isNew &&
+          <div className="form-group required">
+            <label htmlFor="password">Password</label>
+            <Field name="password" component="input" type="password" required="required" className="form-control"/>
+          </div>
+        }
+        { isNew &&
+          <div className="form-group required">
+            <label htmlFor="passwordConfirmation">Password confirmation</label>
+            <Field name="passwordConfirmation" component="input" type="password" required="required" className="form-control"/>
+          </div>
+        }
         <div className="form-group">
           <label htmlFor="firstName">First name</label>
           <Field name="firstName" component="input" type="text" className="form-control"/>
