@@ -22,7 +22,10 @@ export function signup(credentials) {
 }
 
 function signupRequest() {
-  return { type: types.SIGNUP_REQUEST }
+  return function(dispatch) {
+    dispatch({ type: types.SIGNUP_REQUEST });
+    dispatch(notificationActions.clear());
+  }
 }
 
 function signupSuccess(user) {
