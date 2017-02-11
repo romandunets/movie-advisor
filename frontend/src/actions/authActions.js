@@ -59,7 +59,10 @@ export function login(credentials) {
 }
 
 function loginRequest() {
-  return { type: types.LOGIN_REQUEST }
+  return function(dispatch) {
+    dispatch({ type: types.LOGIN_REQUEST });
+    dispatch(notificationActions.clear());
+  }
 }
 
 function loginSuccess(user) {
