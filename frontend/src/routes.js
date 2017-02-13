@@ -18,7 +18,6 @@ import MoviePage from './containers/movies/MoviePage';
 import MoviesListPage from './containers/movies/MoviesListPage';
 import RecommendedMoviesListPage from './containers/movies/RecommendedMoviesListPage';
 import WatchedMoviesListPage from './containers/movies/WatchedMoviesListPage';
-import MoviesSearchPage from './containers/movies/MoviesSearchPage';
 import MovieNewPage from './containers/movies/MovieNewPage';
 import MovieEditPage from './containers/movies/MovieEditPage';
 import MoviePageWatched from './containers/movies/MoviePageWatched';
