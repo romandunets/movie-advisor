@@ -52,7 +52,10 @@ export function listRecommendedMovies(userId, query) {
 }
 
 function listRecommendedMoviesRequest() {
-  return { type: types.LIST_RECOMMENDED_MOVIES_REQUEST }
+  return function(dispatch) {
+    dispatch({ type: types.LIST_RECOMMENDED_MOVIES_REQUEST });
+    dispatch(notificationActions.clear());
+  }
 }
 
 function listRecommendedMoviesSuccess(movies) {
