@@ -86,7 +86,10 @@ export function listWatchedMovies(userId, query) {
 }
 
 function listWatchedMoviesRequest() {
-  return { type: types.LIST_WATCHED_MOVIES_REQUEST }
+  return function(dispatch) {
+    dispatch({ type: types.LIST_WATCHED_MOVIES_REQUEST });
+    dispatch(notificationActions.clear());
+  }
 }
 
 function listWatchedMoviesSuccess(movies) {
