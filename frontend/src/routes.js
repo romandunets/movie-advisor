@@ -45,7 +45,6 @@ export default (store) => {
           <IndexRoute component={MoviesListPage} />
           <Route onEnter={requireAuthentication(store)}>
             <Route path="new" component={MovieNewPage} />
-            <Route path="search/:keyword" component={MoviesSearchPage} />
             <Route path="recommended" component={RecommendedMoviesListPage} />
             <Route path="watched" component={WatchedMoviesListPage} />
             <Route path=":id/edit" component={MovieEditPage} />
