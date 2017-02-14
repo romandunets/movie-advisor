@@ -120,7 +120,10 @@ export function getMovie(id, userId) {
 }
 
 function getMovieRequest() {
-  return { type: types.GET_MOVIE_REQUEST }
+  return function(dispatch) {
+    dispatch({ type: types.GET_MOVIE_REQUEST });
+    dispatch(notificationActions.clear());
+  }
 }
 
 function getMovieSuccess(movie) {
