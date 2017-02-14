@@ -106,37 +106,6 @@ function listWatchedMoviesFailure() {
   }
 }
 
-export function searchMovies(keyword) {
-  return function(dispatch) {
-    dispatch(searchMoviesRequest());
-    MovieApi.searchMovies(keyword)
-      .then(function (response) {
-        dispatch(searchMoviesSuccess(response.data));
-      })
-      .catch(function () {
-        dispatch(searchMoviesFailure());
-      });
-  }
-}
-
-function searchMoviesRequest() {
-  return { type: types.SEARCH_MOVIES_REQUEST }
-}
-
-function searchMoviesSuccess(movies) {
-  return {
-    type: types.SEARCH_MOVIES_SUCCESS,
-    payload: { movies }
-  }
-}
-
-function searchMoviesFailure() {
-  return function(dispatch) {
-    dispatch({ type: types.SEARCH_MOVIES_FAILURE });
-    dispatch(notificationActions.error('Searching movies failed'));
-  }
-}
-
 export function getMovie(id, userId) {
   return function(dispatch) {
     dispatch(getMovieRequest());
