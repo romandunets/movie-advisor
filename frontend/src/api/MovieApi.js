@@ -20,10 +20,6 @@ class MovieApi extends Api {
     return this.getClient().get(`/movie/watched`, { params });
   }
 
-  static searchMovies(query) {
-    return this.getClient().get(`/movie?q=${query}`);
-  }
-
   static getMovie(id, userId) {
     return this.getClient().get(`/movie/${id}`, { params: { user_id: userId } });
   }
