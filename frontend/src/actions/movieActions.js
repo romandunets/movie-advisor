@@ -155,7 +155,10 @@ export function createMovie(movie) {
 }
 
 function createMovieRequest() {
-  return { type: types.CREATE_MOVIE_REQUEST }
+  return function(dispatch) {
+    dispatch({ type: types.CREATE_MOVIE_REQUEST });
+    dispatch(notificationActions.clear());
+  }
 }
 
 function createMovieSuccess(movie) {
