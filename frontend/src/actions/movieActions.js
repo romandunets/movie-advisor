@@ -193,7 +193,10 @@ export function updateMovie(id, movie) {
 }
 
 function updateMovieRequest() {
-  return { type: types.UPDATE_MOVIE_REQUEST }
+  return function(dispatch) {
+    dispatch({ type: types.UPDATE_MOVIE_REQUEST });
+    dispatch(notificationActions.clear());
+  }
 }
 
 function updateMovieSuccess(movie) {
