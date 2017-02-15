@@ -267,7 +267,10 @@ export function rateMovie(userId, movieId, rating) {
 }
 
 function rateMovieRequest() {
-  return { type: types.RATE_MOVIE_REQUEST }
+  return function(dispatch) {
+    dispatch({ type: types.RATE_MOVIE_REQUEST });
+    dispatch(notificationActions.clear());
+  }
 }
 
 function rateMovieSuccess(movie) {
