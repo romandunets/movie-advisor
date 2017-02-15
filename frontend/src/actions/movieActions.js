@@ -279,7 +279,6 @@ function rateMovieSuccess(movie) {
       type: types.RATE_MOVIE_SUCCESS,
       payload: { movie }
     });
-    dispatch(notificationActions.info(`You successfully rated ${ movie.title } movie`));
   }
 }
 
