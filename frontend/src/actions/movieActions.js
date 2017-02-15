@@ -232,7 +232,10 @@ export function deleteMovie(id) {
 }
 
 function deleteMovieRequest() {
-  return { type: types.DELETE_MOVIE_REQUEST }
+  return function(dispatch) {
+    dispatch({ type: types.DELETE_MOVIE_REQUEST });
+    dispatch(notificationActions.clear());
+  }
 }
 
 function deleteMovieSuccess() {
