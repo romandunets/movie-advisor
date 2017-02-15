@@ -310,7 +310,10 @@ export function loadMovieFromOMDB(title) {
 }
 
 function loadMovieFromOMDBRequest() {
-  return { type: types.LOAD_MOVIE_FROM_OMDB_REQUEST }
+  return function(dispatch) {
+    dispatch({ type: types.LOAD_MOVIE_FROM_OMDB_REQUEST });
+    dispatch(notificationActions.clear());
+  }
 }
 
 function loadMovieFromOMDBSuccess(data) {
