@@ -402,7 +402,10 @@ export function listTags() {
 }
 
 function listTagsRequest() {
-  return { type: types.LIST_TAGS_REQUEST }
+  return function(dispatch) {
+    dispatch({ type: types.LIST_TAGS_REQUEST });
+    dispatch(notificationActions.clear());
+  }
 }
 
 function listTagsSuccess(tags) {
