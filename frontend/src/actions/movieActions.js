@@ -368,7 +368,10 @@ export function listGenres() {
 }
 
 function listGenresRequest() {
-  return { type: types.LIST_GENRES_REQUEST }
+  return function(dispatch) {
+    dispatch({ type: types.LIST_GENRES_REQUEST });
+    dispatch(notificationActions.clear());
+  }
 }
 
 function listGenresSuccess(genres) {
