@@ -8,3 +8,10 @@ The main feature of the web service is a search engine which proposes movies tha
 
 This application has all the most important features inherent for typical film database services except of unique method used in advising movies for a user which is the core feature of the service. Consequently, the web application contains such features as marking movies as watched, rating movies, listing and searching movies. In addition to, the system has facilities to create, update and delete movies by administrators. Regular users can create their own lists, add prefered or watched movie and rate it. As the most of the typical services, Movie Advisor also has essential features for data personalizations like account registration, login and updating personal information.
 
+
+## Compontents
+
+The project contains three main components:
+* Front-end single page application
+* Back-end REST API
+* Relational database
