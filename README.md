@@ -13,5 +13,8 @@ This application has all the most important features inherent for typical film d
 
 The project contains three main components:
 * Front-end single page application
+The front-end component provides user interface as web-site, which can be accessed through the Internet. This is React application used with Redux. Aditionaly, Bootstrap framework was used to provide generic design for the UI.
 * Back-end REST API
-* Relational database
+Back-end is Java EE application used with Spring framework to provide REST API for the front-end application. This component handles HTTP requests from the front-end and responses with JSON data. In order to provide service with all the functionality, back-end works with data in the database using JPA / Hibernate.
+* Database
+MySQL database is used as the main storage for the service accessed by the back-end component.
